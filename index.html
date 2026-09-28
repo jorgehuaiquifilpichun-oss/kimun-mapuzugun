@@ -88,6 +88,19 @@
 
     </div>
 
+    <div class="card">
+  <div class="frase">
+    Chumleymi am?
+  </div>
+
+  <div class="traduccion">
+    ¿Cómo estás?
+  </div>
+
+  <button onclick="reproducirChumleymi()">
+    🔊 ESCUCHAR
+  </button>
+</div>
   </div>
 
   <audio id="audio">
@@ -101,6 +114,10 @@
       const audio = document.getElementById("audio");
       audio.currentTime = 0;
       audio.play();
+    } 
+    function reproducirChumleymi() {
+  const audio = new Audio('chumleymi_am-1.mp3');
+  audio.play();
     }
   </script>
 
