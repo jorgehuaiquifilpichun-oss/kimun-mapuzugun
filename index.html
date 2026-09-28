@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kimun Mapuzugun</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f1e8;
+      text-align: center;
+      color: #222;
+    }
+
+    .app {
+      max-width: 500px;
+      margin: auto;
+      padding: 40px 24px;
+    }
+
+    h1 {
+      font-size: 34px;
+      margin-bottom: 5px;
+    }
+
+    .subtitulo {
+      color: #666;
+      margin-bottom: 45px;
+    }
+
+    .tarjeta {
+      background: white;
+      border-radius: 20px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.10);
+    }
+
+    .mapuzugun {
+      font-size: 38px;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .traduccion {
+      font-size: 20px;
+      color: #555;
+      margin-bottom: 25px;
+    }
+
+    button {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 14px;
+      background: #222;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="app">
+
+    <h1>Kimun Mapuzugun</h1>
+    <div class="subtitulo">Aprende, escucha y conoce</div>
+
+    <div class="tarjeta">
+
+      <div class="mapuzugun">Mari mari</div>
+
+      <div class="traduccion">
+        Hola / saludo
+      </div>
+
+      <button onclick="reproducirAudio()">
+        🔊 ESCUCHAR
+      </button>
+
+    </div>
+
+  </div>
+
+  <audio id="audio">
+    <source
+      src="https://raw.githubusercontent.com/jorgehuaiquifilpichun-oss/kimun-mapuzugun-audio/c481a0cbc18bb899878ec1108664ccede8fec34b/mari_mari-1.mp3"
+      type="audio/mpeg">
+  </audio>
+
+  <script>
+    function reproducirAudio() {
+      const audio = document.getElementById("audio");
+      audio.currentTime = 0;
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>
