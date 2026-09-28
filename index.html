@@ -1,147 +1,607 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kimun Mapuzugun</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimun Mapuzugun</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f5f1e8;
-      text-align: center;
-      color: #222;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    .app {
-      max-width: 500px;
-      margin: auto;
-      padding: 40px 24px;
-    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f7f4ec;
+  color: #222;
+}
 
-    h1 {
-      font-size: 34px;
-      margin-bottom: 5px;
-    }
+.app {
+  max-width: 500px;
+  min-height: 100vh;
+  margin: auto;
+  padding: 22px;
+}
 
-    .subtitulo {
-      color: #666;
-      margin-bottom: 45px;
-    }
+/* CABECERA */
 
-    .tarjeta {
-      background: white;
-      border-radius: 20px;
-      padding: 30px 20px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.10);
-    }
+.top {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 28px;
+}
 
-    .mapuzugun {
-      font-size: 38px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
+.salir {
+  font-size: 25px;
+  color: #777;
+}
 
-    .traduccion {
-      font-size: 20px;
-      color: #555;
-      margin-bottom: 25px;
-    }
+.progreso {
+  flex: 1;
+  height: 15px;
+  background: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+}
 
-    button {
-      width: 100%;
-      padding: 16px;
-      border: none;
-      border-radius: 14px;
-      background: #222;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-    }
+.barra {
+  height: 100%;
+  width: 50%;
+  background: #58cc02;
+  border-radius: 20px;
+  transition: width .5s ease;
+}
 
-    button:active {
-      transform: scale(0.98);
-    }
-  </style>
+.corazon {
+  font-size: 23px;
+}
+
+/* PANTALLAS */
+
+.pantalla {
+  display: none;
+  animation: entrar .45s ease;
+}
+
+.pantalla.activa {
+  display: block;
+}
+
+@keyframes entrar {
+  from {
+    opacity: 0;
+    transform: translateX(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.indicador {
+  color: #777;
+  font-size: 15px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+h1 {
+  font-size: 27px;
+  margin: 0 0 28px;
+  text-align: left;
+}
+
+/* PALABRA */
+
+.palabra {
+  font-size: 44px;
+  font-weight: 800;
+  margin: 30px 0 20px;
+  text-align: center;
+}
+
+.traduccion {
+  text-align: center;
+  color: #666;
+  font-size: 21px;
+  margin-bottom: 25px;
+}
+
+/* BOTONES */
+
+button {
+  font-family: inherit;
+}
+
+.escuchar {
+  display: block;
+  width: 190px;
+  margin: 0 auto 35px;
+  padding: 14px 15px;
+  border: none;
+  border-radius: 15px;
+  background: #1f1f1f;
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #000;
+}
+
+.escuchar:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #000;
+}
+
+.pregunta {
+  font-size: 21px;
+  font-weight: bold;
+  margin-bottom: 18px;
+}
+
+.opciones {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.opcion {
+  width: 100%;
+  min-height: 55px;
+  padding: 12px 16px;
+  border: 2px solid #ddd;
+  border-bottom: 4px solid #ccc;
+  border-radius: 15px;
+  background: white;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.opcion:active {
+  transform: translateY(2px);
+}
+
+.opcion.correcta {
+  background: #d7ffb8;
+  border-color: #58cc02;
+  color: #378a00;
+}
+
+.opcion.incorrecta {
+  background: #ffdfe0;
+  border-color: #ff4b4b;
+  color: #d33131;
+  animation: error .25s;
+}
+
+@keyframes error {
+  25% { transform: translateX(-6px); }
+  50% { transform: translateX(6px); }
+  75% { transform: translateX(-4px); }
+}
+
+/* RESULTADO */
+
+.resultado {
+  display: none;
+  margin-top: 25px;
+  padding: 18px;
+  border-radius: 18px;
+  text-align: left;
+  animation: aparecer .3s ease;
+}
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+.resultado.correcto {
+  display: block;
+  background: #d7ffb8;
+  color: #378a00;
+}
+
+.resultado.error {
+  display: block;
+  background: #ffdfe0;
+  color: #d33131;
+}
+
+.resultado strong {
+  font-size: 22px;
+}
+
+.continuar {
+  width: 100%;
+  margin-top: 15px;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  background: #58cc02;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 0 #46a302;
+}
+
+/* FINAL */
+
+.final {
+  text-align: center;
+  padding-top: 70px;
+}
+
+.final .icono {
+  font-size: 75px;
+}
+
+.final h2 {
+  font-size: 30px;
+}
+
+.final p {
+  font-size: 19px;
+  color: #666;
+}
+
+</style>
 </head>
 
 <body>
 
-  <div class="app">
+<div class="app">
 
-    <h1>Kimun Mapuzugun</h1>
-    <div class="subtitulo">Aprende, escucha y conoce</div>
+  <div class="top">
+    <div class="salir">✕</div>
 
-    <div class="tarjeta ejercicio">
-  <div class="mapuzugun">Mari mari</div>
+    <div class="progreso">
+      <div class="barra" id="barra"></div>
+    </div>
 
-  <button onclick="reproducirAudio()">
-    🔊 ESCUCHAR
-  </button>
+    <div class="corazon">❤️</div>
+  </div>
 
-  <div class="pregunta">¿Qué significa?</div>
 
-  <button class="opcion" onclick="respuesta(this, true)">
-    Hola / saludo
-  </button>
+  <!-- ACTIVIDAD 1 -->
 
-  <button class="opcion" onclick="respuesta(this, false)">
-    Gracias
-  </button>
+  <section class="pantalla activa" id="pantalla1">
 
-  <button class="opcion" onclick="respuesta(this, false)">
-    Hasta luego
-  </button>
+    <div class="indicador">1 de 2</div>
 
-  <div id="resultado"></div>
+    <h1>¿Qué significa esta expresión?</h1>
+
+    <div class="palabra">Mari mari</div>
+
+    <button class="escuchar" onclick="reproducirMari()">
+      🔊 ESCUCHAR
+    </button>
+
+    <div class="pregunta">Selecciona la respuesta correcta</div>
+
+    <div class="opciones">
+
+      <button class="opcion"
+        onclick="responder(this,true,1)">
+        Hola / saludo
+      </button>
+
+      <button class="opcion"
+        onclick="responder(this,false,1)">
+        Gracias
+      </button>
+
+      <button class="opcion"
+        onclick="responder(this,false,1)">
+        Hasta luego
+      </button>
+
+    </div>
+
+    <div class="resultado" id="resultado1">
+
+      <strong id="titulo1"></strong>
+
+      <div id="mensaje1"></div>
+
+      <button
+        class="continuar"
+        id="continuar1"
+        onclick="siguiente()"
+        style="display:none">
+        CONTINUAR
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- ACTIVIDAD 2 -->
+
+  <section class="pantalla" id="pantalla2">
+
+    <div class="indicador">2 de 2</div>
+
+    <h1>Escucha y aprende</h1>
+
+    <div class="palabra">Chumleymi am?</div>
+
+    <div class="traduccion">¿Cómo estás?</div>
+
+    <button class="escuchar" onclick="reproducirChumleymi()">
+      🔊 ESCUCHAR
+    </button>
+
+    <div class="pregunta">
+      ¿Qué significa “Chumleymi am?”
+    </div>
+
+    <div class="opciones">
+
+      <button class="opcion"
+        onclick="responder(this,false,2)">
+        ¿Cómo te llamas?
+      </button>
+
+      <button class="opcion"
+        onclick="responder(this,true,2)">
+        ¿Cómo estás?
+      </button>
+
+      <button class="opcion"
+        onclick="responder(this,false,2)">
+        Buenos días
+      </button>
+
+    </div>
+
+    <div class="resultado" id="resultado2">
+
+      <strong id="titulo2"></strong>
+
+      <div id="mensaje2"></div>
+
+      <button
+        class="continuar"
+        id="continuar2"
+        onclick="finalizar()"
+        style="display:none">
+        CONTINUAR
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- FINAL -->
+
+  <section class="pantalla" id="final">
+
+    <div class="final">
+
+      <div class="icono">🏆</div>
+
+      <h2>¡Küme!</h2>
+
+      <p>Completaste esta lección.</p>
+
+      <button class="continuar" onclick="reiniciar()">
+        REPETIR LECCIÓN
+      </button>
+
+    </div>
+
+  </section>
+
 </div>
-    <div class="tarjeta">
-  <div class="mapuzugun">
-    Chumleymi am?
-  </div>
 
-  <div class="traduccion">
-    ¿Cómo estás?
-  </div>
 
-  <button onclick="reproducirChumleymi()">
-    🔊 ESCUCHAR
-  </button>
-</div>
-  </div>
+<script>
 
-  <audio id="audio">
-    <source
-      src="https://raw.githubusercontent.com/jorgehuaiquifilpichun-oss/kimun-mapuzugun-audio/c481a0cbc18bb899878ec1108664ccede8fec34b/mari_mari-1.mp3"
-      type="audio/mpeg">
-  </audio>
+/* AUDIO DE LAS PALABRAS */
 
-  <script>
-    function reproducirAudio() {
-      const audio = document.getElementById("audio");
-      audio.currentTime = 0;
-      audio.play();
-    } 
-    function respuesta(boton, correcta) {
-  const resultado = document.getElementById('resultado');
+function reproducirMari() {
+
+  const audio = new Audio(
+    'https://raw.githubusercontent.com/jorgehuaiquifilpichun-oss/kimun-mapuzugun/principal/mari_mari-1.mp3'
+  );
+
+  audio.play();
+}
+
+
+function reproducirChumleymi() {
+
+  const audio = new Audio(
+    'chumleymi_am-1.mp3'
+  );
+
+  audio.play();
+}
+
+
+/* SONIDO CORRECTO */
+
+function sonidoCorrecto() {
+
+  const ctx =
+    new (window.AudioContext || window.webkitAudioContext)();
+
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc.frequency.setValueAtTime(520, ctx.currentTime);
+  osc.frequency.setValueAtTime(760, ctx.currentTime + 0.10);
+
+  gain.gain.setValueAtTime(0.18, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.01,
+    ctx.currentTime + 0.30
+  );
+
+  osc.start();
+  osc.stop(ctx.currentTime + 0.30);
+}
+
+
+/* SONIDO ERROR */
+
+function sonidoError() {
+
+  const ctx =
+    new (window.AudioContext || window.webkitAudioContext)();
+
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+
+  osc.connect(gain);
+  gain.connect(ctx.destination);
+
+  osc.frequency.setValueAtTime(180, ctx.currentTime);
+  osc.frequency.setValueAtTime(130, ctx.currentTime + 0.12);
+
+  gain.gain.setValueAtTime(0.16, ctx.currentTime);
+  gain.gain.exponentialRampToValueAtTime(
+    0.01,
+    ctx.currentTime + 0.30
+  );
+
+  osc.start();
+  osc.stop(ctx.currentTime + 0.30);
+}
+
+
+/* RESPUESTAS */
+
+function responder(boton, correcta, numero) {
+
+  const resultado =
+    document.getElementById('resultado' + numero);
+
+  const titulo =
+    document.getElementById('titulo' + numero);
+
+  const mensaje =
+    document.getElementById('mensaje' + numero);
+
+  const continuar =
+    document.getElementById('continuar' + numero);
+
 
   if (correcta) {
-    boton.style.background = '#58cc02';
-    boton.style.color = 'white';
-    resultado.innerHTML = '🎉 ¡Correcto! Küme!';
+
+    boton.classList.add('correcta');
+
+    resultado.className =
+      'resultado correcto';
+
+    titulo.innerHTML =
+      '🎉 ¡Correcto!';
+
+    mensaje.innerHTML =
+      ' Küme! Muy bien.';
+
+    continuar.style.display =
+      'block';
+
+    sonidoCorrecto();
+
+    bloquearOpciones(numero);
+
   } else {
-    boton.style.background = '#ff4b4b';
-    boton.style.color = 'white';
-    resultado.innerHTML = '❌ Inténtalo otra vez';
+
+    boton.classList.add('incorrecta');
+
+    resultado.className =
+      'resultado error';
+
+    titulo.innerHTML =
+      '✕ Inténtalo otra vez';
+
+    mensaje.innerHTML =
+      'Busca otra respuesta.';
+
+    sonidoError();
+
+    setTimeout(function() {
+      boton.classList.remove('incorrecta');
+    },700);
   }
 }
-    function reproducirChumleymi() {
-  const audio = new Audio('chumleymi_am-1.mp3');
-  audio.play();
-    }
-  </script>
+
+
+/* BLOQUEAR OPCIONES */
+
+function bloquearOpciones(numero) {
+
+  const pantalla =
+    document.getElementById('pantalla' + numero);
+
+  const botones =
+    pantalla.querySelectorAll('.opcion');
+
+  botones.forEach(function(boton) {
+    boton.disabled = true;
+  });
+}
+
+
+/* SIGUIENTE PANTALLA */
+
+function siguiente() {
+
+  document
+    .getElementById('pantalla1')
+    .classList.remove('activa');
+
+  document
+    .getElementById('pantalla2')
+    .classList.add('activa');
+
+  document
+    .getElementById('barra')
+    .style.width = '100%';
+
+  window.scrollTo(0,0);
+}
+
+
+/* FINAL */
+
+function finalizar() {
+
+  document
+    .getElementById('pantalla2')
+    .classList.remove('activa');
+
+  document
+    .getElementById('final')
+    .classList.add('activa');
+
+  window.scrollTo(0,0);
+
+  sonidoCorrecto();
+}
+
+
+/* REINICIAR */
+
+function reiniciar() {
+
+  location.reload();
+}
+
+</script>
 
 </body>
 </html>
