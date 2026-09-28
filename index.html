@@ -74,20 +74,29 @@
     <h1>Kimun Mapuzugun</h1>
     <div class="subtitulo">Aprende, escucha y conoce</div>
 
-    <div class="tarjeta">
+    <div class="tarjeta ejercicio">
+  <div class="mapuzugun">Mari mari</div>
 
-      <div class="mapuzugun">Mari mari</div>
+  <button onclick="reproducirAudio()">
+    🔊 ESCUCHAR
+  </button>
 
-      <div class="traduccion">
-        Hola / saludo
-      </div>
+  <div class="pregunta">¿Qué significa?</div>
 
-      <button onclick="reproducirAudio()">
-        🔊 ESCUCHAR
-      </button>
+  <button class="opcion" onclick="respuesta(this, true)">
+    Hola / saludo
+  </button>
 
-    </div>
+  <button class="opcion" onclick="respuesta(this, false)">
+    Gracias
+  </button>
 
+  <button class="opcion" onclick="respuesta(this, false)">
+    Hasta luego
+  </button>
+
+  <div id="resultado"></div>
+</div>
     <div class="tarjeta">
   <div class="mapuzugun">
     Chumleymi am?
@@ -115,6 +124,19 @@
       audio.currentTime = 0;
       audio.play();
     } 
+    function respuesta(boton, correcta) {
+  const resultado = document.getElementById('resultado');
+
+  if (correcta) {
+    boton.style.background = '#58cc02';
+    boton.style.color = 'white';
+    resultado.innerHTML = '🎉 ¡Correcto! Küme!';
+  } else {
+    boton.style.background = '#ff4b4b';
+    boton.style.color = 'white';
+    resultado.innerHTML = '❌ Inténtalo otra vez';
+  }
+}
     function reproducirChumleymi() {
   const audio = new Audio('chumleymi_am-1.mp3');
   audio.play();
