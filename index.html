@@ -25,7 +25,7 @@
 
 body{
   margin:0;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:Arial,Helvetica,sans-serif;
   background:#dfe4d7;
   color:var(--texto);
 }
@@ -148,7 +148,6 @@ p{
 
 .btn{
   width:100%;
-  border:none;
   border-radius:18px;
   padding:17px 18px;
   margin:7px 0;
@@ -159,12 +158,10 @@ p{
   color:var(--texto);
   border:2px solid var(--borde);
   box-shadow:0 4px 0 #cfc1ac;
-  transition:.12s;
 }
 
 .btn:active{
   transform:translateY(3px);
-  box-shadow:0 1px 0 #cfc1ac;
 }
 
 .btn.primary{
@@ -340,7 +337,7 @@ p{
 
 <div class="app">
 
-<!-- INTRO -->
+<!-- INICIO -->
 <section class="screen active" id="intro">
 
   <div class="center">
@@ -384,9 +381,11 @@ p{
 
   <div id="encuestaOpciones"></div>
 
-  <img src="treile_hembra-1.png"
-       class="treile small"
-       alt="Treile acompañante">
+  <img
+    src="treile_hembra-1.png"
+    class="treile small"
+    alt="Treile acompañante"
+  >
 
   <div class="pattern"></div>
 </section>
@@ -427,21 +426,24 @@ p{
 
     <p id="feedbackTexto"></p>
 
-    <button class="btn primary"
-            id="continuarBtn"
-            onclick="continuar()">
+    <button
+      class="btn primary"
+      id="continuarBtn"
+      onclick="continuar()"
+    >
       CONTINUAR
     </button>
 
   </div>
 
-  <img src="treile_macho-1.png"
-       class="treile small"
-       id="acompanante"
-       alt="Treile acompañante">
+  <img
+    src="treile_macho-1.png"
+    class="treile small"
+    id="acompanante"
+    alt="Treile acompañante"
+  >
 
   <div class="pattern"></div>
-
 </section>
 
 
@@ -449,45 +451,43 @@ p{
 <section class="screen" id="recuperar">
 
   <div class="center">
-
     <h1>Recupera tu Newen</h1>
 
     <p>
       Mira una cápsula corta de aprendizaje y recupera energía.
     </p>
-
   </div>
 
   <div id="videos"></div>
 
-  <button class="btn"
-          onclick="mostrarActividad()">
+  <button class="btn" onclick="mostrarActividad()">
     VOLVER
   </button>
 
   <div class="pattern"></div>
-
 </section>
 
 
-<!-- CIERRE ETAPA -->
+<!-- CIERRE DE ETAPA -->
 <section class="screen center" id="cierreEtapa">
 
-  <span class="stage-title">
-    Etapa completada
-  </span>
+  <span class="stage-title">Etapa completada</span>
 
   <h1>¡Tu Newen se ha elevado!</h1>
 
   <div class="treiles celebrate">
 
-    <img src="treile_macho-1.png"
-         class="treile"
-         alt="Treile macho">
+    <img
+      src="treile_macho-1.png"
+      class="treile"
+      alt="Treile macho"
+    >
 
-    <img src="treile_hembra-1.png"
-         class="treile"
-         alt="Treile hembra">
+    <img
+      src="treile_hembra-1.png"
+      class="treile"
+      alt="Treile hembra"
+    >
 
   </div>
 
@@ -501,34 +501,34 @@ p{
     Sigue avanzando. Cada palabra fortalece tu aprendizaje.
   </p>
 
-  <button class="btn primary"
-          onclick="siguienteEtapa()">
+  <button class="btn primary" onclick="siguienteEtapa()">
     SIGUIENTE ETAPA
   </button>
 
   <div class="pattern"></div>
-
 </section>
 
 
 <!-- FINAL -->
 <section class="screen center" id="final">
 
-  <span class="badge">
-    Lección completada
-  </span>
+  <span class="badge">Lección completada</span>
 
   <h1>¡Küme!</h1>
 
   <div class="treiles celebrate">
 
-    <img src="treile_macho-1.png"
-         class="treile"
-         alt="Treile macho">
+    <img
+      src="treile_macho-1.png"
+      class="treile"
+      alt="Treile macho"
+    >
 
-    <img src="treile_hembra-1.png"
-         class="treile"
-         alt="Treile hembra">
+    <img
+      src="treile_hembra-1.png"
+      class="treile"
+      alt="Treile hembra"
+    >
 
   </div>
 
@@ -558,35 +558,38 @@ p{
 
   </div>
 
-  <button class="btn primary"
-          id="botonFinal"
-          onclick="accionFinal()">
+  <button
+    class="btn primary"
+    id="botonFinal"
+    onclick="accionFinal()"
+  >
     CONTINUAR
   </button>
 
   <div class="pattern"></div>
-
 </section>
 
 
 <!-- LECCIÓN SUPERADA -->
 <section class="screen center" id="leccionSuperada">
 
-  <span class="badge">
-    Chaliwün completado
-  </span>
+  <span class="badge">Chaliwün completado</span>
 
   <h1>¡Küme!</h1>
 
   <div class="treiles celebrate">
 
-    <img src="treile_macho-1.png"
-         class="treile"
-         alt="Treile macho">
+    <img
+      src="treile_macho-1.png"
+      class="treile"
+      alt="Treile macho"
+    >
 
-    <img src="treile_hembra-1.png"
-         class="treile"
-         alt="Treile hembra">
+    <img
+      src="treile_hembra-1.png"
+      class="treile"
+      alt="Treile hembra"
+    >
 
   </div>
 
@@ -596,13 +599,11 @@ p{
     Completaste la lección sin errores.
   </p>
 
-  <button class="btn primary"
-          onclick="siguienteLeccion()">
+  <button class="btn primary" onclick="siguienteLeccion()">
     SIGUIENTE LECCIÓN
   </button>
 
   <div class="pattern"></div>
-
 </section>
 
 </div>
@@ -611,7 +612,7 @@ p{
 <script>
 
 /* =========================================================
-   ENCUESTA
+   ENCUESTA INICIAL
 ========================================================= */
 
 const encuesta = [
@@ -655,264 +656,274 @@ const encuesta = [
 
 const actividades = [
 
-{
- etapa:1,
- etapaNombre:"Saludos",
- tipo:"opcion",
- pregunta:"¿Qué significa?",
- texto:"Mari mari",
- opciones:[
-   ["Hola / saludo",true],
-   ["Gracias",false],
-   ["Hasta luego",false]
- ]
-},
+  /* SALUDOS */
 
-{
- etapa:1,
- etapaNombre:"Saludos",
- tipo:"opcion",
- pregunta:"¿Qué significa?",
- texto:"Chumleymi am?",
- opciones:[
-   ["¿Cómo estás?",true],
-   ["¿Cómo te llamas?",false],
-   ["¿Dónde vives?",false]
- ]
-},
+  {
+    etapa:1,
+    etapaNombre:"Saludos",
+    tipo:"opcion",
+    pregunta:"¿Qué significa?",
+    texto:"Mari mari",
+    opciones:[
+      ["Hola / saludo",true],
+      ["Gracias",false],
+      ["Hasta luego",false]
+    ]
+  },
 
-{
- etapa:1,
- etapaNombre:"Saludos",
- tipo:"opcion",
- pregunta:"Selecciona la respuesta correcta",
- texto:"Iñche kümelkalen.",
- opciones:[
-   ["Estoy bien",true],
-   ["Hasta luego",false],
-   ["Gracias",false]
- ]
-},
+  {
+    etapa:1,
+    etapaNombre:"Saludos",
+    tipo:"opcion",
+    pregunta:"¿Qué significa?",
+    texto:"Chumleymi am?",
+    opciones:[
+      ["¿Cómo estás?",true],
+      ["¿Cómo te llamas?",false],
+      ["¿Dónde vives?",false]
+    ]
+  },
 
-{
- etapa:1,
- etapaNombre:"Saludos",
- tipo:"pares",
- pregunta:"Une cada palabra con su significado",
- pares:[
-   ["Mari mari","Hola / saludo"],
-   ["Peñi","Hermano"],
-   ["Lamgen","Hermana"]
- ]
-},
+  {
+    etapa:1,
+    etapaNombre:"Saludos",
+    tipo:"opcion",
+    pregunta:"Selecciona la respuesta correcta",
+    texto:"Iñche kümelkalen.",
+    opciones:[
+      ["Estoy bien",true],
+      ["Hasta luego",false],
+      ["Gracias",false]
+    ]
+  },
 
-
-{
- etapa:2,
- etapaNombre:"Conversación",
- tipo:"opcion",
- pregunta:"¿Qué significa esta pregunta?",
- texto:"Chew püle müley tami ruka?",
- opciones:[
-   ["¿De dónde vienes?",true],
-   ["¿Cuántos años tienes?",false],
-   ["¿Cómo estás?",false]
- ]
-},
-
-{
- etapa:2,
- etapaNombre:"Conversación",
- tipo:"opcion",
- pregunta:"Selecciona la traducción",
- texto:"Pukon püle.",
- opciones:[
-   ["De Pucón",true],
-   ["De Villarrica",false],
-   ["Voy a Pucón",false]
- ]
-},
-
-{
- etapa:2,
- etapaNombre:"Conversación",
- tipo:"opcion",
- pregunta:"¿Qué significa?",
- texto:"Eymi kay?",
- opciones:[
-   ["¿Y tú?",true],
-   ["¿Quién eres?",false],
-   ["¿Estás bien?",false]
- ]
-},
+  {
+    etapa:1,
+    etapaNombre:"Saludos",
+    tipo:"pares",
+    pregunta:"Une cada palabra con su significado",
+    pares:[
+      ["Mari mari","Hola / saludo"],
+      ["Peñi","Hermano"],
+      ["Lamgen","Hermana"]
+    ]
+  },
 
 
-{
- etapa:3,
- etapaNombre:"Números",
- tipo:"pares",
- pregunta:"Une los números",
- pares:[
-   ["Kiñe","1"],
-   ["Epu","2"],
-   ["Küla","3"],
-   ["Meli","4"]
- ]
-},
+  /* CONVERSACIÓN */
 
-{
- etapa:3,
- etapaNombre:"Números",
- tipo:"opcion",
- pregunta:"¿Qué número es?",
- texto:"Mari kiñe",
- numero:"11",
- opciones:[
-   ["11",true],
-   ["12",false],
-   ["15",false]
- ]
-},
+  {
+    etapa:2,
+    etapaNombre:"Conversación",
+    tipo:"opcion",
+    pregunta:"¿Qué significa esta pregunta?",
+    texto:"Chew püle müley tami ruka?",
+    opciones:[
+      ["¿De dónde vienes?",true],
+      ["¿Cuántos años tienes?",false],
+      ["¿Cómo estás?",false]
+    ]
+  },
 
-{
- etapa:3,
- etapaNombre:"Números",
- tipo:"opcion",
- pregunta:"¿Qué número es?",
- texto:"Mari regle",
- numero:"17",
- opciones:[
-   ["17",true],
-   ["14",false],
-   ["19",false]
- ]
-},
+  {
+    etapa:2,
+    etapaNombre:"Conversación",
+    tipo:"opcion",
+    pregunta:"Selecciona la traducción",
+    texto:"Pukon püle.",
+    opciones:[
+      ["De Pucón",true],
+      ["De Villarrica",false],
+      ["Voy a Pucón",false]
+    ]
+  },
 
-{
- etapa:3,
- etapaNombre:"Números",
- tipo:"opcion",
- pregunta:"¿Qué número es?",
- texto:"Epu mari",
- numero:"20",
- opciones:[
-   ["20",true],
-   ["12",false],
-   ["10",false]
- ]
-},
+  {
+    etapa:2,
+    etapaNombre:"Conversación",
+    tipo:"opcion",
+    pregunta:"¿Qué significa?",
+    texto:"Eymi kay?",
+    opciones:[
+      ["¿Y tú?",true],
+      ["¿Quién eres?",false],
+      ["¿Estás bien?",false]
+    ]
+  },
 
 
-{
- etapa:4,
- etapaNombre:"¿Cuántos años tienes?",
- tipo:"opcion",
- pregunta:"¿Qué significa esta pregunta?",
- texto:"Tunten txipantu nieymi?",
- opciones:[
-   ["¿Cuántos años tienes?",true],
-   ["¿Dónde vives?",false],
-   ["¿Cómo te llamas?",false]
- ]
-},
+  /* NÚMEROS */
 
-{
- etapa:4,
- etapaNombre:"¿Cuántos años tienes?",
- tipo:"edad",
- edad:11
-},
+  {
+    etapa:3,
+    etapaNombre:"Números",
+    tipo:"pares",
+    pregunta:"Une los números",
+    pares:[
+      ["Kiñe","1"],
+      ["Epu","2"],
+      ["Küla","3"],
+      ["Meli","4"]
+    ]
+  },
 
-{
- etapa:4,
- etapaNombre:"¿Cuántos años tienes?",
- tipo:"edad",
- edad:14
-},
+  {
+    etapa:3,
+    etapaNombre:"Números",
+    tipo:"opcion",
+    pregunta:"¿Qué número es?",
+    texto:"Mari kiñe",
+    numero:"11",
+    opciones:[
+      ["11",true],
+      ["12",false],
+      ["15",false]
+    ]
+  },
 
-{
- etapa:4,
- etapaNombre:"¿Cuántos años tienes?",
- tipo:"edad",
- edad:17
-},
+  {
+    etapa:3,
+    etapaNombre:"Números",
+    tipo:"opcion",
+    pregunta:"¿Qué número es?",
+    texto:"Mari regle",
+    numero:"17",
+    opciones:[
+      ["17",true],
+      ["14",false],
+      ["19",false]
+    ]
+  },
 
-{
- etapa:4,
- etapaNombre:"¿Cuántos años tienes?",
- tipo:"edad",
- edad:20
-},
+  {
+    etapa:3,
+    etapaNombre:"Números",
+    tipo:"opcion",
+    pregunta:"¿Qué número es?",
+    texto:"Epu mari",
+    numero:"20",
+    opciones:[
+      ["20",true],
+      ["12",false],
+      ["10",false]
+    ]
+  },
 
 
-{
- etapa:5,
- etapaNombre:"Reconocer y preguntar",
- tipo:"opcion",
- pregunta:"Selecciona la pregunta",
- texto:"Chem am ta tüfa?",
- opciones:[
-   ["¿Qué es esto?",true],
-   ["¿Qué es eso?",false],
-   ["¿Dónde está?",false]
- ]
-},
+  /* EDAD */
 
-{
- etapa:5,
- etapaNombre:"Reconocer y preguntar",
- tipo:"opcion",
- pregunta:"Selecciona la pregunta",
- texto:"Chem am ta tüfey?",
- opciones:[
-   ["¿Qué es eso?",true],
-   ["¿Qué es esto?",false],
-   ["¿Quién eres?",false]
- ]
-}
+  {
+    etapa:4,
+    etapaNombre:"¿Cuántos años tienes?",
+    tipo:"opcion",
+    pregunta:"¿Qué significa esta pregunta?",
+    texto:"Tunten txipantu nieymi?",
+    opciones:[
+      ["¿Cuántos años tienes?",true],
+      ["¿Dónde vives?",false],
+      ["¿Cómo te llamas?",false]
+    ]
+  },
+
+  {
+    etapa:4,
+    etapaNombre:"¿Cuántos años tienes?",
+    tipo:"edad",
+    edad:11
+  },
+
+  {
+    etapa:4,
+    etapaNombre:"¿Cuántos años tienes?",
+    tipo:"edad",
+    edad:14
+  },
+
+  {
+    etapa:4,
+    etapaNombre:"¿Cuántos años tienes?",
+    tipo:"edad",
+    edad:17
+  },
+
+  {
+    etapa:4,
+    etapaNombre:"¿Cuántos años tienes?",
+    tipo:"edad",
+    edad:20
+  },
+
+
+  /* TÜFA / TÜFEY */
+
+  {
+    etapa:5,
+    etapaNombre:"Reconocer y preguntar",
+    tipo:"opcion",
+    pregunta:"Selecciona la pregunta",
+    texto:"Chem am ta tüfa?",
+    opciones:[
+      ["¿Qué es esto?",true],
+      ["¿Qué es eso?",false],
+      ["¿Dónde está?",false]
+    ]
+  },
+
+  {
+    etapa:5,
+    etapaNombre:"Reconocer y preguntar",
+    tipo:"opcion",
+    pregunta:"Selecciona la pregunta",
+    texto:"Chem am ta tüfey?",
+    opciones:[
+      ["¿Qué es eso?",true],
+      ["¿Qué es esto?",false],
+      ["¿Quién eres?",false]
+    ]
+  }
 
 ];
 
 
 /* =========================================================
-   NÚMEROS
+   NÚMEROS PARA RESPUESTAS DE EDAD
 ========================================================= */
 
 const numeros = {
- 10:"mari",
- 11:"mari kiñe",
- 12:"mari epu",
- 13:"mari küla",
- 14:"mari meli",
- 15:"mari kechu",
- 16:"mari kayu",
- 17:"mari regle",
- 18:"mari pura",
- 19:"mari aylla",
- 20:"epu mari"
+  10:"mari",
+  11:"mari kiñe",
+  12:"mari epu",
+  13:"mari küla",
+  14:"mari meli",
+  15:"mari kechu",
+  16:"mari kayu",
+  17:"mari regle",
+  18:"mari pura",
+  19:"mari aylla",
+  20:"epu mari"
 };
 
 
 /* =========================================================
-   ESTADO
+   ESTADO DE LA APLICACIÓN
 ========================================================= */
 
-let indiceEncuesta = 0;
-let indiceActividad = 0;
+let indiceEncuesta=0;
+let indiceActividad=0;
 
-let newen = 100;
+let newen=100;
 
-let correctas = 0;
-let errores = 0;
+let correctas=0;
+let errores=0;
 
-let inicio = null;
+let inicio=null;
 
-let opcionSeleccionada = null;
+let parSeleccionado=null;
+let paresCompletados=0;
 
-let parSeleccionado = null;
-let paresCompletados = 0;
+let videosUsados=new Set();
 
-let videosUsados = new Set();
+let recuperacionProgramada=false;
 
 
 /* =========================================================
@@ -921,173 +932,188 @@ let videosUsados = new Set();
 
 function pantalla(id){
 
- document.querySelectorAll(".screen")
- .forEach(x=>x.classList.remove("active"));
+  document
+    .querySelectorAll(".screen")
+    .forEach(function(elemento){
+      elemento.classList.remove("active");
+    });
 
- const destino=document.getElementById(id);
+  const destino=document.getElementById(id);
 
- if(destino){
-   destino.classList.add("active");
- }
+  if(destino){
+    destino.classList.add("active");
+  }
 
- window.scrollTo(0,0);
+  window.scrollTo(0,0);
 }
 
 
+/* =========================================================
+   ENCUESTA
+========================================================= */
+
 function irEncuesta(i){
 
- indiceEncuesta=i;
+  indiceEncuesta=i;
 
- pantalla("encuesta");
+  pantalla("encuesta");
 
- cargarEncuesta();
+  cargarEncuesta();
 
- sonidoClick();
+  sonidoClick();
 }
 
 
 function cargarEncuesta(){
 
- const item=encuesta[indiceEncuesta];
+  const item=encuesta[indiceEncuesta];
 
- document.getElementById("encuestaPregunta")
- .textContent=item.pregunta;
+  document
+    .getElementById("encuestaPregunta")
+    .textContent=item.pregunta;
 
- const cont=
- document.getElementById("encuestaOpciones");
+  const cont=
+    document.getElementById("encuestaOpciones");
 
- cont.innerHTML="";
+  cont.innerHTML="";
 
- item.opciones.forEach(op=>{
+  item.opciones.forEach(function(op){
 
-   const b=document.createElement("button");
+    const boton=
+      document.createElement("button");
 
-   b.className="btn";
+    boton.className="btn";
 
-   b.textContent=op;
+    boton.textContent=op;
 
-   b.onclick=()=>{
+    boton.onclick=function(){
 
-     sonidoClick();
+      sonidoClick();
 
-     indiceEncuesta++;
+      indiceEncuesta++;
 
-     if(indiceEncuesta>=encuesta.length){
+      if(indiceEncuesta>=encuesta.length){
 
-       inicio=Date.now();
+        inicio=Date.now();
 
-       indiceActividad=0;
+        indiceActividad=0;
 
-       pantalla("actividad");
+        pantalla("actividad");
 
-       cargarActividad();
+        cargarActividad();
 
-     }else{
+      }else{
 
-       cargarEncuesta();
+        cargarEncuesta();
 
-     }
+      }
 
-   };
+    };
 
-   cont.appendChild(b);
+    cont.appendChild(boton);
 
- });
-
+  });
 }
 
 
 /* =========================================================
-   ACTIVIDAD
+   CARGAR ACTIVIDAD
 ========================================================= */
 
 function cargarActividad(){
 
- opcionSeleccionada=null;
- parSeleccionado=null;
- paresCompletados=0;
+  parSeleccionado=null;
+  paresCompletados=0;
+  recuperacionProgramada=false;
 
- const a=actividades[indiceActividad];
+  const actividad=
+    actividades[indiceActividad];
 
- if(!a){
-   terminar();
-   return;
- }
+  if(!actividad){
 
- document.getElementById("etapaNombre")
- .textContent=a.etapaNombre;
+    terminar();
 
- document.getElementById("pregunta")
- .textContent=a.pregunta ||
- "Selecciona la respuesta correcta";
+    return;
+  }
 
- document.getElementById("feedback")
- .className="feedback";
+  document
+    .getElementById("etapaNombre")
+    .textContent=actividad.etapaNombre;
 
- document.getElementById("opciones")
- .innerHTML="";
+  document
+    .getElementById("pregunta")
+    .textContent=
+      actividad.pregunta ||
+      "Selecciona la respuesta correcta";
 
- document.getElementById("pares")
- .innerHTML="";
+  document
+    .getElementById("feedback")
+    .className="feedback";
 
- document.getElementById("pares")
- .classList.add("hidden");
+  document
+    .getElementById("opciones")
+    .innerHTML="";
 
- actualizarBarra();
+  document
+    .getElementById("pares")
+    .innerHTML="";
 
- const principal=
- document.getElementById("contenidoPrincipal");
+  document
+    .getElementById("pares")
+    .classList.add("hidden");
 
- principal.innerHTML="";
+  const principal=
+    document.getElementById("contenidoPrincipal");
 
+  principal.innerHTML="";
 
- if(a.tipo==="opcion"){
-
-   const palabra=
-   document.createElement("div");
-
-   palabra.className="mapuzungun";
-
-   palabra.textContent=a.texto;
-
-   principal.appendChild(palabra);
-
-   if(a.numero){
-
-     const n=
-     document.createElement("div");
-
-     n.className="big-number";
-
-     n.textContent=a.numero;
-
-     principal.appendChild(n);
-
-   }
-
-   crearOpciones(a);
-
- }
+  actualizarBarra();
+  actualizarNewen();
 
 
- if(a.tipo==="pares"){
+  if(actividad.tipo==="opcion"){
 
-   principal.innerHTML=
-   "<p>Selecciona primero una palabra y luego su pareja.</p>";
+    const palabra=
+      document.createElement("div");
 
-   crearPares(a);
+    palabra.className="mapuzungun";
 
- }
+    palabra.textContent=
+      actividad.texto;
+
+    principal.appendChild(palabra);
 
 
- if(a.tipo==="edad"){
+    if(actividad.numero){
 
-   crearEdad(a);
+      const numero=
+        document.createElement("div");
 
- }
+      numero.className="big-number";
 
- actualizarNewen();
+      numero.textContent=
+        actividad.numero;
 
+      principal.appendChild(numero);
+    }
+
+    crearOpciones(actividad);
+  }
+
+
+  if(actividad.tipo==="pares"){
+
+    principal.innerHTML=
+      "<p>Selecciona primero una palabra y luego su pareja.</p>";
+
+    crearPares(actividad);
+  }
+
+
+  if(actividad.tipo==="edad"){
+
+    crearEdad(actividad);
+  }
 }
 
 
@@ -1095,80 +1121,98 @@ function cargarActividad(){
    OPCIONES
 ========================================================= */
 
-function crearOpciones(a){
+function crearOpciones(actividad){
 
- const cont=
- document.getElementById("opciones");
+  const cont=
+    document.getElementById("opciones");
 
- a.opciones.forEach(op=>{
+  actividad.opciones.forEach(function(opcion){
 
-   const b=
-   document.createElement("button");
+    const boton=
+      document.createElement("button");
 
-   b.className="btn option";
+    boton.className="btn option";
 
-   b.textContent=op[0];
+    boton.textContent=
+      opcion[0];
 
-   b.onclick=
-   ()=>responder(b,op[1],a);
+    boton.onclick=function(){
 
-   cont.appendChild(b);
+      responder(
+        boton,
+        opcion[1],
+        actividad
+      );
+    };
 
- });
-
+    cont.appendChild(boton);
+  });
 }
 
 
-function responder(btn,correcta,a){
+function responder(boton,esCorrecta,actividad){
 
- sonidoClick();
-
- document.querySelectorAll(".option")
- .forEach(x=>x.disabled=true);
+  sonidoClick();
 
 
- if(correcta){
+  if(esCorrecta){
 
-   btn.classList.add("correct");
+    document
+      .querySelectorAll("#opciones .option")
+      .forEach(function(opcion){
+        opcion.disabled=true;
+      });
 
-   correctas++;
+    boton.classList.add("correct");
 
-   newen=Math.min(100,newen+3);
+    correctas++;
 
-   mostrarFeedback(
-     true,
-     "¡Correcto!",
-     traduccionCorrecta(a)
-   );
+    newen=
+      Math.min(100,newen+3);
 
-   sonidoCorrecto();
+    mostrarFeedback(
+      true,
+      "¡Correcto!",
+      traduccionCorrecta(actividad)
+    );
 
- }else{
+    sonidoCorrecto();
 
-   btn.classList.add("wrong");
+  }else{
 
-   errores++;
+    if(boton.classList.contains("wrong")){
+      return;
+    }
 
-   newen=Math.max(0,newen-10);
+    boton.classList.add("wrong");
 
-   const correctaTexto=
-   a.opciones.find(x=>x[1])?.[0] || "";
+    boton.disabled=true;
 
-   mostrarFeedback(
-     false,
-     "Casi...",
-     "La respuesta correcta es: "+
-     correctaTexto
-   );
+    errores++;
 
-   sonidoError();
+    newen=
+      Math.max(0,newen-10);
 
- }
+    mostrarErrorTemporal(
+      "Casi...",
+      "Inténtalo otra vez."
+    );
 
- actualizarNewen();
+    sonidoError();
 
- comprobarRecuperacion();
+    setTimeout(function(){
 
+      boton.classList.remove("wrong");
+
+      boton.disabled=false;
+
+    },700);
+  }
+
+
+  actualizarNewen();
+
+  comprobarRecuperacion();
 }
 
 
@@ -1176,78 +1220,92 @@ function responder(btn,correcta,a){
    EDADES
 ========================================================= */
 
-function crearEdad(a){
+function crearEdad(actividad){
 
- const frase=
- `Iñche nien ${numeros[a.edad]} txipantu`;
+  const fraseCorrecta=
+    `Iñche nien ${numeros[actividad.edad]} txipantu`;
 
- document.getElementById("contenidoPrincipal")
- .innerHTML=`
+  document
+    .getElementById("contenidoPrincipal")
+    .innerHTML=`
 
-   <div class="mapuzungun">
-     Tunten txipantu nieymi?
-   </div>
+      <div class="mapuzungun">
+        Tunten txipantu nieymi?
+      </div>
 
-   <div class="traduccion">
-     ¿Cuántos años tienes?
-   </div>
+      <div class="traduccion">
+        ¿Cuántos años tienes?
+      </div>
 
-   <div class="big-number">
-     ${a.edad}
-   </div>
+      <div class="big-number">
+        ${actividad.edad}
+      </div>
 
-   <p>
-     Selecciona cómo responderías.
-   </p>
+      <p>
+        Selecciona cómo responderías.
+      </p>
+    `;
 
- `;
 
- let distractores=[
-   Math.max(10,a.edad-1),
-   Math.min(20,a.edad+1)
- ].filter(
-   (v,i,s)=>
-   v!==a.edad &&
-   s.indexOf(v)===i
- );
+  let distractores=[
+    Math.max(10,actividad.edad-1),
+    Math.min(20,actividad.edad+1)
+  ].filter(function(valor,indice,array){
 
- while(distractores.length<2){
+    return (
+      valor!==actividad.edad &&
+      array.indexOf(valor)===indice
+    );
+  });
 
-   const r=
-   10+Math.floor(Math.random()*11);
 
-   if(
-     r!==a.edad &&
-     !distractores.includes(r)
-   ){
-     distractores.push(r);
-   }
+  while(distractores.length<2){
 
- }
+    const aleatorio=
+      10+Math.floor(Math.random()*11);
 
- let respuestas=[
+    if(
+      aleatorio!==actividad.edad &&
+      !distractores.includes(aleatorio)
+    ){
+      distractores.push(aleatorio);
+    }
+  }
 
-   [frase,true],
 
-   [
-    `Iñche nien ${numeros[distractores[0]]} txipantu`,
-    false
-   ],
+  let respuestas=[
 
-   [
-    `Iñche nien ${numeros[distractores[1]]} txipantu`,
-    false
-   ]
+    [
+      fraseCorrecta,
+      true
+    ],
 
- ];
+    [
+      `Iñche nien ${numeros[distractores[0]]} txipantu`,
+      false
+    ],
 
- respuestas.sort(()=>Math.random()-.5);
+    [
+      `Iñche nien ${numeros[distractores[1]]} txipantu`,
+      false
+    ]
 
- crearOpciones({
-   opciones:respuestas,
-   traduccion:`Yo tengo ${a.edad} años.`
- });
+  ];
 
+
+  respuestas.sort(function(){
+    return Math.random()-.5;
+  });
+
+
+  crearOpciones({
+
+    opciones:respuestas,
+
+    traduccion:
+      `Yo tengo ${actividad.edad} años.`
+
+  });
 }
 
 
@@ -1255,163 +1313,178 @@ function crearEdad(a){
    PARES
 ========================================================= */
 
-function crearPares(a){
+function crearPares(actividad){
 
- const cont=
- document.getElementById("pares");
+  const cont=
+    document.getElementById("pares");
 
- cont.classList.remove("hidden");
+  cont.classList.remove("hidden");
 
- let items=[];
+  let items=[];
 
- a.pares.forEach((p,i)=>{
 
-   items.push({
-     texto:p[0],
-     pareja:i,
-     lado:"mapu"
-   });
+  actividad.pares.forEach(function(par,i){
 
-   items.push({
-     texto:p[1],
-     pareja:i,
-     lado:"esp"
-   });
+    items.push({
+      texto:par[0],
+      pareja:i,
+      lado:"mapu"
+    });
 
- });
+    items.push({
+      texto:par[1],
+      pareja:i,
+      lado:"esp"
+    });
 
- items.sort(()=>Math.random()-.5);
+  });
 
- items.forEach(item=>{
 
-   const b=
-   document.createElement("button");
+  items.sort(function(){
+    return Math.random()-.5;
+  });
 
-   b.className="btn pair";
 
-   b.textContent=item.texto;
+  items.forEach(function(item){
 
-   b.dataset.pareja=item.pareja;
+    const boton=
+      document.createElement("button");
 
-   b.dataset.lado=item.lado;
+    boton.className="btn pair";
 
-   b.onclick=
-   ()=>seleccionarPar(b,a);
+    boton.textContent=item.texto;
 
-   cont.appendChild(b);
+    boton.dataset.pareja=item.pareja;
 
- });
+    boton.dataset.lado=item.lado;
 
+    boton.onclick=function(){
+
+      seleccionarPar(
+        boton,
+        actividad
+      );
+    };
+
+    cont.appendChild(boton);
+  });
 }
 
 
-function seleccionarPar(btn,a){
+function seleccionarPar(boton,actividad){
 
- sonidoClick();
-
- if(btn.classList.contains("done"))
-   return;
+  sonidoClick();
 
 
- if(!parSeleccionado){
-
-   parSeleccionado=btn;
-
-   btn.classList.add("selected");
-
-   return;
-
- }
+  if(boton.classList.contains("done")){
+    return;
+  }
 
 
- if(parSeleccionado===btn){
+  if(!parSeleccionado){
 
-   parSeleccionado
-   .classList.remove("selected");
+    parSeleccionado=boton;
 
-   parSeleccionado=null;
+    boton.classList.add("selected");
 
-   return;
-
- }
+    return;
+  }
 
 
- const coincide=
- parSeleccionado.dataset.pareja===
- btn.dataset.pareja &&
- parSeleccionado.dataset.lado!==
- btn.dataset.lado;
+  if(parSeleccionado===boton){
+
+    parSeleccionado
+      .classList.remove("selected");
+
+    parSeleccionado=null;
+
+    return;
+  }
 
 
- if(coincide){
+  const coincide=
 
-   parSeleccionado
-   .classList.remove("selected");
+    parSeleccionado.dataset.pareja===
+    boton.dataset.pareja
 
-   parSeleccionado
-   .classList.add("done");
+    &&
 
-   btn.classList.add("done");
-
-   paresCompletados++;
-
-   correctas++;
-
-   newen=Math.min(100,newen+2);
-
-   sonidoCorrecto();
-
-   parSeleccionado=null;
+    parSeleccionado.dataset.lado!==
+    boton.dataset.lado;
 
 
-   if(
-     paresCompletados===
-     a.pares.length
-   ){
+  if(coincide){
 
-     mostrarFeedback(
-       true,
-       "¡Correcto!",
-       "Completaste todas las parejas."
-     );
+    parSeleccionado
+      .classList
+      .remove("selected");
 
-   }
+    parSeleccionado
+      .classList
+      .add("done");
 
- }else{
+    boton.classList.add("done");
 
-   errores++;
+    paresCompletados++;
 
-   newen=Math.max(0,newen-5);
+    correctas++;
 
-   parSeleccionado
-   .classList.add("wrong");
+    newen=
+      Math.min(100,newen+2);
 
-   btn.classList.add("wrong");
+    sonidoCorrecto();
 
-   sonidoError();
+    parSeleccionado=null;
 
-   const anterior=
-   parSeleccionado;
 
-   setTimeout(()=>{
+    if(
+      paresCompletados===
+      actividad.pares.length
+    ){
 
-     anterior.classList.remove(
-       "wrong",
-       "selected"
-     );
+      mostrarFeedback(
+        true,
+        "¡Correcto!",
+        "Completaste todas las parejas."
+      );
+    }
 
-     btn.classList.remove("wrong");
+  }else{
 
-   },600);
+    errores++;
 
-   parSeleccionado=null;
+    newen=
+      Math.max(0,newen-5);
 
- }
+    const anterior=
+      parSeleccionado;
 
- actualizarNewen();
+    anterior.classList.add("wrong");
 
- comprobarRecuperacion();
+    boton.classList.add("wrong");
 
+    sonidoError();
+
+
+    setTimeout(function(){
+
+      anterior.classList.remove(
+        "wrong",
+        "selected"
+      );
+
+      boton.classList.remove("wrong");
+
+    },600);
+
+
+    parSeleccionado=null;
+  }
+
+
+  actualizarNewen();
+
+  comprobarRecuperacion();
 }
 
 
@@ -1421,33 +1494,58 @@ function seleccionarPar(btn,a){
 
 function mostrarFeedback(ok,titulo,texto){
 
- const f=
- document.getElementById("feedback");
+  const feedback=
+    document.getElementById("feedback");
 
- f.className=
- "feedback show "+(ok?"ok":"bad");
+  feedback.className=
+    "feedback show "+
+    (ok ? "ok" : "bad");
 
- document.getElementById("feedbackTitulo")
- .textContent=titulo;
+  document
+    .getElementById("feedbackTitulo")
+    .textContent=titulo;
 
- document.getElementById("feedbackTexto")
- .textContent=texto;
+  document
+    .getElementById("feedbackTexto")
+    .textContent=texto;
 
+  document
+    .getElementById("continuarBtn")
+    .style.display=
+      ok ? "block" : "none";
 }
 
 
-function traduccionCorrecta(a){
+function mostrarErrorTemporal(titulo,texto){
 
- if(a.traduccion)
-   return a.traduccion;
+  mostrarFeedback(
+    false,
+    titulo,
+    texto
+  );
+}
 
- const op=
- a.opciones?.find(x=>x[1]);
 
- return op
- ? `La respuesta es: ${op[0]}`
- : "Muy bien.";
+function traduccionCorrecta(actividad){
 
+  if(actividad.traduccion){
+    return actividad.traduccion;
+  }
+
+  const opcionCorrecta=
+    actividad.opciones?.find(
+      function(opcion){
+        return opcion[1];
+      }
+    );
+
+  if(opcionCorrecta){
+
+    return "La respuesta es: "+
+      opcionCorrecta[0];
+  }
+
+  return "Muy bien.";
 }
 
 
@@ -1457,48 +1555,53 @@ function traduccionCorrecta(a){
 
 function continuar(){
 
- sonidoClick();
+  sonidoClick();
 
- const actual=
- actividades[indiceActividad];
+  const actual=
+    actividades[indiceActividad];
 
- if(!actual){
-   terminar();
-   return;
- }
+  if(!actual){
 
- const etapaActual=actual.etapa;
+    terminar();
 
- const siguiente=
- actividades[indiceActividad+1];
-
- indiceActividad++;
+    return;
+  }
 
 
- if(indiceActividad>=actividades.length){
+  const etapaActual=
+    actual.etapa;
 
-   terminar();
+  const siguiente=
+    actividades[indiceActividad+1];
 
-   return;
-
- }
+  indiceActividad++;
 
 
- if(
-   !siguiente ||
-   siguiente.etapa!==etapaActual
- ){
+  if(
+    indiceActividad>=
+    actividades.length
+  ){
 
-   pantalla("cierreEtapa");
+    terminar();
 
-   sonidoCelebracion();
+    return;
+  }
 
-   return;
 
- }
+  if(
+    !siguiente ||
+    siguiente.etapa!==etapaActual
+  ){
 
- cargarActividad();
+    pantalla("cierreEtapa");
 
+    sonidoCelebracion();
+
+    return;
+  }
+
+
+  cargarActividad();
 }
 
 
@@ -1508,12 +1611,11 @@ function continuar(){
 
 function siguienteEtapa(){
 
- sonidoClick();
+  sonidoClick();
 
- pantalla("actividad");
+  pantalla("actividad");
 
- cargarActividad();
-
+  cargarActividad();
 }
 
 
@@ -1523,112 +1625,112 @@ function siguienteEtapa(){
 
 function actualizarNewen(){
 
- document.getElementById("newenValor")
- .textContent=newen;
-
+  document
+    .getElementById("newenValor")
+    .textContent=newen;
 }
 
 
 function comprobarRecuperacion(){
 
- if(
-   newen<=40 &&
-   videosUsados.size<5
- ){
+  if(
+    newen<=40 &&
+    videosUsados.size<5 &&
+    !recuperacionProgramada
+  ){
 
-   setTimeout(()=>{
+    recuperacionProgramada=true;
 
-     cargarVideos();
+    setTimeout(function(){
 
-     pantalla("recuperar");
+      cargarVideos();
 
-   },900);
+      pantalla("recuperar");
 
- }
+      recuperacionProgramada=false;
 
+    },900);
+  }
 }
 
 
 /* =========================================================
-   CÁPSULAS
+   CÁPSULAS DE RECUPERACIÓN
 ========================================================= */
 
 const capsulas=[
 
- "Saludo básico",
- "Pronunciación",
- "Palabras cotidianas",
- "Cultura mapuche",
- "Repaso rápido"
+  "Saludo básico",
+  "Pronunciación",
+  "Palabras cotidianas",
+  "Cultura mapuche",
+  "Repaso rápido"
 
 ];
 
 
 function cargarVideos(){
 
- const cont=
- document.getElementById("videos");
+  const cont=
+    document.getElementById("videos");
 
- cont.innerHTML="";
+  cont.innerHTML="";
 
- capsulas.forEach((titulo,i)=>{
 
-   if(videosUsados.has(i))
-     return;
+  capsulas.forEach(function(titulo,i){
 
-   const d=
-   document.createElement("div");
+    if(videosUsados.has(i)){
+      return;
+    }
 
-   d.className="video-card";
+    const tarjeta=
+      document.createElement("div");
 
-   d.innerHTML=`
+    tarjeta.className="video-card";
 
-     <strong>${titulo}</strong>
+    tarjeta.innerHTML=`
 
-     <p>
-       Cápsula educativa · 15 segundos
-     </p>
+      <strong>${titulo}</strong>
 
-     <button
-       class="btn"
-       onclick="verCapsula(${i})">
+      <p>
+        Cápsula educativa · 15 segundos
+      </p>
 
-       VER Y RECUPERAR NEWEN
+      <button
+        class="btn"
+        onclick="verCapsula(${i})"
+      >
+        VER Y RECUPERAR NEWEN
+      </button>
+    `;
 
-     </button>
-
-   `;
-
-   cont.appendChild(d);
-
- });
-
+    cont.appendChild(tarjeta);
+  });
 }
 
 
 function verCapsula(i){
 
- videosUsados.add(i);
+  videosUsados.add(i);
 
- newen=Math.min(100,newen+20);
+  newen=
+    Math.min(100,newen+20);
 
- actualizarNewen();
+  actualizarNewen();
 
- sonidoCorrecto();
+  sonidoCorrecto();
 
- alert(
-   "¡Recuperaste 20 puntos de Newen!"
- );
+  alert(
+    "¡Recuperaste 20 puntos de Newen!"
+  );
 
- mostrarActividad();
-
+  mostrarActividad();
 }
 
 
 function mostrarActividad(){
 
- pantalla("actividad");
-
+  pantalla("actividad");
 }
 
 
@@ -1638,14 +1740,18 @@ function mostrarActividad(){
 
 function actualizarBarra(){
 
- const porcentaje=
- ((indiceActividad+1)/
- actividades.length)*100;
+  const porcentaje=
 
- document.getElementById("progressFill")
- .style.width=
- porcentaje+"%";
+    (
+      (indiceActividad+1) /
+      actividades.length
+    ) * 100;
 
+
+  document
+    .getElementById("progressFill")
+    .style.width=
+      porcentaje+"%";
 }
 
 
@@ -1655,96 +1761,87 @@ function actualizarBarra(){
 
 function audioContext(){
 
- return new(
-   window.AudioContext ||
-   window.webkitAudioContext
- )();
-
+  return new(
+    window.AudioContext ||
+    window.webkitAudioContext
+  )();
 }
 
 
 function tono(freq,duracion,vol=.08){
 
- try{
+  try{
 
-   const ctx=audioContext();
+    const ctx=
+      audioContext();
 
-   const osc=
-   ctx.createOscillator();
+    const osc=
+      ctx.createOscillator();
 
-   const gain=
-   ctx.createGain();
+    const gain=
+      ctx.createGain();
 
-   osc.frequency.value=freq;
+    osc.frequency.value=freq;
 
-   gain.gain.value=vol;
+    gain.gain.value=vol;
 
-   osc.connect(gain);
+    osc.connect(gain);
 
-   gain.connect(ctx.destination);
+    gain.connect(ctx.destination);
 
-   osc.start();
+    osc.start();
 
-   gain.gain
-   .exponentialRampToValueAtTime(
-     .001,
-     ctx.currentTime+duracion
-   );
+    gain.gain
+      .exponentialRampToValueAtTime(
+        .001,
+        ctx.currentTime+duracion
+      );
 
-   osc.stop(
-     ctx.currentTime+duracion
-   );
+    osc.stop(
+      ctx.currentTime+duracion
+    );
 
- }catch(e){}
-
+  }catch(error){}
 }
 
 
 function sonidoClick(){
 
- tono(420,.06,.035);
-
+  tono(420,.06,.035);
 }
 
 
 function sonidoCorrecto(){
 
- tono(620,.12);
+  tono(620,.12);
 
- setTimeout(
-   ()=>tono(820,.16),
-   100
- );
-
+  setTimeout(function(){
+    tono(820,.16);
+  },100);
 }
 
 
 function sonidoError(){
 
- tono(220,.18);
+  tono(220,.18);
 
- setTimeout(
-   ()=>tono(170,.2),
-   100
- );
-
+  setTimeout(function(){
+    tono(170,.2);
+  },100);
 }
 
 
 function sonidoCelebracion(){
 
- tono(520,.12);
+  tono(520,.12);
 
- setTimeout(
-   ()=>tono(660,.12),
-   120
- );
+  setTimeout(function(){
+    tono(660,.12);
+  },120);
 
- setTimeout(
-   ()=>tono(820,.25),
-   240
- );
-
+  setTimeout(function(){
+    tono(820,.25);
+  },240);
 }
 
 
@@ -1754,81 +1851,94 @@ function sonidoCelebracion(){
 
 function terminar(){
 
- pantalla("final");
-
- const segundos=
- Math.floor(
-   (Date.now()-inicio)/1000
- );
-
- const min=
- Math.floor(segundos/60);
-
- const seg=
- segundos%60;
-
- const puntaje=
- Math.max(
-   0,
-   correctas*100-
-   errores*20
- );
+  pantalla("final");
 
 
- document.getElementById("statCorrectas")
- .textContent=correctas;
+  const tiempoInicio=
+    inicio || Date.now();
 
- document.getElementById("statErrores")
- .textContent=errores;
+  const segundos=
+    Math.max(
+      0,
+      Math.floor(
+        (Date.now()-tiempoInicio)/1000
+      )
+    );
 
- document.getElementById("statTiempo")
- .textContent=
- `${min}:${String(seg).padStart(2,"0")}`;
+  const min=
+    Math.floor(segundos/60);
 
- document.getElementById("statPuntaje")
- .textContent=puntaje;
-
-
- const boton=
- document.getElementById("botonFinal");
+  const seg=
+    segundos%60;
 
 
- if(errores===0){
+  const puntaje=
+    Math.max(
+      0,
+      correctas*100-
+      errores*20
+    );
 
-   boton.textContent="CONTINUAR";
 
- }else{
+  document
+    .getElementById("statCorrectas")
+    .textContent=correctas;
 
-   boton.textContent=
-   "VOLVER A PRACTICAR";
+  document
+    .getElementById("statErrores")
+    .textContent=errores;
 
- }
+  document
+    .getElementById("statTiempo")
+    .textContent=
+      `${min}:${String(seg).padStart(2,"0")}`;
 
- sonidoCelebracion();
+  document
+    .getElementById("statPuntaje")
+    .textContent=puntaje;
 
+
+  const boton=
+    document.getElementById("botonFinal");
+
+
+  if(errores===0){
+
+    boton.textContent=
+      "CONTINUAR";
+
+  }else{
+
+    boton.textContent=
+      "VOLVER A PRACTICAR";
+  }
+
+
+  sonidoCelebracion();
 }
 
 
 /* =========================================================
-   ACCIÓN DEL BOTÓN FINAL
+   BOTÓN FINAL
 ========================================================= */
 
 function accionFinal(){
 
- sonidoClick();
+  sonidoClick();
 
- if(errores===0){
 
-   pantalla("leccionSuperada");
+  if(errores===0){
 
-   sonidoCelebracion();
+    pantalla(
+      "leccionSuperada"
+    );
 
- }else{
+    sonidoCelebracion();
 
-   reiniciar();
+  }else{
 
- }
-
+    reiniciar();
+  }
 }
 
 
@@ -1838,17 +1948,14 @@ function accionFinal(){
 
 function siguienteLeccion(){
 
- sonidoClick();
+  sonidoClick();
 
- /*
-   Aquí conectaremos posteriormente
-   la Lección 2.
+  /*
+    Aquí conectaremos la Lección 2.
+    Por ahora regresamos al inicio.
+  */
 
-   Por ahora vuelve al inicio.
- */
-
- reiniciar();
-
+  reiniciar();
 }
 
 
@@ -1858,11 +1965,10 @@ function siguienteLeccion(){
 
 function reiniciar(){
 
- location.reload();
-
+  location.reload();
 }
 
 </script>
 
 </body>
-  </html>
+</html>
