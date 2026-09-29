@@ -1,3 +1,1753 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kimün Mapuzungun</title>
+
+<style>
+:root{
+  --verde:#365c43;
+  --verde2:#59725b;
+  --crema:#f6efe2;
+  --crema2:#ede2cf;
+  --tierra:#b76743;
+  --rojo:#b64c3c;
+  --texto:#25271f;
+  --borde:#d9cdb9;
+  --blanco:#fffdf8;
+}
+
+*{
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
+
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:#dfe4d7;
+  color:var(--texto);
+}
+
+.app{
+  max-width:480px;
+  min-height:100vh;
+  margin:auto;
+  background:
+    radial-gradient(circle at 10% 10%,#fff8 0 4%,transparent 5%),
+    linear-gradient(180deg,#faf4e9,#f0e4d2);
+  position:relative;
+  overflow:hidden;
+}
+
+.screen{
+  display:none;
+  min-height:100vh;
+  padding:24px 22px 32px;
+  position:relative;
+}
+
+.screen.active{
+  display:flex;
+  flex-direction:column;
+}
+
+.topbar{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:25px;
+}
+
+.progress{
+  height:12px;
+  background:#dfd6c7;
+  border-radius:20px;
+  flex:1;
+  overflow:hidden;
+}
+
+.progress-fill{
+  height:100%;
+  width:0;
+  background:var(--verde);
+  border-radius:20px;
+  transition:.5s;
+}
+
+.newen{
+  display:flex;
+  align-items:center;
+  gap:5px;
+  font-weight:800;
+  color:var(--verde);
+}
+
+h1{
+  font-size:30px;
+  margin:5px 0 12px;
+}
+
+h2{
+  font-size:24px;
+  margin:8px 0;
+}
+
+p{
+  line-height:1.45;
+}
+
+.center{
+  text-align:center;
+}
+
+.treiles{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  min-height:245px;
+  margin:12px 0;
+}
+
+.treile{
+  width:48%;
+  max-height:250px;
+  object-fit:contain;
+  filter:drop-shadow(0 8px 8px #0002);
+}
+
+.treile.small{
+  position:absolute;
+  right:-10px;
+  bottom:75px;
+  width:100px;
+  opacity:.92;
+  pointer-events:none;
+}
+
+.dialogo{
+  background:var(--blanco);
+  border:2px solid var(--borde);
+  padding:16px;
+  border-radius:22px;
+  margin:8px 0;
+  box-shadow:0 5px 0 #d7cbb7;
+}
+
+.mapuzungun{
+  font-weight:900;
+  font-size:23px;
+  color:var(--verde);
+}
+
+.traduccion{
+  margin-top:5px;
+  color:#675f54;
+}
+
+.btn{
+  width:100%;
+  border:none;
+  border-radius:18px;
+  padding:17px 18px;
+  margin:7px 0;
+  font-size:17px;
+  font-weight:800;
+  cursor:pointer;
+  background:#fffaf2;
+  color:var(--texto);
+  border:2px solid var(--borde);
+  box-shadow:0 4px 0 #cfc1ac;
+  transition:.12s;
+}
+
+.btn:active{
+  transform:translateY(3px);
+  box-shadow:0 1px 0 #cfc1ac;
+}
+
+.btn.primary{
+  background:var(--verde);
+  color:white;
+  border-color:var(--verde);
+  box-shadow:0 5px 0 #274633;
+}
+
+.option.selected{
+  border-color:var(--verde);
+  background:#e8eee4;
+}
+
+.option.correct{
+  border-color:#3d754b;
+  background:#dfeedd;
+}
+
+.option.wrong{
+  border-color:var(--rojo);
+  background:#f5ded7;
+}
+
+.card{
+  background:#fffaf1;
+  border:2px solid var(--borde);
+  border-radius:24px;
+  padding:20px;
+  box-shadow:0 6px 0 #d6c7b1;
+}
+
+.feedback{
+  display:none;
+  padding:18px;
+  margin-top:18px;
+  border-radius:22px;
+}
+
+.feedback.show{
+  display:block;
+}
+
+.feedback.ok{
+  background:#e0eddd;
+  color:#294f34;
+}
+
+.feedback.bad{
+  background:#f5ded8;
+  color:#84382d;
+}
+
+.feedback strong{
+  font-size:22px;
+}
+
+.pairs{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.pair{
+  min-height:70px;
+}
+
+.pair.done{
+  opacity:.35;
+  pointer-events:none;
+}
+
+.stage-title{
+  display:inline-block;
+  padding:7px 13px;
+  border-radius:20px;
+  background:#e5dccb;
+  color:var(--verde);
+  font-weight:bold;
+  margin-bottom:8px;
+}
+
+.energy-wrap{
+  height:220px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+.energy{
+  width:80px;
+  height:80px;
+  border-radius:50%;
+  background:radial-gradient(circle,#fff6b0,#dba552 45%,#b5663f);
+  box-shadow:0 0 35px #dba55299;
+  animation:rise 2.3s ease-in-out infinite alternate;
+}
+
+@keyframes rise{
+  from{transform:translateY(70px) scale(.75)}
+  to{transform:translateY(-45px) scale(1.12)}
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-12px)}
+}
+
+.celebrate{
+  animation:bounce .55s infinite;
+}
+
+.stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin:20px 0;
+}
+
+.stat{
+  padding:18px 8px;
+  background:#fffaf1;
+  border-radius:20px;
+  text-align:center;
+  border:1px solid var(--borde);
+}
+
+.stat b{
+  display:block;
+  font-size:27px;
+  color:var(--verde);
+}
+
+.video-card{
+  padding:14px;
+  border-radius:18px;
+  background:#fffaf2;
+  border:2px solid var(--borde);
+  margin:8px 0;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.pattern{
+  height:15px;
+  margin-top:auto;
+  opacity:.7;
+  background:
+    linear-gradient(45deg,transparent 40%,#46392d 41% 59%,transparent 60%) 0 0/28px 28px,
+    linear-gradient(-45deg,transparent 40%,#a65f3f 41% 59%,transparent 60%) 0 0/28px 28px;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 14px;
+  background:#eee3d0;
+  border-radius:30px;
+  font-weight:bold;
+}
+
+.big-number{
+  font-size:72px;
+  font-weight:900;
+  color:var(--verde);
+  margin:15px 0;
+}
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- INTRO -->
+<section class="screen active" id="intro">
+
+  <div class="center">
+    <span class="badge">Kimün Mapuzungun</span>
+    <h1>¡Mari mari!</h1>
+  </div>
+
+  <div class="treiles">
+    <img src="treile_macho-1.png" class="treile" alt="Treile macho">
+    <img src="treile_hembra-1.png" class="treile" alt="Treile hembra">
+  </div>
+
+  <div class="dialogo">
+    <div class="mapuzungun">Mari mari peñi</div>
+    <div class="traduccion">Saludo del Treile macho.</div>
+  </div>
+
+  <div class="dialogo">
+    <div class="mapuzungun">Mari mari lamgen</div>
+    <div class="traduccion">Saludo de la Treile hembra.</div>
+  </div>
+
+  <p class="center">
+    Vamos a aprender Mapuzungun Pehuenche y conocer más de nuestra lengua y cultura mapuche.
+  </p>
+
+  <button class="btn primary" onclick="irEncuesta(0)">
+    COMENZAR
+  </button>
+
+  <div class="pattern"></div>
+</section>
+
+
+<!-- ENCUESTA -->
+<section class="screen" id="encuesta">
+
+  <span class="stage-title">Antes de comenzar</span>
+
+  <h1 id="encuestaPregunta"></h1>
+
+  <div id="encuestaOpciones"></div>
+
+  <img src="treile_hembra-1.png"
+       class="treile small"
+       alt="Treile acompañante">
+
+  <div class="pattern"></div>
+</section>
+
+
+<!-- ACTIVIDAD -->
+<section class="screen" id="actividad">
+
+  <div class="topbar">
+
+    <div class="progress">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+
+    <div class="newen">
+      🌿 <span id="newenValor">100</span>
+    </div>
+
+  </div>
+
+  <span class="stage-title" id="etapaNombre"></span>
+
+  <h1 id="pregunta"></h1>
+
+  <div class="card center">
+
+    <div id="contenidoPrincipal"></div>
+
+    <div id="opciones"></div>
+
+    <div id="pares" class="pairs hidden"></div>
+
+  </div>
+
+  <div class="feedback" id="feedback">
+
+    <strong id="feedbackTitulo"></strong>
+
+    <p id="feedbackTexto"></p>
+
+    <button class="btn primary"
+            id="continuarBtn"
+            onclick="continuar()">
+      CONTINUAR
+    </button>
+
+  </div>
+
+  <img src="treile_macho-1.png"
+       class="treile small"
+       id="acompanante"
+       alt="Treile acompañante">
+
+  <div class="pattern"></div>
+
+</section>
+
+
+<!-- RECUPERAR NEWEN -->
+<section class="screen" id="recuperar">
+
+  <div class="center">
+
+    <h1>Recupera tu Newen</h1>
+
+    <p>
+      Mira una cápsula corta de aprendizaje y recupera energía.
+    </p>
+
+  </div>
+
+  <div id="videos"></div>
+
+  <button class="btn"
+          onclick="mostrarActividad()">
+    VOLVER
+  </button>
+
+  <div class="pattern"></div>
+
+</section>
+
+
+<!-- CIERRE ETAPA -->
+<section class="screen center" id="cierreEtapa">
+
+  <span class="stage-title">
+    Etapa completada
+  </span>
+
+  <h1>¡Tu Newen se ha elevado!</h1>
+
+  <div class="treiles celebrate">
+
+    <img src="treile_macho-1.png"
+         class="treile"
+         alt="Treile macho">
+
+    <img src="treile_hembra-1.png"
+         class="treile"
+         alt="Treile hembra">
+
+  </div>
+
+  <div class="energy-wrap">
+    <div class="energy"></div>
+  </div>
+
+  <h2>¡Ehhh! 👏👏👏</h2>
+
+  <p>
+    Sigue avanzando. Cada palabra fortalece tu aprendizaje.
+  </p>
+
+  <button class="btn primary"
+          onclick="siguienteEtapa()">
+    SIGUIENTE ETAPA
+  </button>
+
+  <div class="pattern"></div>
+
+</section>
+
+
+<!-- FINAL -->
+<section class="screen center" id="final">
+
+  <span class="badge">
+    Lección completada
+  </span>
+
+  <h1>¡Küme!</h1>
+
+  <div class="treiles celebrate">
+
+    <img src="treile_macho-1.png"
+         class="treile"
+         alt="Treile macho">
+
+    <img src="treile_hembra-1.png"
+         class="treile"
+         alt="Treile hembra">
+
+  </div>
+
+  <h2>Tu Newen se ha elevado</h2>
+
+  <div class="stats">
+
+    <div class="stat">
+      <b id="statCorrectas">0</b>
+      Correctas
+    </div>
+
+    <div class="stat">
+      <b id="statErrores">0</b>
+      Errores
+    </div>
+
+    <div class="stat">
+      <b id="statTiempo">0:00</b>
+      Tiempo
+    </div>
+
+    <div class="stat">
+      <b id="statPuntaje">0</b>
+      Puntaje
+    </div>
+
+  </div>
+
+  <button class="btn primary"
+          id="botonFinal"
+          onclick="accionFinal()">
+    CONTINUAR
+  </button>
+
+  <div class="pattern"></div>
+
+</section>
+
+
+<!-- LECCIÓN SUPERADA -->
+<section class="screen center" id="leccionSuperada">
+
+  <span class="badge">
+    Chaliwün completado
+  </span>
+
+  <h1>¡Küme!</h1>
+
+  <div class="treiles celebrate">
+
+    <img src="treile_macho-1.png"
+         class="treile"
+         alt="Treile macho">
+
+    <img src="treile_hembra-1.png"
+         class="treile"
+         alt="Treile hembra">
+
+  </div>
+
+  <h2>Lección superada</h2>
+
+  <p>
+    Completaste la lección sin errores.
+  </p>
+
+  <button class="btn primary"
+          onclick="siguienteLeccion()">
+    SIGUIENTE LECCIÓN
+  </button>
+
+  <div class="pattern"></div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   ENCUESTA
+========================================================= */
+
+const encuesta = [
+
+  {
+    pregunta:"¿Cuál es tu principal objetivo?",
+    opciones:[
+      "Conversar en Mapuzungun",
+      "Entender mejor la lengua",
+      "Aprender sobre mi cultura",
+      "Aprender con mi familia"
+    ]
+  },
+
+  {
+    pregunta:"¿Cuánto tiempo quieres practicar al día?",
+    opciones:[
+      "5 minutos",
+      "10 minutos",
+      "15 minutos",
+      "20 minutos"
+    ]
+  },
+
+  {
+    pregunta:"¿Cómo te gustaría aprender?",
+    opciones:[
+      "Con imágenes",
+      "Con audio",
+      "Jugando",
+      "Un poco de todo"
+    ]
+  }
+
+];
+
+
+/* =========================================================
+   ACTIVIDADES
+========================================================= */
+
+const actividades = [
+
+{
+ etapa:1,
+ etapaNombre:"Saludos",
+ tipo:"opcion",
+ pregunta:"¿Qué significa?",
+ texto:"Mari mari",
+ opciones:[
+   ["Hola / saludo",true],
+   ["Gracias",false],
+   ["Hasta luego",false]
+ ]
+},
+
+{
+ etapa:1,
+ etapaNombre:"Saludos",
+ tipo:"opcion",
+ pregunta:"¿Qué significa?",
+ texto:"Chumleymi am?",
+ opciones:[
+   ["¿Cómo estás?",true],
+   ["¿Cómo te llamas?",false],
+   ["¿Dónde vives?",false]
+ ]
+},
+
+{
+ etapa:1,
+ etapaNombre:"Saludos",
+ tipo:"opcion",
+ pregunta:"Selecciona la respuesta correcta",
+ texto:"Iñche kümelkalen.",
+ opciones:[
+   ["Estoy bien",true],
+   ["Hasta luego",false],
+   ["Gracias",false]
+ ]
+},
+
+{
+ etapa:1,
+ etapaNombre:"Saludos",
+ tipo:"pares",
+ pregunta:"Une cada palabra con su significado",
+ pares:[
+   ["Mari mari","Hola / saludo"],
+   ["Peñi","Hermano"],
+   ["Lamgen","Hermana"]
+ ]
+},
+
+
+{
+ etapa:2,
+ etapaNombre:"Conversación",
+ tipo:"opcion",
+ pregunta:"¿Qué significa esta pregunta?",
+ texto:"Chew püle müley tami ruka?",
+ opciones:[
+   ["¿De dónde vienes?",true],
+   ["¿Cuántos años tienes?",false],
+   ["¿Cómo estás?",false]
+ ]
+},
+
+{
+ etapa:2,
+ etapaNombre:"Conversación",
+ tipo:"opcion",
+ pregunta:"Selecciona la traducción",
+ texto:"Pukon püle.",
+ opciones:[
+   ["De Pucón",true],
+   ["De Villarrica",false],
+   ["Voy a Pucón",false]
+ ]
+},
+
+{
+ etapa:2,
+ etapaNombre:"Conversación",
+ tipo:"opcion",
+ pregunta:"¿Qué significa?",
+ texto:"Eymi kay?",
+ opciones:[
+   ["¿Y tú?",true],
+   ["¿Quién eres?",false],
+   ["¿Estás bien?",false]
+ ]
+},
+
+
+{
+ etapa:3,
+ etapaNombre:"Números",
+ tipo:"pares",
+ pregunta:"Une los números",
+ pares:[
+   ["Kiñe","1"],
+   ["Epu","2"],
+   ["Küla","3"],
+   ["Meli","4"]
+ ]
+},
+
+{
+ etapa:3,
+ etapaNombre:"Números",
+ tipo:"opcion",
+ pregunta:"¿Qué número es?",
+ texto:"Mari kiñe",
+ numero:"11",
+ opciones:[
+   ["11",true],
+   ["12",false],
+   ["15",false]
+ ]
+},
+
+{
+ etapa:3,
+ etapaNombre:"Números",
+ tipo:"opcion",
+ pregunta:"¿Qué número es?",
+ texto:"Mari regle",
+ numero:"17",
+ opciones:[
+   ["17",true],
+   ["14",false],
+   ["19",false]
+ ]
+},
+
+{
+ etapa:3,
+ etapaNombre:"Números",
+ tipo:"opcion",
+ pregunta:"¿Qué número es?",
+ texto:"Epu mari",
+ numero:"20",
+ opciones:[
+   ["20",true],
+   ["12",false],
+   ["10",false]
+ ]
+},
+
+
+{
+ etapa:4,
+ etapaNombre:"¿Cuántos años tienes?",
+ tipo:"opcion",
+ pregunta:"¿Qué significa esta pregunta?",
+ texto:"Tunten txipantu nieymi?",
+ opciones:[
+   ["¿Cuántos años tienes?",true],
+   ["¿Dónde vives?",false],
+   ["¿Cómo te llamas?",false]
+ ]
+},
+
+{
+ etapa:4,
+ etapaNombre:"¿Cuántos años tienes?",
+ tipo:"edad",
+ edad:11
+},
+
+{
+ etapa:4,
+ etapaNombre:"¿Cuántos años tienes?",
+ tipo:"edad",
+ edad:14
+},
+
+{
+ etapa:4,
+ etapaNombre:"¿Cuántos años tienes?",
+ tipo:"edad",
+ edad:17
+},
+
+{
+ etapa:4,
+ etapaNombre:"¿Cuántos años tienes?",
+ tipo:"edad",
+ edad:20
+},
+
+
+{
+ etapa:5,
+ etapaNombre:"Reconocer y preguntar",
+ tipo:"opcion",
+ pregunta:"Selecciona la pregunta",
+ texto:"Chem am ta tüfa?",
+ opciones:[
+   ["¿Qué es esto?",true],
+   ["¿Qué es eso?",false],
+   ["¿Dónde está?",false]
+ ]
+},
+
+{
+ etapa:5,
+ etapaNombre:"Reconocer y preguntar",
+ tipo:"opcion",
+ pregunta:"Selecciona la pregunta",
+ texto:"Chem am ta tüfey?",
+ opciones:[
+   ["¿Qué es eso?",true],
+   ["¿Qué es esto?",false],
+   ["¿Quién eres?",false]
+ ]
+}
+
+];
+
+
+/* =========================================================
+   NÚMEROS
+========================================================= */
+
+const numeros = {
+ 10:"mari",
+ 11:"mari kiñe",
+ 12:"mari epu",
+ 13:"mari küla",
+ 14:"mari meli",
+ 15:"mari kechu",
+ 16:"mari kayu",
+ 17:"mari regle",
+ 18:"mari pura",
+ 19:"mari aylla",
+ 20:"epu mari"
+};
+
+
+/* =========================================================
+   ESTADO
+========================================================= */
+
+let indiceEncuesta = 0;
+let indiceActividad = 0;
+
+let newen = 100;
+
+let correctas = 0;
+let errores = 0;
+
+let inicio = null;
+
+let opcionSeleccionada = null;
+
+let parSeleccionado = null;
+let paresCompletados = 0;
+
+let videosUsados = new Set();
+
+
+/* =========================================================
+   NAVEGACIÓN
+========================================================= */
+
+function pantalla(id){
+
+ document.querySelectorAll(".screen")
+ .forEach(x=>x.classList.remove("active"));
+
+ const destino=document.getElementById(id);
+
+ if(destino){
+   destino.classList.add("active");
+ }
+
+ window.scrollTo(0,0);
+}
+
+
+function irEncuesta(i){
+
+ indiceEncuesta=i;
+
+ pantalla("encuesta");
+
+ cargarEncuesta();
+
+ sonidoClick();
+}
+
+
+function cargarEncuesta(){
+
+ const item=encuesta[indiceEncuesta];
+
+ document.getElementById("encuestaPregunta")
+ .textContent=item.pregunta;
+
+ const cont=
+ document.getElementById("encuestaOpciones");
+
+ cont.innerHTML="";
+
+ item.opciones.forEach(op=>{
+
+   const b=document.createElement("button");
+
+   b.className="btn";
+
+   b.textContent=op;
+
+   b.onclick=()=>{
+
+     sonidoClick();
+
+     indiceEncuesta++;
+
+     if(indiceEncuesta>=encuesta.length){
+
+       inicio=Date.now();
+
+       indiceActividad=0;
+
+       pantalla("actividad");
+
+       cargarActividad();
+
+     }else{
+
+       cargarEncuesta();
+
+     }
+
+   };
+
+   cont.appendChild(b);
+
+ });
+
+}
+
+
+/* =========================================================
+   ACTIVIDAD
+========================================================= */
+
+function cargarActividad(){
+
+ opcionSeleccionada=null;
+ parSeleccionado=null;
+ paresCompletados=0;
+
+ const a=actividades[indiceActividad];
+
+ if(!a){
+   terminar();
+   return;
+ }
+
+ document.getElementById("etapaNombre")
+ .textContent=a.etapaNombre;
+
+ document.getElementById("pregunta")
+ .textContent=a.pregunta ||
+ "Selecciona la respuesta correcta";
+
+ document.getElementById("feedback")
+ .className="feedback";
+
+ document.getElementById("opciones")
+ .innerHTML="";
+
+ document.getElementById("pares")
+ .innerHTML="";
+
+ document.getElementById("pares")
+ .classList.add("hidden");
+
+ actualizarBarra();
+
+ const principal=
+ document.getElementById("contenidoPrincipal");
+
+ principal.innerHTML="";
+
+
+ if(a.tipo==="opcion"){
+
+   const palabra=
+   document.createElement("div");
+
+   palabra.className="mapuzungun";
+
+   palabra.textContent=a.texto;
+
+   principal.appendChild(palabra);
+
+   if(a.numero){
+
+     const n=
+     document.createElement("div");
+
+     n.className="big-number";
+
+     n.textContent=a.numero;
+
+     principal.appendChild(n);
+
+   }
+
+   crearOpciones(a);
+
+ }
+
+
+ if(a.tipo==="pares"){
+
+   principal.innerHTML=
+   "<p>Selecciona primero una palabra y luego su pareja.</p>";
+
+   crearPares(a);
+
+ }
+
+
+ if(a.tipo==="edad"){
+
+   crearEdad(a);
+
+ }
+
+ actualizarNewen();
+
+}
+
+
+/* =========================================================
+   OPCIONES
+========================================================= */
+
+function crearOpciones(a){
+
+ const cont=
+ document.getElementById("opciones");
+
+ a.opciones.forEach(op=>{
+
+   const b=
+   document.createElement("button");
+
+   b.className="btn option";
+
+   b.textContent=op[0];
+
+   b.onclick=
+   ()=>responder(b,op[1],a);
+
+   cont.appendChild(b);
+
+ });
+
+}
+
+
+function responder(btn,correcta,a){
+
+ sonidoClick();
+
+ document.querySelectorAll(".option")
+ .forEach(x=>x.disabled=true);
+
+
+ if(correcta){
+
+   btn.classList.add("correct");
+
+   correctas++;
+
+   newen=Math.min(100,newen+3);
+
+   mostrarFeedback(
+     true,
+     "¡Correcto!",
+     traduccionCorrecta(a)
+   );
+
+   sonidoCorrecto();
+
+ }else{
+
+   btn.classList.add("wrong");
+
+   errores++;
+
+   newen=Math.max(0,newen-10);
+
+   const correctaTexto=
+   a.opciones.find(x=>x[1])?.[0] || "";
+
+   mostrarFeedback(
+     false,
+     "Casi...",
+     "La respuesta correcta es: "+
+     correctaTexto
+   );
+
+   sonidoError();
+
+ }
+
+ actualizarNewen();
+
+ comprobarRecuperacion();
+
+}
+
+
+/* =========================================================
+   EDADES
+========================================================= */
+
+function crearEdad(a){
+
+ const frase=
+ `Iñche nien ${numeros[a.edad]} txipantu`;
+
+ document.getElementById("contenidoPrincipal")
+ .innerHTML=`
+
+   <div class="mapuzungun">
+     Tunten txipantu nieymi?
+   </div>
+
+   <div class="traduccion">
+     ¿Cuántos años tienes?
+   </div>
+
+   <div class="big-number">
+     ${a.edad}
+   </div>
+
+   <p>
+     Selecciona cómo responderías.
+   </p>
+
+ `;
+
+ let distractores=[
+   Math.max(10,a.edad-1),
+   Math.min(20,a.edad+1)
+ ].filter(
+   (v,i,s)=>
+   v!==a.edad &&
+   s.indexOf(v)===i
+ );
+
+ while(distractores.length<2){
+
+   const r=
+   10+Math.floor(Math.random()*11);
+
+   if(
+     r!==a.edad &&
+     !distractores.includes(r)
+   ){
+     distractores.push(r);
+   }
+
+ }
+
+ let respuestas=[
+
+   [frase,true],
+
+   [
+    `Iñche nien ${numeros[distractores[0]]} txipantu`,
+    false
+   ],
+
+   [
+    `Iñche nien ${numeros[distractores[1]]} txipantu`,
+    false
+   ]
+
+ ];
+
+ respuestas.sort(()=>Math.random()-.5);
+
+ crearOpciones({
+   opciones:respuestas,
+   traduccion:`Yo tengo ${a.edad} años.`
+ });
+
+}
+
+
+/* =========================================================
+   PARES
+========================================================= */
+
+function crearPares(a){
+
+ const cont=
+ document.getElementById("pares");
+
+ cont.classList.remove("hidden");
+
+ let items=[];
+
+ a.pares.forEach((p,i)=>{
+
+   items.push({
+     texto:p[0],
+     pareja:i,
+     lado:"mapu"
+   });
+
+   items.push({
+     texto:p[1],
+     pareja:i,
+     lado:"esp"
+   });
+
+ });
+
+ items.sort(()=>Math.random()-.5);
+
+ items.forEach(item=>{
+
+   const b=
+   document.createElement("button");
+
+   b.className="btn pair";
+
+   b.textContent=item.texto;
+
+   b.dataset.pareja=item.pareja;
+
+   b.dataset.lado=item.lado;
+
+   b.onclick=
+   ()=>seleccionarPar(b,a);
+
+   cont.appendChild(b);
+
+ });
+
+}
+
+
+function seleccionarPar(btn,a){
+
+ sonidoClick();
+
+ if(btn.classList.contains("done"))
+   return;
+
+
+ if(!parSeleccionado){
+
+   parSeleccionado=btn;
+
+   btn.classList.add("selected");
+
+   return;
+
+ }
+
+
+ if(parSeleccionado===btn){
+
+   parSeleccionado
+   .classList.remove("selected");
+
+   parSeleccionado=null;
+
+   return;
+
+ }
+
+
+ const coincide=
+ parSeleccionado.dataset.pareja===
+ btn.dataset.pareja &&
+ parSeleccionado.dataset.lado!==
+ btn.dataset.lado;
+
+
+ if(coincide){
+
+   parSeleccionado
+   .classList.remove("selected");
+
+   parSeleccionado
+   .classList.add("done");
+
+   btn.classList.add("done");
+
+   paresCompletados++;
+
+   correctas++;
+
+   newen=Math.min(100,newen+2);
+
+   sonidoCorrecto();
+
+   parSeleccionado=null;
+
+
+   if(
+     paresCompletados===
+     a.pares.length
+   ){
+
+     mostrarFeedback(
+       true,
+       "¡Correcto!",
+       "Completaste todas las parejas."
+     );
+
+   }
+
+ }else{
+
+   errores++;
+
+   newen=Math.max(0,newen-5);
+
+   parSeleccionado
+   .classList.add("wrong");
+
+   btn.classList.add("wrong");
+
+   sonidoError();
+
+   const anterior=
+   parSeleccionado;
+
+   setTimeout(()=>{
+
+     anterior.classList.remove(
+       "wrong",
+       "selected"
+     );
+
+     btn.classList.remove("wrong");
+
+   },600);
+
+   parSeleccionado=null;
+
+ }
+
+ actualizarNewen();
+
+ comprobarRecuperacion();
+
+}
+
+
+/* =========================================================
+   FEEDBACK
+========================================================= */
+
+function mostrarFeedback(ok,titulo,texto){
+
+ const f=
+ document.getElementById("feedback");
+
+ f.className=
+ "feedback show "+(ok?"ok":"bad");
+
+ document.getElementById("feedbackTitulo")
+ .textContent=titulo;
+
+ document.getElementById("feedbackTexto")
+ .textContent=texto;
+
+}
+
+
+function traduccionCorrecta(a){
+
+ if(a.traduccion)
+   return a.traduccion;
+
+ const op=
+ a.opciones?.find(x=>x[1]);
+
+ return op
+ ? `La respuesta es: ${op[0]}`
+ : "Muy bien.";
+
+}
+
+
+/* =========================================================
+   CONTINUAR
+========================================================= */
+
+function continuar(){
+
+ sonidoClick();
+
+ const actual=
+ actividades[indiceActividad];
+
+ if(!actual){
+   terminar();
+   return;
+ }
+
+ const etapaActual=actual.etapa;
+
+ const siguiente=
+ actividades[indiceActividad+1];
+
+ indiceActividad++;
+
+
+ if(indiceActividad>=actividades.length){
+
+   terminar();
+
+   return;
+
+ }
+
+
+ if(
+   !siguiente ||
+   siguiente.etapa!==etapaActual
+ ){
+
+   pantalla("cierreEtapa");
+
+   sonidoCelebracion();
+
+   return;
+
+ }
+
+ cargarActividad();
+
+}
+
+
+/* =========================================================
+   SIGUIENTE ETAPA
+========================================================= */
+
+function siguienteEtapa(){
+
+ sonidoClick();
+
+ pantalla("actividad");
+
+ cargarActividad();
+
+}
+
+
+/* =========================================================
+   NEWEN
+========================================================= */
+
+function actualizarNewen(){
+
+ document.getElementById("newenValor")
+ .textContent=newen;
+
+}
+
+
+function comprobarRecuperacion(){
+
+ if(
+   newen<=40 &&
+   videosUsados.size<5
+ ){
+
+   setTimeout(()=>{
+
+     cargarVideos();
+
+     pantalla("recuperar");
+
+   },900);
+
+ }
+
+}
+
+
+/* =========================================================
+   CÁPSULAS
+========================================================= */
+
+const capsulas=[
+
+ "Saludo básico",
+ "Pronunciación",
+ "Palabras cotidianas",
+ "Cultura mapuche",
+ "Repaso rápido"
+
+];
+
+
+function cargarVideos(){
+
+ const cont=
+ document.getElementById("videos");
+
+ cont.innerHTML="";
+
+ capsulas.forEach((titulo,i)=>{
+
+   if(videosUsados.has(i))
+     return;
+
+   const d=
+   document.createElement("div");
+
+   d.className="video-card";
+
+   d.innerHTML=`
+
+     <strong>${titulo}</strong>
+
+     <p>
+       Cápsula educativa · 15 segundos
+     </p>
+
+     <button
+       class="btn"
+       onclick="verCapsula(${i})">
+
+       VER Y RECUPERAR NEWEN
+
+     </button>
+
+   `;
+
+   cont.appendChild(d);
+
+ });
+
+}
+
+
+function verCapsula(i){
+
+ videosUsados.add(i);
+
+ newen=Math.min(100,newen+20);
+
+ actualizarNewen();
+
+ sonidoCorrecto();
+
+ alert(
+   "¡Recuperaste 20 puntos de Newen!"
+ );
+
+ mostrarActividad();
+
+}
+
+
+function mostrarActividad(){
+
+ pantalla("actividad");
+
+}
+
+
+/* =========================================================
+   PROGRESO
+========================================================= */
+
+function actualizarBarra(){
+
+ const porcentaje=
+ ((indiceActividad+1)/
+ actividades.length)*100;
+
+ document.getElementById("progressFill")
+ .style.width=
+ porcentaje+"%";
+
+}
+
+
+/* =========================================================
+   SONIDOS
+========================================================= */
+
+function audioContext(){
+
+ return new(
+   window.AudioContext ||
+   window.webkitAudioContext
+ )();
+
+}
+
+
+function tono(freq,duracion,vol=.08){
+
+ try{
+
+   const ctx=audioContext();
+
+   const osc=
+   ctx.createOscillator();
+
+   const gain=
+   ctx.createGain();
+
+   osc.frequency.value=freq;
+
+   gain.gain.value=vol;
+
+   osc.connect(gain);
+
+   gain.connect(ctx.destination);
+
+   osc.start();
+
+   gain.gain
+   .exponentialRampToValueAtTime(
+     .001,
+     ctx.currentTime+duracion
+   );
+
+   osc.stop(
+     ctx.currentTime+duracion
+   );
+
+ }catch(e){}
+
+}
+
+
+function sonidoClick(){
+
+ tono(420,.06,.035);
+
+}
+
+
+function sonidoCorrecto(){
+
+ tono(620,.12);
+
+ setTimeout(
+   ()=>tono(820,.16),
+   100
+ );
+
+}
+
+
+function sonidoError(){
+
+ tono(220,.18);
+
+ setTimeout(
+   ()=>tono(170,.2),
+   100
+ );
+
+}
+
+
+function sonidoCelebracion(){
+
+ tono(520,.12);
+
+ setTimeout(
+   ()=>tono(660,.12),
+   120
+ );
+
+ setTimeout(
+   ()=>tono(820,.25),
+   240
+ );
+
+}
+
+
 /* =========================================================
    FINAL
 ========================================================= */
@@ -6,18 +1756,24 @@ function terminar(){
 
  pantalla("final");
 
- const segundos =
- Math.floor((Date.now()-inicio)/1000);
+ const segundos=
+ Math.floor(
+   (Date.now()-inicio)/1000
+ );
 
- const min = Math.floor(segundos/60);
- const seg = segundos%60;
+ const min=
+ Math.floor(segundos/60);
 
- const puntaje =
+ const seg=
+ segundos%60;
+
+ const puntaje=
  Math.max(
    0,
    correctas*100-
    errores*20
  );
+
 
  document.getElementById("statCorrectas")
  .textContent=correctas;
@@ -33,12 +1789,9 @@ function terminar(){
  .textContent=puntaje;
 
 
- /* -----------------------------------------
-    DECIDIR QUÉ HACER SEGÚN LOS ERRORES
- ----------------------------------------- */
-
- const boton =
+ const boton=
  document.getElementById("botonFinal");
+
 
  if(errores===0){
 
@@ -46,7 +1799,8 @@ function terminar(){
 
  }else{
 
-   boton.textContent="VOLVER A PRACTICAR";
+   boton.textContent=
+   "VOLVER A PRACTICAR";
 
  }
 
@@ -87,13 +1841,13 @@ function siguienteLeccion(){
  sonidoClick();
 
  /*
-   Aquí conectaremos la Lección 2.
+   Aquí conectaremos posteriormente
+   la Lección 2.
 
-   Por ahora regresamos al inicio sin obligar
-   al estudiante a repetir la lección aprobada.
+   Por ahora vuelve al inicio.
  */
 
- pantalla("intro");
+ reiniciar();
 
 }
 
@@ -107,3 +1861,8 @@ function reiniciar(){
  location.reload();
 
 }
+
+</script>
+
+</body>
+   </html>
