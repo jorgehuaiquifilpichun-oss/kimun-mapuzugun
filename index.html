@@ -3,9 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kimun Mapuzugun</title>
+
+<title>Kimün Mapuzugun - Chaliwün</title>
 
 <style>
+
 * {
   box-sizing: border-box;
 }
@@ -13,15 +15,14 @@
 body {
   margin: 0;
   font-family: Arial, sans-serif;
-  background: #f7f4ec;
-  color: #222;
+  background: #ffffff;
+  color: #333;
 }
 
 .app {
-  max-width: 500px;
-  min-height: 100vh;
+  max-width: 600px;
   margin: auto;
-  padding: 22px;
+  padding: 20px;
 }
 
 /* CABECERA */
@@ -29,116 +30,94 @@ body {
 .top {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 15px;
+  margin-bottom: 30px;
 }
 
 .salir {
-  font-size: 25px;
-  color: #777;
+  font-size: 28px;
+  cursor: pointer;
 }
 
 .progreso {
   flex: 1;
-  height: 15px;
-  background: #ddd;
+  height: 14px;
+  background: #e5e5e5;
   border-radius: 20px;
   overflow: hidden;
 }
 
 .barra {
   height: 100%;
-  width: 50%;
+  width: 10%;
   background: #58cc02;
-  border-radius: 20px;
-  transition: width .5s ease;
+  transition: width .3s ease;
 }
 
 .corazon {
-  font-size: 23px;
+  font-size: 25px;
 }
 
 /* PANTALLAS */
 
 .pantalla {
   display: none;
-  animation: entrar .45s ease;
 }
 
 .pantalla.activa {
   display: block;
 }
 
-@keyframes entrar {
-  from {
-    opacity: 0;
-    transform: translateX(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
 .indicador {
+  text-align: center;
   color: #777;
-  font-size: 15px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 h1 {
-  font-size: 27px;
-  margin: 0 0 28px;
-  text-align: left;
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 25px;
 }
 
-/* PALABRA */
-
 .palabra {
-  font-size: 44px;
-  font-weight: 800;
-  margin: 30px 0 20px;
   text-align: center;
+  font-size: 32px;
+  font-weight: bold;
+  margin: 25px 0;
 }
 
 .traduccion {
   text-align: center;
-  color: #666;
   font-size: 21px;
   margin-bottom: 25px;
-}
-
-/* BOTONES */
-
-button {
-  font-family: inherit;
-}
-
-.escuchar {
-  display: block;
-  width: 190px;
-  margin: 0 auto 35px;
-  padding: 14px 15px;
-  border: none;
-  border-radius: 15px;
-  background: #1f1f1f;
-  color: white;
-  font-size: 17px;
-  font-weight: bold;
-  box-shadow: 0 4px 0 #000;
-}
-
-.escuchar:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #000;
+  color: #555;
 }
 
 .pregunta {
-  font-size: 21px;
+  font-size: 19px;
   font-weight: bold;
-  margin-bottom: 18px;
+  margin: 25px 0 15px;
 }
+
+/* BOTÓN AUDIO */
+
+.escuchar {
+  width: 100%;
+  min-height: 55px;
+  border: 2px solid #1cb0f6;
+  border-bottom: 4px solid #1899d6;
+  border-radius: 15px;
+  background: #ffffff;
+  color: #168ac0;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+/* OPCIONES */
 
 .opciones {
   display: flex;
@@ -178,9 +157,19 @@ button {
 }
 
 @keyframes error {
-  25% { transform: translateX(-6px); }
-  50% { transform: translateX(6px); }
-  75% { transform: translateX(-4px); }
+
+  25% {
+    transform: translateX(-6px);
+  }
+
+  50% {
+    transform: translateX(6px);
+  }
+
+  75% {
+    transform: translateX(-4px);
+  }
+
 }
 
 /* RESULTADO */
@@ -195,10 +184,12 @@ button {
 }
 
 @keyframes aparecer {
+
   from {
     opacity: 0;
     transform: translateY(10px);
   }
+
 }
 
 .resultado.correcto {
@@ -228,13 +219,14 @@ button {
   font-size: 18px;
   font-weight: bold;
   box-shadow: 0 4px 0 #46a302;
+  cursor: pointer;
 }
 
 /* FINAL */
 
 .final {
   text-align: center;
-  padding-top: 70px;
+  padding-top: 60px;
 }
 
 .final .icono {
@@ -257,182 +249,571 @@ button {
 
 <div class="app">
 
-  <div class="top">
-    <div class="salir">✕</div>
+<div class="top">
 
-    <div class="progreso">
-      <div class="barra" id="barra"></div>
-    </div>
+  <div class="salir">×</div>
 
-    <div class="corazon">❤️</div>
+  <div class="progreso">
+    <div class="barra" id="barra"></div>
   </div>
 
+  <div class="corazon">❤️</div>
 
-  <!-- ACTIVIDAD 1 -->
-
-  <section class="pantalla activa" id="pantalla1">
-
-    <div class="indicador">1 de 2</div>
-
-    <h1>¿Qué significa esta expresión?</h1>
-
-    <div class="palabra">Mari mari</div>
-
-    <button class="escuchar" onclick="reproducirMari()">
-      🔊 ESCUCHAR
-    </button>
-
-    <div class="pregunta">Selecciona la respuesta correcta</div>
-
-    <div class="opciones">
-
-      <button class="opcion"
-        onclick="responder(this,true,1)">
-        Hola / saludo
-      </button>
-
-      <button class="opcion"
-        onclick="responder(this,false,1)">
-        Gracias
-      </button>
-
-      <button class="opcion"
-        onclick="responder(this,false,1)">
-        Hasta luego
-      </button>
-
-    </div>
-
-    <div class="resultado" id="resultado1">
-
-      <strong id="titulo1"></strong>
-
-      <div id="mensaje1"></div>
-
-      <button
-        class="continuar"
-        id="continuar1"
-        onclick="siguiente()"
-        style="display:none">
-        CONTINUAR
-      </button>
-
-    </div>
-
-  </section>
+</div>
 
 
-  <!-- ACTIVIDAD 2 -->
+<!-- ACTIVIDAD 1 -->
 
-  <section class="pantalla" id="pantalla2">
+<section class="pantalla activa" id="pantalla1">
 
-    <div class="indicador">2 de 2</div>
+<div class="indicador">1 de 10</div>
 
-    <h1>Escucha y aprende</h1>
+<h1>¿Qué significa esta expresión?</h1>
 
-    <div class="palabra">Chumleymi am?</div>
+<div class="palabra">Mari mari</div>
 
-    <div class="traduccion">¿Cómo estás?</div>
+<button class="escuchar" onclick="reproducirAudio('mari_mari-1.mp3')">
+🔊 ESCUCHAR
+</button>
 
-    <button class="escuchar" onclick="reproducirChumleymi()">
-      🔊 ESCUCHAR
-    </button>
+<div class="pregunta">Selecciona la respuesta correcta</div>
 
-    <div class="pregunta">
-      ¿Qué significa “Chumleymi am?”
-    </div>
+<div class="opciones">
 
-    <div class="opciones">
+<button class="opcion"
+onclick="responder(this,true,1)">
+Hola / saludo
+</button>
 
-      <button class="opcion"
-        onclick="responder(this,false,2)">
-        ¿Cómo te llamas?
-      </button>
+<button class="opcion"
+onclick="responder(this,false,1)">
+Gracias
+</button>
 
-      <button class="opcion"
-        onclick="responder(this,true,2)">
-        ¿Cómo estás?
-      </button>
+<button class="opcion"
+onclick="responder(this,false,1)">
+Hasta luego
+</button>
 
-      <button class="opcion"
-        onclick="responder(this,false,2)">
-        Buenos días
-      </button>
+</div>
 
-    </div>
+<div class="resultado" id="resultado1">
+<strong id="titulo1"></strong>
+<div id="mensaje1"></div>
 
-    <div class="resultado" id="resultado2">
+<button
+class="continuar"
+id="continuar1"
+onclick="siguiente(1)"
+style="display:none">
+CONTINUAR
+</button>
 
-      <strong id="titulo2"></strong>
+</div>
 
-      <div id="mensaje2"></div>
-
-      <button
-        class="continuar"
-        id="continuar2"
-        onclick="finalizar()"
-        style="display:none">
-        CONTINUAR
-      </button>
-
-    </div>
-
-  </section>
+</section>
 
 
-  <!-- FINAL -->
+<!-- ACTIVIDAD 2 -->
 
-  <section class="pantalla" id="final">
+<section class="pantalla" id="pantalla2">
 
-    <div class="final">
+<div class="indicador">2 de 10</div>
 
-      <div class="icono">🏆</div>
+<h1>¿Qué significa esta expresión?</h1>
 
-      <h2>¡Küme!</h2>
+<div class="palabra">Mari mari peñi</div>
 
-      <p>Completaste esta lección.</p>
+<div class="pregunta">Selecciona la respuesta correcta</div>
 
-      <button class="continuar" onclick="reiniciar()">
-        REPETIR LECCIÓN
-      </button>
+<div class="opciones">
 
-    </div>
+<button class="opcion"
+onclick="responder(this,true,2)">
+Hola hermano
+</button>
 
-  </section>
+<button class="opcion"
+onclick="responder(this,false,2)">
+Hola hermana
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,2)">
+¿Cómo estás?
+</button>
+
+</div>
+
+<div class="resultado" id="resultado2">
+<strong id="titulo2"></strong>
+<div id="mensaje2"></div>
+
+<button
+class="continuar"
+id="continuar2"
+onclick="siguiente(2)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 3 -->
+
+<section class="pantalla" id="pantalla3">
+
+<div class="indicador">3 de 10</div>
+
+<h1>¿Qué significa esta expresión?</h1>
+
+<div class="palabra">Mari mari lamngen</div>
+
+<div class="pregunta">Selecciona la respuesta correcta</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,false,3)">
+Hola hermano
+</button>
+
+<button class="opcion"
+onclick="responder(this,true,3)">
+Hola hermana
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,3)">
+Estoy bien
+</button>
+
+</div>
+
+<div class="resultado" id="resultado3">
+<strong id="titulo3"></strong>
+<div id="mensaje3"></div>
+
+<button
+class="continuar"
+id="continuar3"
+onclick="siguiente(3)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 4 -->
+
+<section class="pantalla" id="pantalla4">
+
+<div class="indicador">4 de 10</div>
+
+<h1>¿Qué significa?</h1>
+
+<div class="palabra">Peñi</div>
+
+<div class="pregunta">Selecciona la respuesta correcta</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,true,4)">
+Hermano
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,4)">
+Hermana
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,4)">
+Saludo
+</button>
+
+</div>
+
+<div class="resultado" id="resultado4">
+<strong id="titulo4"></strong>
+<div id="mensaje4"></div>
+
+<button
+class="continuar"
+id="continuar4"
+onclick="siguiente(4)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 5 -->
+
+<section class="pantalla" id="pantalla5">
+
+<div class="indicador">5 de 10</div>
+
+<h1>¿Qué significa?</h1>
+
+<div class="palabra">Lamngen</div>
+
+<div class="pregunta">Selecciona la respuesta correcta</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,false,5)">
+Hermano
+</button>
+
+<button class="opcion"
+onclick="responder(this,true,5)">
+Hermana
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,5)">
+Hola
+</button>
+
+</div>
+
+<div class="resultado" id="resultado5">
+<strong id="titulo5"></strong>
+<div id="mensaje5"></div>
+
+<button
+class="continuar"
+id="continuar5"
+onclick="siguiente(5)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 6 -->
+
+<section class="pantalla" id="pantalla6">
+
+<div class="indicador">6 de 10</div>
+
+<h1>¿Qué significa esta expresión?</h1>
+
+<div class="palabra">Chumleymi am?</div>
+
+<div class="pregunta">Selecciona la respuesta correcta</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,false,6)">
+Hola hermano
+</button>
+
+<button class="opcion"
+onclick="responder(this,true,6)">
+¿Cómo estás?
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,6)">
+Yo estoy bien
+</button>
+
+</div>
+
+<div class="resultado" id="resultado6">
+<strong id="titulo6"></strong>
+<div id="mensaje6"></div>
+
+<button
+class="continuar"
+id="continuar6"
+onclick="siguiente(6)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 7 -->
+
+<section class="pantalla" id="pantalla7">
+
+<div class="indicador">7 de 10</div>
+
+<h1>Aprendamos otra expresión</h1>
+
+<div class="palabra">Küme felen</div>
+
+<div class="pregunta">¿Qué significa?</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,false,7)">
+Saludar
+</button>
+
+<button class="opcion"
+onclick="responder(this,true,7)">
+Estar bien
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,7)">
+Hermano
+</button>
+
+</div>
+
+<div class="resultado" id="resultado7">
+<strong id="titulo7"></strong>
+<div id="mensaje7"></div>
+
+<button
+class="continuar"
+id="continuar7"
+onclick="siguiente(7)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 8 -->
+
+<section class="pantalla" id="pantalla8">
+
+<div class="indicador">8 de 10</div>
+
+<h1>¿Qué significa esta expresión?</h1>
+
+<div class="palabra">Iñche kümelkalen.</div>
+
+<div class="pregunta">Selecciona la respuesta correcta</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,true,8)">
+Yo estoy bien
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,8)">
+¿Cómo estás?
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,8)">
+Hola hermana
+</button>
+
+</div>
+
+<div class="resultado" id="resultado8">
+<strong id="titulo8"></strong>
+<div id="mensaje8"></div>
+
+<button
+class="continuar"
+id="continuar8"
+onclick="siguiente(8)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 9 -->
+
+<section class="pantalla" id="pantalla9">
+
+<div class="indicador">9 de 10</div>
+
+<h1>Repasemos</h1>
+
+<div class="pregunta">
+¿Cómo preguntarías «¿Cómo estás?»?
+</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,false,9)">
+Mari mari
+</button>
+
+<button class="opcion"
+onclick="responder(this,true,9)">
+Chumleymi am?
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,9)">
+Iñche kümelkalen.
+</button>
+
+</div>
+
+<div class="resultado" id="resultado9">
+<strong id="titulo9"></strong>
+<div id="mensaje9"></div>
+
+<button
+class="continuar"
+id="continuar9"
+onclick="siguiente(9)"
+style="display:none">
+CONTINUAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- ACTIVIDAD 10 -->
+
+<section class="pantalla" id="pantalla10">
+
+<div class="indicador">10 de 10</div>
+
+<h1>Chaliwün</h1>
+
+<div class="pregunta">
+Una persona te pregunta:
+</div>
+
+<div class="palabra">
+Chumleymi am?
+</div>
+
+<div class="pregunta">
+¿Cómo respondes que estás bien?
+</div>
+
+<div class="opciones">
+
+<button class="opcion"
+onclick="responder(this,false,10)">
+Mari mari
+</button>
+
+<button class="opcion"
+onclick="responder(this,false,10)">
+Peñi
+</button>
+
+<button class="opcion"
+onclick="responder(this,true,10)">
+Iñche kümelkalen.
+</button>
+
+</div>
+
+<div class="resultado" id="resultado10">
+<strong id="titulo10"></strong>
+<div id="mensaje10"></div>
+
+<button
+class="continuar"
+id="continuar10"
+onclick="finalizar()"
+style="display:none">
+FINALIZAR
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="pantalla" id="final">
+
+<div class="final">
+
+<div class="icono">🏆</div>
+
+<h2>¡Küme!</h2>
+
+<h3>Wechulfimi tüfachi kimeltun</h3>
+
+<p>Completaste esta lección.</p>
+
+<button
+class="continuar"
+onclick="reiniciar()">
+REPETIR LECCIÓN
+</button>
+
+</div>
+
+</section>
 
 </div>
 
 
 <script>
 
-/* AUDIO DE LAS PALABRAS */
+/* ==========================================
+   AUDIO
+========================================== */
 
-function reproducirMari() {
+const AUDIO_BASE =
+'https://raw.githubusercontent.com/jorgehuaiquifilpichun-oss/kimun-mapuzugun-audio/main/';
+
+function reproducirAudio(archivo) {
 
   const audio = new Audio(
-    'https://raw.githubusercontent.com/jorgehuaiquifilpichun-oss/kimun-mapuzugun/principal/mari_mari-1.mp3'
+    AUDIO_BASE + archivo
   );
 
-  audio.play();
+  audio.play().catch(function(error) {
+    console.log('Audio todavía no disponible:', archivo);
+  });
+
 }
 
 
-function reproducirChumleymi() {
-
-  const audio = new Audio(
-    'chumleymi_am-1.mp3'
-  );
-
-  audio.play();
-}
-
-
-/* SONIDO CORRECTO */
+/* ==========================================
+   SONIDO CORRECTO
+========================================== */
 
 function sonidoCorrecto() {
 
-  const ctx =
-    new (window.AudioContext || window.webkitAudioContext)();
+  const AudioCtx =
+    window.AudioContext ||
+    window.webkitAudioContext;
+
+  const ctx = new AudioCtx();
 
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
@@ -440,26 +821,46 @@ function sonidoCorrecto() {
   osc.connect(gain);
   gain.connect(ctx.destination);
 
-  osc.frequency.setValueAtTime(520, ctx.currentTime);
-  osc.frequency.setValueAtTime(760, ctx.currentTime + 0.10);
+  osc.frequency.setValueAtTime(
+    520,
+    ctx.currentTime
+  );
 
-  gain.gain.setValueAtTime(0.18, ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(
+    760,
+    ctx.currentTime + 0.20
+  );
+
+  gain.gain.setValueAtTime(
+    0.18,
+    ctx.currentTime
+  );
+
   gain.gain.exponentialRampToValueAtTime(
     0.01,
     ctx.currentTime + 0.30
   );
 
   osc.start();
-  osc.stop(ctx.currentTime + 0.30);
+
+  osc.stop(
+    ctx.currentTime + 0.30
+  );
+
 }
 
 
-/* SONIDO ERROR */
+/* ==========================================
+   SONIDO ERROR
+========================================== */
 
 function sonidoError() {
 
-  const ctx =
-    new (window.AudioContext || window.webkitAudioContext)();
+  const AudioCtx =
+    window.AudioContext ||
+    window.webkitAudioContext;
+
+  const ctx = new AudioCtx();
 
   const osc = ctx.createOscillator();
   const gain = ctx.createGain();
@@ -467,35 +868,60 @@ function sonidoError() {
   osc.connect(gain);
   gain.connect(ctx.destination);
 
-  osc.frequency.setValueAtTime(180, ctx.currentTime);
-  osc.frequency.setValueAtTime(130, ctx.currentTime + 0.12);
+  osc.frequency.setValueAtTime(
+    180,
+    ctx.currentTime
+  );
 
-  gain.gain.setValueAtTime(0.16, ctx.currentTime);
+  osc.frequency.exponentialRampToValueAtTime(
+    130,
+    ctx.currentTime + 0.20
+  );
+
+  gain.gain.setValueAtTime(
+    0.16,
+    ctx.currentTime
+  );
+
   gain.gain.exponentialRampToValueAtTime(
     0.01,
     ctx.currentTime + 0.30
   );
 
   osc.start();
-  osc.stop(ctx.currentTime + 0.30);
+
+  osc.stop(
+    ctx.currentTime + 0.30
+  );
+
 }
 
 
-/* RESPUESTAS */
+/* ==========================================
+   RESPUESTAS
+========================================== */
 
 function responder(boton, correcta, numero) {
 
   const resultado =
-    document.getElementById('resultado' + numero);
+    document.getElementById(
+      'resultado' + numero
+    );
 
   const titulo =
-    document.getElementById('titulo' + numero);
+    document.getElementById(
+      'titulo' + numero
+    );
 
   const mensaje =
-    document.getElementById('mensaje' + numero);
+    document.getElementById(
+      'mensaje' + numero
+    );
 
   const continuar =
-    document.getElementById('continuar' + numero);
+    document.getElementById(
+      'continuar' + numero
+    );
 
 
   if (correcta) {
@@ -506,10 +932,10 @@ function responder(boton, correcta, numero) {
       'resultado correcto';
 
     titulo.innerHTML =
-      '🎉 ¡Correcto!';
+      '🎉 ¡Kümeley!';
 
     mensaje.innerHTML =
-      ' Küme! Muy bien.';
+      'Muy bien.';
 
     continuar.style.display =
       'block';
@@ -518,87 +944,158 @@ function responder(boton, correcta, numero) {
 
     bloquearOpciones(numero);
 
-  } else {
+  }
 
-    boton.classList.add('incorrecta');
+  else {
+
+    boton.classList.add(
+      'incorrecta'
+    );
 
     resultado.className =
       'resultado error';
 
     titulo.innerHTML =
-      '✕ Inténtalo otra vez';
+      '✕ Kümelelay';
 
     mensaje.innerHTML =
-      'Busca otra respuesta.';
+      'Inténtalo otra vez.';
 
     sonidoError();
 
     setTimeout(function() {
-      boton.classList.remove('incorrecta');
+
+      boton.classList.remove(
+        'incorrecta'
+      );
+
     },700);
+
   }
+
 }
 
 
-/* BLOQUEAR OPCIONES */
+/* ==========================================
+   BLOQUEAR OPCIONES
+========================================== */
 
 function bloquearOpciones(numero) {
 
   const pantalla =
-    document.getElementById('pantalla' + numero);
+    document.getElementById(
+      'pantalla' + numero
+    );
 
   const botones =
-    pantalla.querySelectorAll('.opcion');
+    pantalla.querySelectorAll(
+      '.opcion'
+    );
 
   botones.forEach(function(boton) {
+
     boton.disabled = true;
+
   });
+
 }
 
 
-/* SIGUIENTE PANTALLA */
+/* ==========================================
+   SIGUIENTE ACTIVIDAD
+========================================== */
 
-function siguiente() {
-
-  document
-    .getElementById('pantalla1')
-    .classList.remove('activa');
+function siguiente(numero) {
 
   document
-    .getElementById('pantalla2')
-    .classList.add('activa');
+    .getElementById(
+      'pantalla' + numero
+    )
+    .classList.remove(
+      'activa'
+    );
+
+  const siguienteNumero =
+    numero + 1;
+
+  document
+    .getElementById(
+      'pantalla' + siguienteNumero
+    )
+    .classList.add(
+      'activa'
+    );
+
+  actualizarProgreso(
+    siguienteNumero
+  );
+
+  window.scrollTo(0,0);
+
+}
+
+
+/* ==========================================
+   PROGRESO
+========================================== */
+
+function actualizarProgreso(numero) {
+
+  const porcentaje =
+    numero * 10;
 
   document
     .getElementById('barra')
-    .style.width = '100%';
+    .style.width =
+      porcentaje + '%';
 
-  window.scrollTo(0,0);
 }
 
 
-/* FINAL */
+/* ==========================================
+   FINAL
+========================================== */
 
 function finalizar() {
 
   document
-    .getElementById('pantalla2')
-    .classList.remove('activa');
+    .getElementById(
+      'pantalla10'
+    )
+    .classList.remove(
+      'activa'
+    );
 
   document
-    .getElementById('final')
-    .classList.add('activa');
+    .getElementById(
+      'final'
+    )
+    .classList.add(
+      'activa'
+    );
+
+  document
+    .getElementById(
+      'barra'
+    )
+    .style.width =
+      '100%';
 
   window.scrollTo(0,0);
 
   sonidoCorrecto();
+
 }
 
 
-/* REINICIAR */
+/* ==========================================
+   REINICIAR
+========================================== */
 
 function reiniciar() {
 
   location.reload();
+
 }
 
 </script>
