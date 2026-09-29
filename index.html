@@ -1,1 +1,587 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Kimün Mapuzungun</title><style>:root{--verde:#365c43;--crema:#f6efe2;--tierra:#b76743;--rojo:#b64c3c;--texto:#25271f;--borde:#d9cdb9;--blanco:#fffdf8}*{box-sizing:border-box;-webkit-tap-highlight-color:transparent} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#dfe4d7;color:var(--texto)}.app{max-width:480px;min-height:100vh;margin:auto;background:linear-gradient(180deg,#faf4e9,#f0e4d2);overflow:hidden}.screen{display:none;min-height:100vh;padding:24px 22px 32px}.screen.active{display:flex;flex-direction:column}.center{text-align:center}.badge,.stage-title{display:inline-block;padding:8px 14px;background:#eee3d0;border-radius:30px;font-weight:800}.stage-title{color:var(--verde);margin-bottom:8px}h1{font-size:30px;margin:10px 0 16px}h2{font-size:24px}.treiles{display:flex;justify-content:center;align-items:flex-end;min-height:245px;margin:10px 0}.treile{width:48%;max-height:250px;object-fit:contain;filter:drop-shadow(0 8px 8px #0002)}.dialogo,.card{background:var(--blanco);border:2px solid var(--borde);padding:17px;border-radius:22px;margin:8px 0;box-shadow:0 5px 0 #d7cbb7}.mapuzungun{font-weight:900;font-size:23px;color:var(--verde)}.traduccion{margin-top:5px;color:#675f54}.btn{width:100%;border:2px solid var(--borde);border-radius:18px;padding:17px;margin:7px 0;font-size:17px;font-weight:800;background:#fffaf2;color:var(--texto);box-shadow:0 4px 0 #cfc1ac}.btn.primary{background:var(--verde);color:white;border-color:var(--verde);box-shadow:0 5px 0 #274633}.btn.correct{background:#dfeedd;border-color:#3d754b}.btn.wrong{background:#f5ded7;border-color:var(--rojo)}.topbar{display:flex;align-items:center;gap:12px;margin-bottom:22px}.progress{height:12px;background:#dfd6c7;border-radius:20px;flex:1;overflow:hidden}.progress-fill{height:100%;width:0;background:var(--verde);transition:.4s}.newen{font-weight:800;color:var(--verde)}.feedback{display:none;padding:18px;margin-top:18px;border-radius:22px}.feedback.show{display:block}.feedback.ok{background:#e0eddd;color:#294f34}.feedback.bad{background:#f5ded8;color:#84382d}.feedback strong{font-size:22px}.pairs{display:grid;grid-template-columns:1fr 1fr;gap:10px}.pair.selected{border-color:var(--verde)}.pair.done{opacity:.35;pointer-events:none}.hidden{display:none!important}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}.stat{padding:18px 8px;background:#fffaf1;border-radius:20px;text-align:center;border:1px solid var(--borde)}.stat b{display:block;font-size:27px;color:var(--verde)}.lesson-grid{display:grid;gap:10px;margin:14px 0}.lesson-btn{text-align:left}.lesson-btn small{display:block;font-weight:normal;margin-top:4px;color:#675f54}.lesson-btn.locked{opacity:.5}.pattern{height:15px;margin-top:auto;opacity:.7;background:linear-gradient(45deg,transparent 40%,#46392d 41% 59%,transparent 60%) 0 0/28px 28px,linear-gradient(-45deg,transparent 40%,#a65f3f 41% 59%,transparent 60%) 0 0/28px 28px}.big-number{font-size:72px;font-weight:900;color:var(--verde);margin:15px 0}</style></head><body><div class="app"><section class="screen active" id="intro"><div class="center"><span class="badge">Kimün Mapuzungun</span><h1>¡Mari mari!</h1></div><div class="treiles"><img src="treile_macho-1.png" class="treile"><img src="treile_hembra-1.png" class="treile"></div><div class="dialogo"><div class="mapuzungun">Mari mari peñi</div><div class="traduccion">Saludo del Treile macho.</div></div><div class="dialogo"><div class="mapuzungun">Mari mari lamgen</div><div class="traduccion">Saludo de la Treile hembra.</div></div><p class="center">Aprende paso a paso con las lecciones de Kimün Mapuzungun.</p><button class="btn primary" onclick="abrirRuta()">COMENZAR</button><div class="pattern"></div></section><section class="screen" id="ruta"><div class="center"><span class="badge">Ruta de aprendizaje</span><h1>Lecciones</h1><p>Avanza una lección a la vez.</p></div><div id="listaLecciones" class="lesson-grid"></div><div class="pattern"></div></section><section class="screen" id="actividad"><div class="topbar"><div class="progress"><div class="progress-fill" id="progressFill"></div></div><div class="newen">🌿 <span id="newenValor">100</span></div></div><span class="stage-title" id="etapaNombre"></span><h1 id="pregunta"></h1><div class="card center"><div id="contenidoPrincipal"></div><div id="opciones"></div><div id="pares" class="pairs hidden"></div></div><div class="feedback" id="feedback"><strong id="feedbackTitulo"></strong><p id="feedbackTexto"></p><button class="btn primary" id="continuarBtn" onclick="continuar()">CONTINUAR</button></div><div class="pattern"></div></section><section class="screen center" id="final"><span class="badge" id="finalBadge">Lección completada</span><h1>¡Küme!</h1><div class="treiles"><img src="treile_macho-1.png" class="treile"><img src="treile_hembra-1.png" class="treile"></div><h2 id="finalTitulo">Lección superada</h2><div class="stats"><div class="stat"><b id="statCorrectas">0</b>Correctas</div><div class="stat"><b id="statErrores">0</b>Errores</div><div class="stat"><b id="statTiempo">0:00</b>Tiempo</div><div class="stat"><b id="statPuntaje">0</b>Puntaje</div></div><button class="btn primary" id="botonFinal" onclick="accionFinal()">SIGUIENTE LECCIÓN</button><button class="btn" onclick="abrirRuta()">VER LECCIONES</button><div class="pattern"></div></section></div><script>const lecciones=[{id:"chaliwun",titulo:"1. Chaliwün",sub:"Saludos",actividades:[{tipo:"opcion",pregunta:"¿Qué significa?",texto:"Mari mari",opciones:[["Hola / saludo",true],["Gracias",false],["Hasta luego",false]]},{tipo:"opcion",pregunta:"¿Qué significa?",texto:"Mari mari peñi",opciones:[["Hola hermano",true],["Hola hermana",false],["¿Cómo estás?",false]]},{tipo:"opcion",pregunta:"¿Qué significa?",texto:"Mari mari lamgen",opciones:[["Hola hermana",true],["Hola hermano",false],["Estoy bien",false]]},{tipo:"opcion",pregunta:"¿Qué significa esta expresión?",texto:"Chumleymi am?",opciones:[["¿Cómo estás?",true],["¿Cómo te llamas?",false],["¿Dónde vives?",false]]},{tipo:"opcion",pregunta:"Selecciona la respuesta correcta",texto:"Iñche kümelkalen.",opciones:[["Estoy bien",true],["Hasta luego",false],["Gracias",false]]},{tipo:"pares",pregunta:"Une cada palabra con su significado",pares:[["Mari mari","Hola / saludo"],["Peñi","Hermano"],["Lamgen","Hermana"]]}]},{id:"conversacion",titulo:"2. Conversación",sub:"Procedencia y respuesta",actividades:[{tipo:"opcion",pregunta:"¿Qué significa esta pregunta?",texto:"Chew püle müley tami ruka?",opciones:[["¿De dónde vienes?",true],["¿Cuántos años tienes?",false],["¿Cómo estás?",false]]},{tipo:"opcion",pregunta:"Selecciona la traducción",texto:"Pukon püle.",opciones:[["De Pucón",true],["De Villarrica",false],["Voy a Pucón",false]]},{tipo:"opcion",pregunta:"¿Qué significa?",texto:"Eymi kay?",opciones:[["¿Y tú?",true],["¿Quién eres?",false],["¿Estás bien?",false]]},{tipo:"opcion",pregunta:"Selecciona la traducción",texto:"Villarrika püle.",opciones:[["De Villarrica",true],["De Pucón",false],["Voy a Villarrica",false]]}]},{id:"numeros",titulo:"3. Números",sub:"Kiñe, epu, küla, meli y más",actividades:[{tipo:"pares",pregunta:"Une cada número",pares:[["Kiñe","1"],["Epu","2"],["Küla","3"],["Meli","4"]]},{tipo:"opcion",pregunta:"¿Qué número es?",texto:"Mari kiñe",numero:"11",opciones:[["11",true],["12",false],["15",false]]},{tipo:"opcion",pregunta:"¿Qué número es?",texto:"Mari regle",numero:"17",opciones:[["17",true],["14",false],["19",false]]},{tipo:"opcion",pregunta:"¿Qué número es?",texto:"Epu mari",numero:"20",opciones:[["20",true],["12",false],["10",false]]}]},{id:"edad",titulo:"4. Edad",sub:"Tunten txipantu nieymi?",actividades:[{tipo:"opcion",pregunta:"¿Qué significa esta pregunta?",texto:"Tunten txipantu nieymi?",opciones:[["¿Cuántos años tienes?",true],["¿Dónde vives?",false],["¿Cómo te llamas?",false]]},{tipo:"edad",edad:11},{tipo:"edad",edad:14},{tipo:"edad",edad:17},{tipo:"edad",edad:20}]},{id:"reconocer",titulo:"5. Reconocer y preguntar",sub:"Tüfa / tüfey",actividades:[{tipo:"opcion",pregunta:"Selecciona la pregunta",texto:"Chem am ta tüfa?",opciones:[["¿Qué es esto?",true],["¿Qué es eso?",false],["¿Dónde está?",false]]},{tipo:"opcion",pregunta:"Selecciona la pregunta",texto:"Chem am ta tüfey?",opciones:[["¿Qué es eso?",true],["¿Qué es esto?",false],["¿Quién eres?",false]]}]},{id:"familia",titulo:"6. Familia",sub:"Próxima ampliación con contenido validado",actividades:[]},{id:"naturaleza",titulo:"7. Naturaleza",sub:"Próxima ampliación con contenido validado",actividades:[]},{id:"animales",titulo:"8. Animales",sub:"Próxima ampliación con contenido validado",actividades:[]},{id:"cuerpo",titulo:"9. Cuerpo",sub:"Próxima ampliación con contenido validado",actividades:[]},{id:"tiempo",titulo:"10. Tiempo y estaciones",sub:"Próxima ampliación con contenido validado",actividades:[]}];const numeros={10:"mari",11:"mari kiñe",12:"mari epu",13:"mari küla",14:"mari meli",15:"mari kechu",16:"mari kayu",17:"mari regle",18:"mari pura",19:"mari aylla",20:"epu mari"};let leccionActual=0,indiceActividad=0,newen=100,correctas=0,errores=0,inicio=0,parSeleccionado=null,paresCompletados=0;function pantalla(id){document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo(0,0)}function progresoGuardado(){return Number(localStorage.getItem('kimunLeccion')||0)}function abrirRuta(){pantalla('ruta');renderRuta()}function renderRuta(){const cont=document.getElementById('listaLecciones');cont.innerHTML='';const desbloqueada=progresoGuardado();lecciones.forEach((l,i)=>{const b=document.createElement('button');const vacia=l.actividades.length===0;const bloqueada=i>desbloqueada||vacia;b.className='btn lesson-btn'+(bloqueada?' locked':'');b.innerHTML=`${l.titulo}<small>${l.sub}${vacia?' · contenido preparado para incorporar':''}</small>`;b.disabled=bloqueada;b.onclick=()=>iniciarLeccion(i);cont.appendChild(b)})}function iniciarLeccion(i){leccionActual=i;indiceActividad=0;newen=100;correctas=0;errores=0;inicio=Date.now();pantalla('actividad');cargarActividad()}function cargarActividad(){parSeleccionado=null;paresCompletados=0;const a=lecciones[leccionActual].actividades[indiceActividad];document.getElementById('etapaNombre').textContent=lecciones[leccionActual].titulo;document.getElementById('pregunta').textContent=a.pregunta||'Selecciona la respuesta correcta';document.getElementById('feedback').className='feedback';document.getElementById('opciones').innerHTML='';document.getElementById('pares').innerHTML='';document.getElementById('pares').classList.add('hidden');const principal=document.getElementById('contenidoPrincipal');principal.innerHTML='';if(a.tipo==='opcion'){principal.innerHTML=`<div class="mapuzungun">${a.texto}</div>${a.numero?`<div class="big-number">${a.numero}</div>`:''}`;crearOpciones(a)}else if(a.tipo==='pares'){principal.innerHTML='<p>Selecciona primero una palabra y luego su pareja.</p>';crearPares(a)}else if(a.tipo==='edad')crearEdad(a);actualizarBarra();actualizarNewen()}function crearOpciones(a){const cont=document.getElementById('opciones');a.opciones.forEach(op=>{const b=document.createElement('button');b.className='btn';b.textContent=op[0];b.onclick=()=>responder(b,op[1],a);cont.appendChild(b)})}function responder(btn,correcta,a){document.querySelectorAll('#opciones .btn').forEach(x=>x.disabled=true);if(correcta){btn.classList.add('correct');correctas++;newen=Math.min(100,newen+3);mostrarFeedback(true,'¡Correcto!',a.traduccion||`La respuesta es: ${a.opciones.find(x=>x[1])[0]}`);sonidoCorrecto()}else{btn.classList.add('wrong');errores++;newen=Math.max(0,newen-10);mostrarFeedback(false,'Casi...',`La respuesta correcta es: ${a.opciones.find(x=>x[1])[0]}`);sonidoError()}actualizarNewen()}function crearEdad(a){const frase=`Iñche nien ${numeros[a.edad]} txipantu`;document.getElementById('contenidoPrincipal').innerHTML=`<div class="mapuzungun">Tunten txipantu nieymi?</div><div class="traduccion">¿Cuántos años tienes?</div><div class="big-number">${a.edad}</div><p>Selecciona cómo responderías.</p>`;let d=[Math.max(10,a.edad-1),Math.min(20,a.edad+1)].filter((v,i,s)=>v!==a.edad&&s.indexOf(v)===i);while(d.length<2){let r=10+Math.floor(Math.random()*11);if(r!==a.edad&&!d.includes(r))d.push(r)}let respuestas=[[frase,true],[`Iñche nien ${numeros[d[0]]} txipantu`,false],[`Iñche nien ${numeros[d[1]]} txipantu`,false]].sort(()=>Math.random()-.5);crearOpciones({opciones:respuestas,traduccion:`Yo tengo ${a.edad} años.`})}function crearPares(a){const cont=document.getElementById('pares');cont.classList.remove('hidden');let items=[];a.pares.forEach((p,i)=>{items.push({texto:p[0],pareja:i,lado:'m'});items.push({texto:p[1],pareja:i,lado:'e'})});items.sort(()=>Math.random()-.5);items.forEach(item=>{const b=document.createElement('button');b.className='btn pair';b.textContent=item.texto;b.dataset.pareja=item.pareja;b.dataset.lado=item.lado;b.onclick=()=>seleccionarPar(b,a);cont.appendChild(b)})}function seleccionarPar(btn,a){if(btn.classList.contains('done'))return;if(!parSeleccionado){parSeleccionado=btn;btn.classList.add('selected');return}if(parSeleccionado===btn){btn.classList.remove('selected');parSeleccionado=null;return}const ok=parSeleccionado.dataset.pareja===btn.dataset.pareja&&parSeleccionado.dataset.lado!==btn.dataset.lado;if(ok){parSeleccionado.classList.remove('selected');parSeleccionado.classList.add('done');btn.classList.add('done');paresCompletados++;correctas++;sonidoCorrecto();parSeleccionado=null;if(paresCompletados===a.pares.length)mostrarFeedback(true,'¡Correcto!','Completaste todas las parejas.')}else{errores++;newen=Math.max(0,newen-5);const ant=parSeleccionado;ant.classList.add('wrong');btn.classList.add('wrong');sonidoError();setTimeout(()=>{ant.classList.remove('wrong','selected');btn.classList.remove('wrong')},600);parSeleccionado=null}actualizarNewen()}function mostrarFeedback(ok,titulo,texto){const f=document.getElementById('feedback');f.className='feedback show '+(ok?'ok':'bad');document.getElementById('feedbackTitulo').textContent=titulo;document.getElementById('feedbackTexto').textContent=texto}function continuar(){indiceActividad++;if(indiceActividad>=lecciones[leccionActual].actividades.length){terminar();return}cargarActividad()}function actualizarBarra(){const total=lecciones[leccionActual].actividades.length;document.getElementById('progressFill').style.width=((indiceActividad+1)/total*100)+'%'}function actualizarNewen(){document.getElementById('newenValor').textContent=newen}function terminar(){pantalla('final');const s=Math.floor((Date.now()-inicio)/1000),min=Math.floor(s/60),seg=s%60,puntaje=Math.max(0,correctas*100-errores*20);document.getElementById('finalBadge').textContent=lecciones[leccionActual].titulo+' completada';document.getElementById('statCorrectas').textContent=correctas;document.getElementById('statErrores').textContent=errores;document.getElementById('statTiempo').textContent=`${min}:${String(seg).padStart(2,'0')}`;document.getElementById('statPuntaje').textContent=puntaje;const boton=document.getElementById('botonFinal');if(errores===0){document.getElementById('finalTitulo').textContent='Lección superada';boton.textContent=leccionActual<lecciones.length-1?'SIGUIENTE LECCIÓN':'VER LECCIONES';localStorage.setItem('kimunLeccion',Math.max(progresoGuardado(),leccionActual+1))}else{document.getElementById('finalTitulo').textContent='Practica nuevamente';boton.textContent='VOLVER A PRACTICAR'}sonidoCelebracion()}function accionFinal(){if(errores>0){iniciarLeccion(leccionActual);return}let siguiente=leccionActual+1;while(siguiente<lecciones.length&&lecciones[siguiente].actividades.length===0)siguiente++;if(siguiente<lecciones.length)iniciarLeccion(siguiente);else abrirRuta()}function tono(f,d,v=.06){try{const C=window.AudioContext||window.webkitAudioContext,c=new C(),o=c.createOscillator(),g=c.createGain();o.frequency.value=f;g.gain.value=v;o.connect(g);g.connect(c.destination);o.start();g.gain.exponentialRampToValueAtTime(.001,c.currentTime+d);o.stop(c.currentTime+d)}catch(e){}}function sonidoCorrecto(){tono(620,.12);setTimeout(()=>tono(820,.16),100)}function sonidoError(){tono(220,.18);setTimeout(()=>tono(170,.2),100)}function sonidoCelebracion(){tono(520,.12);setTimeout(()=>tono(660,.12),120);setTimeout(()=>tono(820,.25),240)}</script></body></html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Kimün Mapuzugun</title>
+<style>
+:root{
+  --verde:#365c43;--verde2:#59725b;--crema:#f6efe2;--crema2:#ede2cf;
+  --tierra:#b76743;--rojo:#b64c3c;--texto:#25271f;--borde:#d9cdb9;
+  --blanco:#fffdf8;--oro:#d6a84b;--bien:#2e7d4f;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#dfe4d7;color:var(--texto)}
+button{font:inherit}
+.app{max-width:480px;min-height:100vh;margin:auto;background:linear-gradient(180deg,#faf4e9,#f3eadb);position:relative;overflow-x:hidden}
+.topbar{position:sticky;top:0;z-index:20;background:#fffdf8ee;backdrop-filter:blur(8px);padding:10px 14px;border-bottom:1px solid var(--borde)}
+.toprow{display:flex;align-items:center;gap:10px}
+.brand{font-weight:900;color:var(--verde);flex:1}
+.newen{font-weight:900;background:#fbe8e4;color:var(--rojo);padding:7px 10px;border-radius:999px;white-space:nowrap}
+.progress{height:9px;background:#e7ddcd;border-radius:99px;overflow:hidden;margin-top:8px}
+.progress>div{height:100%;width:0;background:linear-gradient(90deg,var(--verde2),var(--verde));transition:.35s}
+.screen{display:none;padding:18px 16px 100px;min-height:calc(100vh - 70px)}
+.screen.active{display:block}
+.hero{text-align:center;padding:10px 0 18px}
+.hero h1{font-size:30px;margin:8px 0 4px;color:var(--verde)}
+.hero p{margin:0;color:#665f55}
+.treiles{display:flex;justify-content:center;align-items:flex-end;height:225px;gap:0;margin:5px 0}
+.treil{max-height:215px;max-width:52%;object-fit:contain;filter:drop-shadow(0 10px 10px #0002);transform-origin:50% 90%}
+.treil.male{animation:idleM 3.4s ease-in-out infinite}
+.treil.female{animation:idleF 3.1s ease-in-out infinite}
+@keyframes idleM{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-6px) rotate(1deg)}}
+@keyframes idleF{0%,100%{transform:translateY(0) rotate(1deg)}50%{transform:translateY(-7px) rotate(-1deg)}}
+.dancing .male{animation:danceM .55s ease-in-out infinite}
+.dancing .female{animation:danceF .55s ease-in-out infinite}
+@keyframes danceM{0%,100%{transform:translate(-3px,0) rotate(-5deg) scale(1)}50%{transform:translate(5px,-16px) rotate(7deg) scale(1.03)}}
+@keyframes danceF{0%,100%{transform:translate(4px,-8px) rotate(7deg) scale(1.02)}50%{transform:translate(-5px,-18px) rotate(-7deg) scale(1.04)}}
+.primary,.secondary,.choice,.lesson-card{width:100%;border:0;border-radius:16px;cursor:pointer;transition:.15s}
+.primary{background:var(--verde);color:white;padding:15px 18px;font-weight:800;box-shadow:0 5px 0 #274634}
+.primary:active{transform:translateY(3px);box-shadow:0 2px 0 #274634}
+.secondary{background:var(--crema2);color:var(--texto);padding:13px 16px;font-weight:800;border:1px solid var(--borde)}
+.section-title{margin:4px 0 14px;color:var(--verde)}
+.lesson-list{display:grid;gap:11px}
+.lesson-card{background:var(--blanco);border:1px solid var(--borde);padding:14px;text-align:left;display:flex;gap:12px;align-items:center;box-shadow:0 3px 10px #0000000c}
+.lesson-card.locked{opacity:.52}
+.badge{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--verde);color:white;font-weight:900;flex:none}
+.lesson-card.locked .badge{background:#8f8b83}
+.lesson-card strong{display:block;font-size:15px}
+.lesson-card small{display:block;color:#71695f;margin-top:3px}
+.exercise-head{text-align:center;margin:8px 0 16px}
+.exercise-head h2{font-size:20px;margin:6px 0;color:var(--verde)}
+.exercise-head p{margin:0;color:#766d62}
+.card{background:var(--blanco);border:1px solid var(--borde);border-radius:20px;padding:17px;box-shadow:0 7px 20px #0000000c}
+.prompt{text-align:center;font-size:23px;font-weight:900;margin:7px 0 16px;line-height:1.25}
+.big-number{text-align:center;font-size:70px;font-weight:900;color:var(--tierra);margin:4px 0}
+.choices{display:grid;gap:10px}
+.choice{padding:14px 12px;background:white;border:2px solid var(--borde);font-weight:800;color:var(--texto)}
+.choice:hover,.choice.selected{border-color:var(--verde2);background:#edf4ed}
+.choice.correct{border-color:var(--bien);background:#e7f5ec}
+.choice.wrong{border-color:var(--rojo);background:#fae9e5}
+.audio-btn{display:block;margin:0 auto 14px;border:0;border-radius:999px;padding:11px 18px;background:#e8efe8;color:var(--verde);font-weight:900;cursor:pointer}
+.feedback{display:none;margin-top:14px;border-radius:15px;padding:13px;font-weight:800}
+.feedback.show{display:block}
+.feedback.good{background:#e4f3e9;color:#215d39}
+.feedback.bad{background:#f8e6e1;color:#8b3329}
+.feedback .translation{font-weight:600;margin-top:4px;color:#554e46}
+.life-toast{position:fixed;z-index:60;top:82px;left:50%;transform:translate(-50%,-15px);opacity:0;background:#a83d32;color:white;padding:10px 15px;border-radius:999px;font-weight:900;pointer-events:none;transition:.25s}
+.life-toast.show{opacity:1;transform:translate(-50%,0)}
+.pair-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.pair-btn{min-height:52px;border:2px solid var(--borde);border-radius:13px;background:white;font-weight:800;padding:8px}
+.pair-btn.selected{border-color:var(--oro);background:#fff6dc}
+.pair-btn.matched{visibility:hidden}
+.sentence-bank,.sentence-built{display:flex;gap:8px;flex-wrap:wrap;min-height:55px;padding:9px;border-radius:14px}
+.sentence-built{background:#f1eadf;margin-bottom:12px}
+.word{border:1px solid var(--borde);background:white;border-radius:11px;padding:10px 12px;font-weight:800}
+.modal{position:fixed;inset:0;z-index:100;background:#1d211ddc;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.show{display:flex}
+.modal-box{width:min(440px,100%);background:var(--blanco);border-radius:24px;padding:20px;text-align:center;max-height:92vh;overflow:auto}
+.modal-box h2{color:var(--verde);margin:5px 0}
+.modal-box p{line-height:1.4}
+.dance-stage{height:270px;display:flex;align-items:flex-end;justify-content:center;overflow:hidden}
+.dance-stage img{max-width:54%;max-height:260px;object-fit:contain;transform-origin:50% 90%}
+.support{margin-top:16px;padding:13px;border:1px dashed #bcae99;border-radius:14px;color:#655c50;font-size:14px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0}
+.stat{background:#f2eadc;border-radius:13px;padding:10px;text-align:center}
+.stat b{display:block;font-size:20px;color:var(--verde)}
+.bottom-actions{display:flex;gap:9px;margin-top:14px}
+.hidden{display:none!important}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="toprow">
+      <div class="brand">KIMÜN MAPUZUGUN</div>
+      <div class="newen" id="newenLabel">❤️ Newen 20</div>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+  </header>
+
+  <main id="home" class="screen active">
+    <div class="hero">
+      <div class="treiles" id="homeTreiles">
+        <img class="treil female" src="treile_hembra-1.png" alt="Treile hembra">
+        <img class="treil male" src="treile_macho-1.png" alt="Treile macho">
+      </div>
+      <h1>Kimün Mapuzugun</h1>
+      <p>Aprender escuchando, mirando y haciendo.</p>
+    </div>
+    <button class="primary" onclick="goLessons()">Comenzar</button>
+    <div class="support"><b>Apoyo opcional:</b> la gramática queda fuera del recorrido obligatorio. El aprendizaje principal es interactivo.</div>
+  </main>
+
+  <main id="lessons" class="screen">
+    <h2 class="section-title">Etapa 1 · 10 lecciones</h2>
+    <div class="stats">
+      <div class="stat"><b id="statDone">0</b><span>listas</span></div>
+      <div class="stat"><b id="statRight">0</b><span>aciertos</span></div>
+      <div class="stat"><b id="statWrong">0</b><span>errores</span></div>
+    </div>
+    <div id="lessonList" class="lesson-list"></div>
+    <div class="bottom-actions"><button class="secondary" onclick="showScreen('home')">Inicio</button></div>
+  </main>
+
+  <main id="exercise" class="screen">
+    <div class="exercise-head">
+      <small id="lessonMeta"></small>
+      <h2 id="exerciseTitle"></h2>
+      <p id="exerciseCounter"></p>
+    </div>
+    <div id="exerciseCard" class="card"></div>
+  </main>
+</div>
+
+<div id="lifeToast" class="life-toast">−1 Newen · te quedan 19</div>
+
+<div id="newenModal" class="modal">
+  <div class="modal-box">
+    <h2>Tu Newen llegó a 0</h2>
+    <p>¿Quieres recuperar tu Newen?</p>
+    <p>Al ver la celebración de los Treiles recuperarás tus <b>20 vidas</b>.</p>
+    <button class="primary" onclick="recoverNewen()">Recuperar mi Newen</button>
+  </div>
+</div>
+
+<div id="danceModal" class="modal">
+  <div class="modal-box">
+    <h2 id="danceTitle">¡A recuperar el Newen!</h2>
+    <div id="danceStage" class="dance-stage dancing">
+      <img class="female" src="treile_hembra-1.png" alt="">
+      <img class="male" src="treile_macho-1.png" alt="">
+    </div>
+    <p id="danceCountdown">Celebración · 12 segundos</p>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   KIMÜN MAPUZUGUN
+   - 20 Newen compartidos por TODA la etapa.
+   - No se reinician entre lecciones.
+   - Recuperación solo al llegar a 0.
+   - 10 lecciones; cada lección puede tener distinta cantidad de ejercicios.
+   - Error: -1 Newen y la pregunta fallada vuelve más adelante,
+     no inmediatamente.
+   - Sonidos distintos según acción.
+   ========================================================= */
+
+const IMG_MALE="treile_macho-1.png";
+const IMG_FEMALE="treile_hembra-1.png";
+const MAX_NEWEN=20;
+
+let state={
+  newen:MAX_NEWEN,
+  unlocked:1,
+  completed:[],
+  correct:0,
+  wrong:0,
+  lessonIndex:0,
+  queue:[],
+  qPos:0,
+  current:null,
+  locked:false
+};
+
+try{
+  const saved=JSON.parse(localStorage.getItem("kimunState")||"null");
+  if(saved) state={...state,...saved,newen:Math.max(0,Math.min(MAX_NEWEN,saved.newen??MAX_NEWEN))};
+}catch(e){}
+
+const LESSONS=[
+{
+ title:"Saludos y presentación", subtitle:"Chaliwün · preguntas y respuestas",
+ items:[
+  mc("¿Cómo te llamas?","Iney pigeymi am?",["Iney pigeymi am?","Chumleymi am?","Chew müleymi am?","Chem am ta tüfa?"]),
+  mc("Hola, hermano","Mari mari peñi",["Mari mari peñi","Fütxa kuyfi","Feley","Küme wünh"]),
+  mc("Hola, hermana","Mari mari lamgen",["Mari mari lamgen","Mari mari peñi","Kümelekan iñche","Fütxa kuyfi"]),
+  mc("Tanto tiempo","Fütxa kuyfi",["Fütxa kuyfi","Mari mari","Iñche ka","May"]),
+  mc("¿Cómo estás?","Chumleymi am?",["Chumleymi am?","Iney pigeymi am?","Chew müleymi am?","Azümfimi am?"]),
+  mc("Estoy bien","Kümelekan iñche",["Kümelekan iñche","Weñagkülen","Ürkülen","Illkülen"]),
+  mc("Yo también estoy bien","Iñche ka kümelekan",["Iñche ka kümelekan","Kümelekan iñche","May, küme wünhman","Fütxa kuyfi may"]),
+  mc("¿Amaneciste bien?","Küme wünhmaymi am?",["Küme wünhmaymi am?","Kümelekaymi am?","Chew müleymi am?","Chem pigey?"]),
+  mc("Sí, amanecí bien ¿y tú?","May, küme wünhman, eymi kay?",["May, küme wünhman, eymi kay?","Iñche ka küme wünhman","Kümelekan iñche","Fütxa kuyfi may"]),
+  mc("¿Y tú?","Eymi kay?",["Eymi kay?","Iney pigeymi am?","Chumleymi am?","Feley"]),
+  mc("¿De dónde vienes?","Chew püle müley tami ruka?",["Chew püle müley tami ruka?","Chew müleymi am?","Iney pigeymi am?","Tunten txipantu nieymi?"]),
+  mc("De Pucón","Pukon püle.",["Pukon püle.","Villarrika püle.","Iñche mülen mawiza mew","Eymi kay?"]),
+  mc("De Villarrica","Villarrika püle.",["Villarrika püle.","Pukon püle.","Iñche mülen mawiza mew","Eymi kay?"]),
+  listen("Escucha y selecciona","Mari mari",["Mari mari","Fütxa kuyfi","Feley","Ramtuchi"]),
+  listen("Escucha y selecciona","Kümelekan iñche",["Kümelekan iñche","Ürkülen","Illkülen","Weñagkülen"])
+ ]
+},
+{
+ title:"¿Cómo me siento?", subtitle:"Estados de ánimo",
+ items:[
+  mc("Estoy sana","Txemolen",["Txemolen","Kutxankülen","Ürkülen","Illkülen"]),
+  mc("Estoy alentado","Külfünkülen",["Külfünkülen","Ayiwkülen","Weñagkülen","Txemolen"]),
+  mc("Estoy enfermo","Kutxankülen",["Kutxankülen","Txemolen","Yafüluwkülen","Ayiwkülen"]),
+  mc("Estoy contenta","Ayiwkülen",["Ayiwkülen","Illkülen","Ürkülen","Weñagkülen"]),
+  mc("Estoy cansada","Ürkülen",["Ürkülen","Külfünkülen","Txemolen","Ayiwkülen"]),
+  mc("Estoy fortalecido","Yafüluwkülen",["Yafüluwkülen","Weñagkülen","Illkülen","Kutxankülen"]),
+  mc("Estoy triste","Weñagkülen",["Weñagkülen","Ayiwkülen","Külfünkülen","Txemolen"]),
+  mc("Estoy enojado","Illkülen",["Illkülen","Weñagkülen","Ürkülen","Ayiwkülen"]),
+  listen("Escucha y selecciona","Ayiwkülen",["Ayiwkülen","Ürkülen","Illkülen","Txemolen"]),
+  listen("Escucha y selecciona","Weñagkülen",["Weñagkülen","Külfünkülen","Yafüluwkülen","Kutxankülen"])
+ ]
+},
+{
+ title:"Casa y ubicación", subtitle:"Objetos · espacios · Chew",
+ items:[
+  mc("Celular","Mütxümwe",["Mütxümwe","Gütantu","Rakümwe","Rali"]),
+  mc("Cama","Gütantu",["Gütantu","Mütxümwe","Wütxü","Kutxal"]),
+  mc("Ventana","Azkintutxipawe",["Azkintutxipawe","Rakümwe","Kompawe","Wülgiñ"]),
+  mc("Puerta","Rakümwe",["Rakümwe","Azkintutxipawe","Rali","Yiwe"]),
+  mc("Dormitorio","Umawtuwe",["Umawtuwe","Iyaelwe","Txipatxipatuwe","Lila"]),
+  mc("Cocina","Iyaelwe",["Iyaelwe","Umawtuwe","Elkawe","Iratuwe"]),
+  mc("Baño","Txipatxipatuwe",["Txipatxipatuwe","Yafütupeyüm","Tukukawe","Rentxo"]),
+  mc("¿Dónde estás? / ¿Dónde vives?","Chew müleymi am?",["Chew müleymi am?","Iney pigeymi am?","Chem am ta tüfa?","Chumleymi am?"]),
+  mc("Yo estoy en el monte","Iñche mülen mawiza mew",["Iñche mülen mawiza mew","Iñche mülen ruka achawall mew","Iñche küzawken waria mew","Iñche ka kümelekan"]),
+  mc("Tu teléfono está en tu habitación.","Tami mütxümwe müley tami umawtuwe ruka mew.",["Tami mütxümwe müley tami umawtuwe ruka mew.","Iñche mülen mawiza mew","Chew müley tañi mütxümwe?","Tüfa ta mütxümwe"]),
+  mc("¿Qué es esto?","Chem am ta tüfa?",["Chem am ta tüfa?","Chem am ta tüfey?","Iney pigeymi am?","Chew müleymi am?"]),
+  mc("¿Qué es eso?","Chem am ta tüfey?",["Chem am ta tüfey?","Chem am ta tüfa?","Chumleymi am?","Tunten txipantu nieymi?"])
+ ]
+},
+{
+ title:"Locativos", subtitle:"¿Dónde están las cosas?",
+ items:[
+  mc("Arriba de","Wente",["Wente","Miñche","Furi","Ponwi"]),
+  mc("Abajo de","Miñche",["Miñche","Wente","Püñma","Wekun"]),
+  mc("Izquierda de","Wele püle",["Wele püle","Man püle","Ponwi","Furi"]),
+  mc("Derecha de","Man püle",["Man püle","Wele püle","Wente","Miñche"]),
+  mc("Dentro de","Ponwi",["Ponwi","Wekun","Püñma","Furi"]),
+  mc("Fuera de","Wekun",["Wekun","Ponwi","Wente","Miñche"]),
+  mc("Delante de","Püñma",["Püñma","Furi","Ponwi","Wekun"]),
+  mc("Detrás de","Furi",["Furi","Püñma","Wente","Miñche"]),
+  mc("Arriba de la casa","Wente ruka mew",["Wente ruka mew","Miñche ruka mew","Ponwi ruka mew","Furi ruka mew"]),
+  mc("El gato está sobre el árbol","Ti ñarki müley wente aliwen mew",["Ti ñarki müley wente aliwen mew","Iñche mülen mawiza mew","Wüywüley txewa","Güñüley ñarki"])
+ ]
+},
+{
+ title:"Números y edad", subtitle:"Reconocer primero · aplicar después",
+ items:[
+  pairs("Une los números", [["1","Kiñe"],["2","Epu"],["3","Küla"],["4","Meli"],["5","Kechu"]]),
+  pairs("Une los números", [["6","Kayu"],["7","Reqle"],["8","Pura"],["9","Aylla"],["10","Mari"]]),
+  mc("Once","Mari kiñe",["Mari kiñe","Mari epu","Mari kechu","Epu mari"]),
+  mc("Diecisiete","Mari regle",["Mari regle","Mari meli","Mari aylla","Epu mari"]),
+  mc("Veinte","Epu mari",["Epu mari","Mari epu","Mari kiñe","Mari regle"]),
+  mc("¿Cuántos años tienes?","Tunten txipantu nieymi?",["Tunten txipantu nieymi?","Chumleymi am?","Iney pigeymi am?","Chew müleymi am?"]),
+  age(1,"Kiñe",["Kiñe","Küla","Kechu","Pura"]),
+  age(2,"Epu",["Epu","Meli","Kayu","Mari"]),
+  age(3,"Küla",["Küla","Kiñe","Reqle","Aylla"]),
+  age(4,"Meli",["Meli","Epu","Kechu","Pura"]),
+  age(5,"Kechu",["Kechu","Kayu","Mari","Kiñe"]),
+  age(7,"Reqle",["Reqle","Pura","Küla","Meli"]),
+  age(8,"Pura",["Pura","Aylla","Epu","Kayu"]),
+  age(10,"Mari",["Mari","Kechu","Reqle","Kiñe"]),
+  age(11,"Mari kiñe",["Mari kiñe","Mari epu","Mari meli","Epu mari"]),
+  age(14,"Mari meli",["Mari meli","Mari kiñe","Mari regle","Epu mari"]),
+  age(17,"Mari regle",["Mari regle","Mari meli","Mari aylla","Epu mari"]),
+  age(20,"Epu mari",["Epu mari","Mari epu","Mari regle","Mari kiñe"])
+ ]
+},
+{
+ title:"Partes del cuerpo", subtitle:"Che kalül",
+ items:[
+  mc("Cara","Age",["Age","Logko","Ge","Yu"]),
+  mc("Mano","Kuwü",["Kuwü","Lipag","Luku","Nhamun"]),
+  mc("Cabeza","Logko",["Logko","Pelh","Ruku","Pilun"]),
+  mc("Ojo","Ge",["Ge","Yu","Wünh","Pilun"]),
+  mc("Oreja","Pilun",["Pilun","Ge","Yu","Pelh"]),
+  mc("Nariz","Yu",["Yu","Wünh","Ge","Ketxe"]),
+  mc("Boca","Wünh",["Wünh","Yu","Kewünh","Mellfü"]),
+  mc("Pies","Nhamun",["Nhamun","Kuwü","Chag","Luku"]),
+  mc("Rodilla","Luku",["Luku","Pallipalli","Rügkoy","Matxa"]),
+  mc("Pecho","Ruku",["Ruku","Pütxa","Pelh","Falke"])
+ ]
+},
+{
+ title:"Animales", subtitle:"Kulliñ · vocabulario de la guía",
+ items:[
+  mc("Gallina / pollo","Achawall",["Achawall","Patu","Txewa","Ñarki"]),
+  mc("Pez / pescado","Challwa",["Challwa","Yene","Kinchika","Williñ"]),
+  mc("Ratón","Zewü",["Zewü","Ñarki","Txewa","Fillküñ"]),
+  mc("Serpiente","Filu",["Filu","Fillküñ","Llügki","Llalliñ"]),
+  mc("Caballo","Kawell",["Kawell","Waka","Weke","Ufiza"]),
+  mc("Gato","Ñarki",["Ñarki","Txewa","Zewü","Pagi"]),
+  mc("Perro","Txewa",["Txewa","Ñarki","Sañwe","Waka"]),
+  mc("Vaca","Waka",["Waka","Weke","Ufiza","Kawell"]),
+  mc("Ballena","Yene",["Yene","Challwa","Kinchika","Williñ"]),
+  mc("Queltehue","Txeqüll",["Txeqüll","Raki","Rere","Kanin"])
+ ]
+},
+{
+ title:"Comidas", subtitle:"Iyael · reconocer alimentos",
+ items:[
+  mc("Agua","Ko",["Ko","Mate","Muzay","Korü"]),
+  mc("Pan","Kofke",["Kofke","Kako","Mürke","Poñü"]),
+  mc("Carne","Ilo",["Ilo","Challwa","Kuram","Llogkañ"]),
+  mc("Pescado","Challwa",["Challwa","Ilo","Korü","Salaw"]),
+  mc("Sopa","Korü",["Korü","Ko","Kako","Mate"]),
+  mc("Huevos","Kuram",["Kuram","Poñü","Üwa","Awar"]),
+  mc("Papa","Poñü",["Poñü","Pegka","Zanawria","Sefolla"]),
+  mc("Ají","Txapi",["Txapi","Chazi","Unelün","Kochülwe"]),
+  mc("Choclo","Üwa",["Üwa","Kachilla","Kako","Zawe"]),
+  mc("Mate","Mate",["Mate","Ko","Muzay","Korü"])
+ ]
+},
+{
+ title:"Partes del día", subtitle:"Anhtü · reconocer momentos",
+ items:[
+  mc("Amanecer","Wünh",["Wünh","Liwen","Ragianhtü","Punh"]),
+  mc("La mañana","Liwen",["Liwen","Wünh","Naqanhtü","Konanhtü"]),
+  mc("Mediodía","Ragianhtü",["Ragianhtü","Naqanhtü","Ella punh","Ragipunh"]),
+  mc("Tarde","Naqanhtü",["Naqanhtü","Liwen","Punh","Wünh"]),
+  mc("Puesta del sol","Konanhtü",["Konanhtü","Ragianhtü","Wünh","Punh"]),
+  mc("Anochecer","Ella punh",["Ella punh","Konanhtü","Liwen","Ragipunh"]),
+  mc("La noche","Punh",["Punh","Liwen","Wünh","Naqanhtü"]),
+  mc("A medianoche","Ragipunh",["Ragipunh","Ragianhtü","Ella punh","Konanhtü"]),
+  mc("Antes del amanecer","Epe wünh",["Epe wünh","Wünh","Liwen","Alhüantü"]),
+  mc("Media mañana / después de las 10","Alhüantü",["Alhüantü","Ragianhtü","Naqanhtü","Punh"])
+ ]
+},
+{
+ title:"Traducir la oración", subtitle:"Ordena palabras y comprende el significado",
+ items:[
+  sentence("La oreja del gato",["Pilun","ñarki"],["Pilun","ñarki","Txewa","Kiñe"]),
+  sentence("Cerco de madera",["Mamüll","malal"],["Mamüll","malal","Ruka","Ko"]),
+  sentence("Saco de papas",["Saku","poñü"],["Saku","poñü","Kofke","Rali"]),
+  sentence("Dueño de casa",["Genh","ruka"],["Genh","ruka","Mew","Ñarki"]),
+  sentence("Pan dulce",["Kochü","kofke"],["Kochü","kofke","Ilo","Ko"]),
+  sentence("Dormitorio de la casa",["Umawtuwe","ruka"],["Umawtuwe","ruka","Lila","Wekun"]),
+  sentence("Arriba de la casa",["Wente","ruka","mew"],["Wente","ruka","mew","Furi"]),
+  sentence("Yo estoy en el monte",["Iñche","mülen","mawiza","mew"],["Iñche","mülen","mawiza","mew","waria"]),
+  sentence("El perro tiene sed",["Wüywüley","txewa"],["Wüywüley","txewa","ñarki","mew"]),
+  sentence("El gato tiene hambre",["Güñüley","ñarki"],["Güñüley","ñarki","txewa","wente"])
+ ]
+}
+];
+
+function mc(prompt,answer,options){return{type:"mc",prompt,answer,options,translation:prompt}}
+function listen(prompt,answer,options){return{type:"listen",prompt,answer,options,translation:answer}}
+function age(number,answer,options){return{type:"age",number,answer,options,translation:`Tengo ${number} años`}}
+function pairs(prompt,pairs){return{type:"pairs",prompt,pairs}}
+function sentence(spanish,answer,bank){return{type:"sentence",spanish,answer,bank,translation:spanish}}
+
+function save(){
+ localStorage.setItem("kimunState",JSON.stringify({
+  newen:state.newen,unlocked:state.unlocked,completed:state.completed,
+  correct:state.correct,wrong:state.wrong
+ }));
+}
+function showScreen(id){
+ document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
+ document.getElementById(id).classList.add("active");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+function goLessons(){renderLessons();showScreen("lessons");sound("nav")}
+function updateHUD(){
+ document.getElementById("newenLabel").textContent=`❤️ Newen ${state.newen}`;
+ document.getElementById("statDone").textContent=state.completed.length;
+ document.getElementById("statRight").textContent=state.correct;
+ document.getElementById("statWrong").textContent=state.wrong;
+}
+function renderLessons(){
+ updateHUD();
+ const list=document.getElementById("lessonList");list.innerHTML="";
+ LESSONS.forEach((l,i)=>{
+   const unlocked=(i+1)<=state.unlocked || state.completed.includes(i);
+   const b=document.createElement("button");
+   b.className="lesson-card"+(unlocked?"":" locked");
+   b.innerHTML=`<span class="badge">${state.completed.includes(i)?"✓":i+1}</span><span><strong>${l.title}</strong><small>${l.subtitle} · ${l.items.length} ejercicios</small></span>`;
+   b.onclick=()=>{sound(unlocked?"nav":"error"); if(unlocked) startLesson(i)};
+   list.appendChild(b);
+ });
+}
+let lessonStartedAt=0, lessonCorrectStart=0, lessonWrongStart=0;
+function startLesson(i){
+ lessonStartedAt=Date.now();
+ lessonCorrectStart=state.correct;
+ lessonWrongStart=state.wrong;
+ state.lessonIndex=i;
+ state.queue=LESSONS[i].items.map((_,idx)=>idx);
+ state.qPos=0; state.current=null; state.locked=false;
+ showScreen("exercise"); nextExercise();
+}
+function nextExercise(){
+ state.locked=false;
+ if(state.qPos>=state.queue.length){finishLesson();return}
+ const li=LESSONS[state.lessonIndex];
+ const idx=state.queue[state.qPos];
+ state.current={idx,item:li.items[idx]};
+ document.getElementById("lessonMeta").textContent=`Lección ${state.lessonIndex+1} de 10`;
+ document.getElementById("exerciseTitle").textContent=li.title;
+ const totalSteps=Math.max(1,state.queue.length);
+ document.getElementById("exerciseCounter").textContent=`Ejercicio ${Math.min(state.qPos+1,totalSteps)} de ${totalSteps} · ${li.subtitle}`;
+ document.getElementById("progressBar").style.width=`${Math.min(100,(state.qPos/totalSteps)*100)}%`;
+ renderItem(state.current.item);
+}
+function renderItem(it){
+ const c=document.getElementById("exerciseCard");
+ if(it.type==="mc"||it.type==="listen"||it.type==="age"){
+   let head="";
+   if(it.type==="listen") head=`<button class="audio-btn" onclick="speak('${esc(it.answer)}')">🔊 Escuchar</button><div class="prompt">${it.prompt}</div>`;
+   else if(it.type==="age") head=`<div class="prompt">Completa la edad</div><div class="big-number">${it.number}</div><div class="prompt" style="font-size:19px">Iñche nien <u>_____</u> txipantu</div>`;
+   else head=`<div class="prompt">${it.prompt}</div>`;
+   c.innerHTML=head+`<div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join("")}</div><div id="feedback" class="feedback"></div>`;
+ }
+ if(it.type==="pairs") renderPairs(it,c);
+ if(it.type==="sentence") renderSentence(it,c);
+}
+function choose(btn,value){
+ if(state.locked)return;
+ const it=state.current.item;
+ document.querySelectorAll(".choice").forEach(x=>x.disabled=true);
+ if(value===it.answer){
+   btn.classList.add("correct"); state.correct++; sound("correct");
+   feedback(true,it.answer,it.translation);
+   state.locked=true; save();
+   setTimeout(()=>{state.qPos++;nextExercise()},1200);
+ }else{
+   btn.classList.add("wrong"); state.wrong++; sound("wrong"); loseNewen();
+   feedback(false,`Correcto: ${it.answer}`,it.translation);
+   state.locked=true;
+   requeueCurrent();
+   save();
+   if(state.newen>0)setTimeout(()=>{state.qPos++;nextExercise()},1450);
+ }
+}
+function feedback(ok,line,translation){
+ const f=document.getElementById("feedback");
+ f.className="feedback show "+(ok?"good":"bad");
+ f.innerHTML=`${ok?"✓ ¡Küme zugun!":"✕ Inténtalo más adelante"}<div>${line}</div>${translation?`<div class="translation">${translation}</div>`:""}`;
+}
+function requeueCurrent(){
+ const idx=state.current.idx;
+ const future=state.queue.slice(state.qPos+1);
+ if(!future.includes(idx)){
+   const insertAt=Math.min(state.queue.length, state.qPos+3+Math.floor(Math.random()*3));
+   state.queue.splice(insertAt,0,idx);
+ }
+}
+function loseNewen(){
+ state.newen=Math.max(0,state.newen-1);updateHUD();
+ const t=document.getElementById("lifeToast");
+ t.textContent=`−1 Newen · te quedan ${state.newen}`;
+ t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1100);
+ if(state.newen===0)setTimeout(()=>document.getElementById("newenModal").classList.add("show"),700);
+}
+function renderPairs(it,c){
+ let left=shuffle(it.pairs.map((p,i)=>({text:p[0],id:i})));
+ let right=shuffle(it.pairs.map((p,i)=>({text:p[1],id:i})));
+ c.innerHTML=`<div class="prompt">${it.prompt}</div><div class="pair-grid" id="pairGrid"></div><div id="feedback" class="feedback"></div>`;
+ const g=document.getElementById("pairGrid");let sel=null,matched=0;
+ const make=(x,side)=>{
+  const b=document.createElement("button");b.className="pair-btn";b.textContent=x.text;b.dataset.id=x.id;b.dataset.side=side;
+  b.onclick=()=>{
+   if(b.classList.contains("matched"))return;sound("select");
+   if(!sel){sel=b;b.classList.add("selected");return}
+   if(sel.dataset.side===side){sel.classList.remove("selected");sel=b;b.classList.add("selected");return}
+   if(sel.dataset.id===b.dataset.id){
+    const old=sel; old.classList.remove("selected"); old.classList.add("matched"); b.classList.add("matched"); sel=null;matched++;sound("correct");
+    if(matched===it.pairs.length){state.correct++;feedback(true,"¡Pares completos!","Reconociste correctamente los números.");save();setTimeout(()=>{state.qPos++;nextExercise()},1000)}
+   }else{
+    const old=sel;old.classList.remove("selected");sel=null;state.wrong++;sound("wrong");loseNewen();requeueCurrent();save();
+    if(state.newen>0) setTimeout(()=>{state.qPos++;nextExercise()},900);
+   }
+  };return b;
+ };
+ left.forEach((x,i)=>{g.appendChild(make(x,"L"));g.appendChild(make(right[i],"R"))});
+}
+function renderSentence(it,c){
+ let built=[];
+ c.innerHTML=`<div class="prompt">Traduce la oración</div><div style="text-align:center;margin-bottom:12px"><b>${it.spanish}</b></div><div class="sentence-built" id="built"></div><div class="sentence-bank" id="bank"></div><button class="primary" style="margin-top:12px" id="checkSentence">Comprobar</button><div id="feedback" class="feedback"></div>`;
+ const bank=document.getElementById("bank"), builtEl=document.getElementById("built");
+ shuffle([...it.bank]).forEach((w,n)=>{
+  const b=document.createElement("button");b.className="word";b.textContent=w;
+  b.onclick=()=>{sound("select");built.push({w,b});b.disabled=true;b.style.opacity=.35;renderBuilt()};
+  bank.appendChild(b);
+ });
+ function renderBuilt(){
+  builtEl.innerHTML="";
+  built.forEach((x,i)=>{const b=document.createElement("button");b.className="word";b.textContent=x.w;b.onclick=()=>{sound("select");x.b.disabled=false;x.b.style.opacity=1;built.splice(i,1);renderBuilt()};builtEl.appendChild(b)});
+ }
+ document.getElementById("checkSentence").onclick=()=>{
+  if(state.locked)return;
+  const ok=built.map(x=>x.w).join(" ")===it.answer.join(" ");
+  if(ok){state.correct++;sound("correct");feedback(true,it.answer.join(" "),it.translation);state.locked=true;save();setTimeout(()=>{state.qPos++;nextExercise()},1300)}
+  else{state.wrong++;sound("wrong");loseNewen();feedback(false,"Orden incorrecto",`La respuesta correcta aparecerá cuando vuelva más adelante.`);state.locked=true;requeueCurrent();save();if(state.newen>0)setTimeout(()=>{state.qPos++;nextExercise()},1400)}
+ };
+}
+function finishLesson(){
+ const i=state.lessonIndex;
+ if(!state.completed.includes(i))state.completed.push(i);
+ state.unlocked=Math.max(state.unlocked,Math.min(10,i+2));
+ document.getElementById("progressBar").style.width="100%";
+ const elapsed=Math.max(0,Math.floor((Date.now()-lessonStartedAt)/1000));
+ const min=Math.floor(elapsed/60), sec=elapsed%60;
+ const lessonCorrect=Math.max(0,state.correct-lessonCorrectStart);
+ const lessonWrong=Math.max(0,state.wrong-lessonWrongStart);
+ const score=Math.max(0,lessonCorrect*100-lessonWrong*20);
+ save(); sound("finish");
+ const c=document.getElementById("exerciseCard");
+ c.innerHTML=`<div style="text-align:center"><div style="font-size:55px">👏</div><h2 style="color:var(--verde)">¡Küme zugun!</h2><p>Completaste la lección ${i+1}.</p><div class="stats" style="grid-template-columns:repeat(2,1fr);margin:16px 0"><div class="stat"><b>${lessonCorrect}</b><span>correctas</span></div><div class="stat"><b>${lessonWrong}</b><span>errores</span></div><div class="stat"><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo</span></div><div class="stat"><b>${score}</b><span>puntaje</span></div></div><p>Tu Newen continúa para las siguientes lecciones: <b>${state.newen}/20</b></p><button class="primary" onclick="goLessons()">Continuar</button></div>`;
+ celebrate();
+}
+function celebrate(){
+ sound("cheer");
+ setTimeout(()=>sound("clap"),250);
+}
+function recoverNewen(){
+ document.getElementById("newenModal").classList.remove("show");
+ document.getElementById("danceModal").classList.add("show");
+ sound("dance");
+ let left=12;const label=document.getElementById("danceCountdown");
+ label.textContent=`Celebración · ${left} segundos`;
+ const timer=setInterval(()=>{
+  left--;label.textContent=`Celebración · ${left} segundos`;
+  if(left<=0){
+   clearInterval(timer);state.newen=MAX_NEWEN;save();updateHUD();sound("cheer");setTimeout(()=>sound("clap"),250);
+   document.getElementById("danceTitle").textContent="¡Küme zugun!";
+   label.innerHTML="Recuperaste tu <b>Newen · 20 vidas</b>";
+   setTimeout(()=>{
+    document.getElementById("danceModal").classList.remove("show");
+    document.getElementById("danceTitle").textContent="¡A recuperar el Newen!";
+    nextExercise();
+   },1800);
+  }
+ },1000);
+}
+
+/* Sonidos: cada interacción tiene identidad distinta.
+   Se generan con WebAudio, así la app funciona sin MP3 externos. */
+let AC=null;
+function ctx(){return AC||(AC=new (window.AudioContext||window.webkitAudioContext)())}
+function tone(freq,dur,type="sine",gain=.045,delay=0){
+ try{
+  const a=ctx(),o=a.createOscillator(),g=a.createGain(),t=a.currentTime+delay;
+  o.type=type;o.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(.0001,t);
+  g.gain.exponentialRampToValueAtTime(gain,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+  o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+dur+.03);
+ }catch(e){}
+}
+function sound(kind){
+ if(kind==="select"){tone(440,.07,"sine",.035)}
+ if(kind==="nav"){tone(330,.07,"triangle",.035);tone(520,.09,"triangle",.03,.06)}
+ if(kind==="correct"){tone(523,.09,"sine",.05);tone(659,.10,"sine",.05,.08);tone(784,.15,"sine",.05,.16)}
+ if(kind==="wrong"){tone(190,.16,"sawtooth",.035);tone(145,.20,"sawtooth",.025,.12)}
+ if(kind==="error"){tone(220,.09,"square",.025)}
+ if(kind==="finish"){tone(392,.1,"triangle",.05);tone(523,.1,"triangle",.05,.1);tone(659,.12,"triangle",.05,.2);tone(784,.2,"triangle",.05,.3)}
+ if(kind==="cheer"){tone(660,.12,"triangle",.035);tone(880,.16,"triangle",.04,.1);tone(990,.2,"triangle",.035,.22)}
+ if(kind==="clap"){for(let i=0;i<6;i++)tone(90+Math.random()*90,.045,"square",.025,i*.08)}
+ if(kind==="dance"){for(let i=0;i<24;i++){tone(i%4===0?220:330,.08,"triangle",.025,i*.5)}}
+}
+function speak(text){
+ sound("select");
+ if("speechSynthesis" in window){
+   speechSynthesis.cancel();
+   const u=new SpeechSynthesisUtterance(text);
+   u.lang="es-CL";u.rate=.78;u.pitch=1;
+   speechSynthesis.speak(u);
+ }
+}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ")}
+
+updateHUD();renderLessons();
+</script>
+</body>
+</html>
