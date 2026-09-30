@@ -412,6 +412,210 @@ body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
  .body-learning{grid-template-columns:108px minmax(0,1fr);gap:8px}.body-word{font-size:13px}.body-figure{min-height:220px}
 }
 
+
+
+/* ===== CORRECCIÓN MARCO VISUAL · 30-09-2026 =====
+   Objetivo: cada actividad cabe completa en el viewport, sin scroll.
+   También corrige la etiqueta "Escuchar" que se montaba sobre títulos. */
+
+/* La etiqueta global antigua de audio provocaba texto superpuesto. */
+#exercise .audio-btn:after{display:none!important;content:none!important}
+
+/* Solo la pantalla de ejercicio queda bloqueada al tamaño visible. */
+.app.exercise-mode{
+  height:100vh;
+  height:100dvh;
+  min-height:0!important;
+  overflow:hidden!important;
+  display:flex;
+  flex-direction:column;
+}
+.app.exercise-mode .topbar{
+  position:relative!important;
+  top:auto!important;
+  flex:0 0 auto;
+  padding:6px 11px 6px!important;
+}
+.app.exercise-mode .toprow{min-height:26px}
+.app.exercise-mode .brand{font-size:clamp(11px,3.2vw,14px)}
+.app.exercise-mode .newen{font-size:clamp(10px,3vw,13px);padding:4px 8px}
+.app.exercise-mode .progress{height:5px;margin-top:4px}
+
+.app.exercise-mode #exercise.screen.active{
+  --ex-x:clamp(8px,2.6vw,12px);
+  flex:1 1 0;
+  min-height:0!important;
+  height:auto!important;
+  overflow:hidden!important;
+  display:grid!important;
+  grid-template-rows:auto auto minmax(0,1fr);
+  gap:clamp(4px,.65dvh,7px);
+  padding:clamp(5px,.75dvh,8px) var(--ex-x) max(5px,env(safe-area-inset-bottom))!important;
+}
+.app.exercise-mode #exercise.screen:before{display:none!important}
+.app.exercise-mode #exercise .back-button{
+  justify-self:start;
+  margin:0!important;
+  padding:5px 9px!important;
+  min-height:0!important;
+  font-size:clamp(10px,2.7vw,12px)!important;
+  line-height:1.05;
+}
+.app.exercise-mode #exercise .exercise-head{
+  margin:0!important;
+  padding:clamp(6px,.8dvh,9px) 10px!important;
+  border-radius:14px!important;
+}
+.app.exercise-mode #exercise .exercise-head:before{display:none!important}
+.app.exercise-mode #exercise .exercise-head small{font-size:clamp(9px,2.4vw,10px);line-height:1}
+.app.exercise-mode #exercise .exercise-head h2{font-size:clamp(15px,3.8vw,18px)!important;line-height:1.05;margin:2px 0!important}
+.app.exercise-mode #exercise .exercise-head p{font-size:clamp(9px,2.6vw,11px)!important;line-height:1.1;margin:2px 0 0!important}
+
+.app.exercise-mode #exerciseCard{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:0!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+  padding:clamp(7px,1dvh,11px)!important;
+  border-radius:18px!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:clamp(3px,.5dvh,6px);
+}
+.app.exercise-mode #exerciseCard .prompt{
+  flex:0 0 auto;
+  font-size:clamp(14px,3.8vw,19px)!important;
+  line-height:1.08!important;
+  margin:2px 0 clamp(4px,.6dvh,7px)!important;
+}
+.app.exercise-mode #exerciseCard .big-number{font-size:clamp(36px,7dvh,54px)!important;line-height:.95;margin:1px 0!important}
+.app.exercise-mode #exerciseCard .choices{
+  width:100%;
+  min-height:0;
+  gap:clamp(4px,.55dvh,6px)!important;
+}
+.app.exercise-mode #exerciseCard .choice{
+  min-width:0;
+  min-height:clamp(34px,5.2dvh,46px)!important;
+  padding:clamp(4px,.55dvh,7px) 5px!important;
+  font-size:clamp(11px,3vw,14px)!important;
+  line-height:1.05!important;
+  overflow-wrap:anywhere;
+  box-shadow:0 2px 0 #c7b89f!important;
+}
+.app.exercise-mode #exerciseCard .audio-btn{
+  width:clamp(42px,5.8dvh,52px)!important;
+  height:clamp(42px,5.8dvh,52px)!important;
+  min-width:0!important;min-height:0!important;
+  padding:0!important;
+  margin:0 auto clamp(3px,.5dvh,5px)!important;
+  font-size:clamp(17px,2.8dvh,22px)!important;
+  border-width:3px!important;
+}
+
+/* Números: compactos 4 x 2 y sin textos montados. */
+.app.exercise-mode #exerciseCard.number-quiz{justify-content:center}
+.app.exercise-mode #exerciseCard .number-hear{flex:0 0 auto;margin:0 0 clamp(3px,.5dvh,5px)!important;text-align:center}
+.app.exercise-mode #exerciseCard .number-hear .audio-btn{margin:0 auto 4px!important}
+.app.exercise-mode #exerciseCard .number-hear h3{font-size:clamp(14px,3.6vw,17px)!important;line-height:1.05!important;margin:2px 0!important;position:relative;z-index:1}
+.app.exercise-mode #exerciseCard .number-hear p{font-size:clamp(9px,2.5vw,11px)!important;line-height:1.05;margin:2px 0!important}
+.app.exercise-mode #exerciseCard.number-quiz .choices{
+  flex:0 1 auto;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.app.exercise-mode #exerciseCard.number-quiz .choice{
+  min-height:clamp(38px,5.7dvh,50px)!important;
+  font-size:clamp(19px,5vw,25px)!important;
+  padding:3px!important;
+}
+
+/* Unir pares: las diez tarjetas caben sin empujar la pantalla. */
+.app.exercise-mode #exerciseCard .pair-grid{
+  flex:1 1 0;
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(5,minmax(0,1fr));
+  gap:clamp(3px,.45dvh,5px)!important;
+}
+.app.exercise-mode #exerciseCard .pair-btn{
+  height:100%;min-height:0!important;
+  padding:3px 4px!important;
+  font-size:clamp(10px,2.8vw,13px)!important;
+  line-height:1!important;
+  border-radius:11px!important;
+  box-shadow:0 2px 0 #153c2d!important;
+}
+.app.exercise-mode #exerciseCard .pair-btn:before{display:none!important}
+
+/* Oraciones */
+.app.exercise-mode #exerciseCard .sentence-built,
+.app.exercise-mode #exerciseCard .sentence-bank{
+  min-height:clamp(32px,4.5dvh,40px)!important;
+  padding:4px!important;
+  gap:4px!important;
+  margin-bottom:4px!important;
+}
+.app.exercise-mode #exerciseCard .word{padding:5px 7px!important;font-size:clamp(10px,2.7vw,12px)!important;line-height:1!important}
+.app.exercise-mode #exerciseCard #checkSentence{margin-top:4px!important;padding:7px!important;font-size:12px!important}
+
+/* Cuerpo: dos columnas siempre, lista y figura reducidas. */
+.app.exercise-mode #exerciseCard .body-mode{flex:0 0 auto;margin:0 0 4px!important;gap:4px}
+.app.exercise-mode #exerciseCard .body-mode button{padding:5px!important;font-size:10px!important}
+.app.exercise-mode #exerciseCard .body-learning{
+  flex:1 1 0;min-height:0;overflow:hidden;
+  display:grid!important;
+  grid-template-columns:minmax(92px,.8fr) minmax(0,1.2fr)!important;
+  gap:5px!important;
+}
+.app.exercise-mode #exerciseCard .body-word-list{min-height:0;display:grid;grid-template-rows:repeat(10,minmax(0,1fr));gap:2px!important}
+.app.exercise-mode #exerciseCard .body-word{min-height:0!important;padding:1px 2px 1px 5px!important;font-size:clamp(8px,2.3vw,10px)!important;grid-template-columns:1fr 22px!important}
+.app.exercise-mode #exerciseCard .body-word button{width:21px!important;height:21px!important;font-size:9px!important}
+.app.exercise-mode #exerciseCard .body-learning>div:last-child{min-height:0;display:flex;flex-direction:column;gap:3px}
+.app.exercise-mode #exerciseCard .body-figure{flex:1 1 0;min-height:70px!important;height:auto!important}
+.app.exercise-mode #exerciseCard .body-person{font-size:clamp(55px,10dvh,88px)!important}
+.app.exercise-mode #exerciseCard .body-practice{flex:0 0 auto;margin:0!important;padding:4px!important}
+.app.exercise-mode #exerciseCard .body-practice strong{font-size:clamp(9px,2.5vw,11px)!important}
+.app.exercise-mode #exerciseCard .body-practice .audio-btn{width:30px!important;height:30px!important;font-size:12px!important;margin:2px auto!important}
+.app.exercise-mode #exerciseCard .body-practice .choice{min-height:25px!important;font-size:9px!important;padding:2px!important}
+
+/* Feedback flotante: no cambia la altura del ejercicio. */
+.app.exercise-mode #exerciseCard .feedback.show{
+  position:absolute!important;
+  left:7px;right:7px;bottom:7px;
+  z-index:30;
+  margin:0!important;
+  padding:6px 8px!important;
+  font-size:10px!important;
+  line-height:1.1!important;
+  box-shadow:0 6px 18px #0003;
+}
+
+/* Cierre de lección compacto. */
+.app.exercise-mode #exerciseCard .completion-card{width:100%;height:100%;min-height:0;overflow:hidden;padding:7px!important}
+.app.exercise-mode #exerciseCard .lesson-celebration{height:clamp(70px,12dvh,105px)!important;min-height:0!important;margin:0 0 3px!important}
+.app.exercise-mode #exerciseCard .completion-title{font-size:clamp(20px,5vw,25px)!important;margin:1px 0!important}
+.app.exercise-mode #exerciseCard .completion-sub{font-size:10px!important;margin:1px 0 4px!important}
+.app.exercise-mode #exerciseCard .completion-stats{gap:4px!important;margin:4px 0!important}
+.app.exercise-mode #exerciseCard .completion-stat{min-height:0!important;padding:5px!important}
+.app.exercise-mode #exerciseCard .nhewen-line{margin:4px 0!important;font-size:11px!important}
+.app.exercise-mode #exerciseCard .nhewen-meter{height:6px!important;margin-bottom:5px!important}
+
+@media(max-height:700px){
+  .app.exercise-mode .topbar{padding-top:4px!important;padding-bottom:4px!important}
+  .app.exercise-mode #exercise.screen.active{padding-top:4px!important;gap:3px!important}
+  .app.exercise-mode #exercise .back-button{padding:4px 8px!important;font-size:10px!important}
+  .app.exercise-mode #exercise .exercise-head{padding:5px 8px!important}
+  .app.exercise-mode #exercise .exercise-head p{display:none}
+  .app.exercise-mode #exerciseCard{padding:6px!important}
+  .app.exercise-mode #exerciseCard .choice{min-height:30px!important}
+  .app.exercise-mode #exerciseCard.number-quiz .choice{min-height:34px!important}
+}
+
 </style>
 </head>
 <body>
@@ -771,8 +975,11 @@ function showScreen(id){
  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
  document.getElementById(id).classList.add("active");
  const app=document.querySelector(".app");
- if(app) app.classList.toggle("home-mode",id==="home");
- window.scrollTo({top:0,behavior:"smooth"});
+ if(app){
+   app.classList.toggle("home-mode",id==="home");
+   app.classList.toggle("exercise-mode",id==="exercise");
+ }
+ window.scrollTo(0,0);
 }
 function backToHome(){
  save();
