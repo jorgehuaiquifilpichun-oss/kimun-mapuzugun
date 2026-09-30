@@ -1,18 +1,20 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Kimün Mapuzugun</title>
+<title>Kimün Mapuzugun · Base 30-09-2026</title>
+<meta name="kimun-build" content="base-2026-09-30-01">
 <style>
 :root{
-  --verde:#365c43;--verde2:#59725b;--crema:#f6efe2;--crema2:#ede2cf;
-  --tierra:#b76743;--rojo:#b64c3c;--texto:#25271f;--borde:#d9cdb9;
-  --blanco:#fffdf8;--oro:#d6a84b;--bien:#2e7d4f;
+  --verde:#4f6355;--verde2:#718275;--crema:#f3eee6;--crema2:#e8e0d4;
+  --tierra:#9b715e;--rojo:#9b5d55;--texto:#2d302b;--borde:#d4cbbf;
+  --blanco:#fffdf9;--oro:#b79a67;--bien:#4f745e;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#dfe4d7;color:var(--texto)}
+html,body{margin:0;min-height:100%;font-family:Arial,Helvetica,sans-serif;background:#e4e7e1;color:var(--texto)}
 button{font:inherit}
-.app{max-width:480px;min-height:100vh;margin:auto;background:linear-gradient(180deg,#faf4e9,#f3eadb);position:relative;overflow-x:hidden}
+.app{max-width:480px;min-height:100vh;margin:auto;background:linear-gradient(180deg,#f8f4ed,#eee8df);position:relative;overflow-x:hidden}
 .topbar{position:sticky;top:0;z-index:20;background:#fffdf8ee;backdrop-filter:blur(8px);padding:10px 14px;border-bottom:1px solid var(--borde)}
 .toprow{display:flex;align-items:center;gap:10px}
 .brand{font-weight:900;color:var(--verde);flex:1}
@@ -84,7 +86,68 @@ button{font:inherit}
 .stat{background:#f2eadc;border-radius:13px;padding:10px;text-align:center}
 .stat b{display:block;font-size:20px;color:var(--verde)}
 .bottom-actions{display:flex;gap:9px;margin-top:14px}
+.home-menu{display:grid;gap:10px;margin-top:12px}
+.home-menu .menu-btn{width:100%;border:1px solid var(--borde);background:#f8f4ed;color:var(--texto);padding:13px 14px;border-radius:15px;font-weight:800;text-align:left;cursor:pointer}
+.home-menu .menu-btn span{display:block;font-size:12px;font-weight:600;color:#766f66;margin-top:3px}
+.back-button{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--borde);background:#f5f0e8;color:var(--verde);padding:9px 12px;border-radius:999px;font-weight:900;cursor:pointer;margin-bottom:10px}
+.route-wrap{position:relative;min-height:1240px;border-radius:26px;overflow:hidden;border:1px solid #cfd3c9;background:
+  radial-gradient(circle at 16% 18%,#dce4d9 0 7%,transparent 8%),
+  radial-gradient(circle at 82% 30%,#dde5dc 0 8%,transparent 9%),
+  radial-gradient(circle at 22% 74%,#dbe4da 0 9%,transparent 10%),
+  linear-gradient(180deg,#e7ece4 0%,#dfe7dc 48%,#d8e1d4 100%);
+  box-shadow:inset 0 0 0 1px #ffffff80}
+.route-wrap:before{content:"";position:absolute;left:-12%;top:41%;width:128%;height:82px;border-radius:50%;background:#9bb7b9;transform:rotate(-9deg);opacity:.62}
+.route-wrap:after{content:"";position:absolute;left:-14%;top:44%;width:132%;height:34px;border-radius:50%;background:#c9dde0;transform:rotate(-9deg);opacity:.8}
+.route-line{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.route-line path{fill:none;stroke:#b6a88d;stroke-width:3.5;stroke-linecap:round;stroke-dasharray:3 3;opacity:.9}
+.route-node{position:absolute;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;border:4px solid #f8f4ed;background:var(--verde);color:white;display:grid;place-items:center;text-align:center;padding:7px;font-weight:900;font-size:12px;box-shadow:0 5px 0 #3f5145,0 9px 18px #0002;cursor:pointer;z-index:5}
+.route-node.done{background:#6f8274}
+.route-node.locked{background:#969a94;box-shadow:0 5px 0 #777b76,0 9px 18px #0001;opacity:.68}
+.route-node .n{display:block;font-size:20px;line-height:1}
+.route-node .t{display:block;margin-top:2px;line-height:1.05}
+.landmark{position:absolute;z-index:2;opacity:.86;pointer-events:none}
+.tree{width:0;height:0;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:42px solid #607361}
+.tree:after{content:"";position:absolute;width:5px;height:18px;background:#806a58;left:-2px;top:35px}
+.tree.small{transform:scale(.72)}
+.mountain{width:0;height:0;border-left:36px solid transparent;border-right:36px solid transparent;border-bottom:62px solid #7e8a82;opacity:.72}
+.mountain:after{content:"";position:absolute;left:-15px;top:21px;width:0;height:0;border-left:15px solid transparent;border-right:15px solid transparent;border-bottom:25px solid #eeeae3}
+.map-caption{font-size:13px;color:#6f6a62;text-align:center;margin:-5px 0 12px}
+.info-screen h2{color:var(--verde);margin-top:4px}
+.info-card{background:var(--blanco);border:1px solid var(--borde);border-radius:18px;padding:16px;line-height:1.5}
 .hidden{display:none!important}
+
+/* ===== Base consolidada 30-09-2026: recursos de apoyo ===== */
+.info-card.support-panel{padding:12px}
+.support-note{margin:2px 2px 12px;color:#6f675e;font-size:13px;line-height:1.35}
+.resource-list{display:grid;gap:9px}
+.resource-btn{width:100%;border:1px solid var(--borde);background:#f8f4ed;color:var(--texto);padding:12px 13px;border-radius:14px;font-weight:800;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.resource-btn small{display:block;font-weight:600;color:#766f66;margin-top:3px}
+.resource-btn .arrow{font-size:18px;color:var(--verde);flex:none}
+.grafemario-wrap{margin-top:0}
+.grafemario-head{margin:0 0 8px;text-align:center;color:var(--verde);font-size:16px;font-weight:900}
+.grafemario-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;align-items:start}
+.graf-col{border:1px solid var(--borde);border-radius:14px;overflow:hidden;background:#fff}
+.graf-col h3{font-size:12px;line-height:1.15;margin:0;padding:9px 5px;background:#eee7dd;text-align:center;color:#433f39;min-height:52px;display:grid;place-items:center}
+.graf-buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:5px;padding:7px}
+.graf-col.new .graf-buttons,.graf-col.inter .graf-buttons{grid-template-columns:1fr}
+.graf-btn{border:1px solid #d8d0c4;background:#fffdf9;border-radius:10px;min-height:42px;font-size:19px;font-weight:900;color:var(--verde);cursor:pointer}
+.graf-btn:active,.graf-btn.active{background:#e6eee7;border-color:var(--verde2);transform:scale(.98)}
+.graf-status{margin-top:10px;border-radius:13px;background:#f2eadc;padding:10px 12px;font-size:13px;min-height:44px}
+.graf-status b{color:var(--verde)}
+.graf-audio-note{font-size:11px;color:#7b7368;margin-top:8px;text-align:center}
+@media(max-width:360px){.grafemario-grid{gap:4px}.graf-col h3{font-size:10px}.graf-btn{font-size:17px;min-height:38px}.graf-buttons{gap:4px;padding:5px}}
+
+
+/* Integración 30-09-2026: estudio opcional, reanudación, historial y celebración */
+.number-study{margin-top:18px;border-top:1px solid var(--borde);padding-top:15px}
+.number-study h3{margin:0 0 5px;color:var(--verde);text-align:center}.number-study p{font-size:12px;color:#746b61;text-align:center;margin:0 0 10px}
+.number-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:6px}.number-row{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--borde);border-radius:10px;padding:8px}.number-row b{min-width:28px;color:var(--verde)}
+.resume-box{padding:18px;text-align:center}.resume-actions{display:grid;gap:9px;margin-top:14px}
+.history{margin-top:16px}.history-row{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 0;border-bottom:1px solid var(--borde);font-size:13px}.history-row small{color:#746b61}
+.name-input{width:100%;padding:12px;border:1px solid var(--borde);border-radius:12px;font:inherit;margin:8px 0}
+.lesson-celebration{display:flex;justify-content:center;align-items:flex-end;height:210px;margin:4px 0 8px}.lesson-celebration img{max-height:200px;max-width:50%;object-fit:contain;transform-origin:50% 90%;animation:lessonDance .55s ease-in-out infinite alternate}.lesson-celebration img:nth-child(2){animation-delay:.18s}
+@keyframes lessonDance{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-12px) rotate(4deg)}}
+@media(max-width:360px){.number-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -92,7 +155,7 @@ button{font:inherit}
   <header class="topbar">
     <div class="toprow">
       <div class="brand">KIMÜN MAPUZUGUN</div>
-      <div class="newen" id="newenLabel">❤️ Newen 20</div>
+      <div class="newen" id="nhewenLabel">❤️ Nhewen 20</div>
     </div>
     <div class="progress"><div id="progressBar"></div></div>
   </header>
@@ -107,21 +170,28 @@ button{font:inherit}
       <p>Aprender escuchando, mirando y haciendo.</p>
     </div>
     <button class="primary" onclick="goLessons()">Comenzar</button>
-    <div class="support"><b>Apoyo opcional:</b> la gramática queda fuera del recorrido obligatorio. El aprendizaje principal es interactivo.</div>
+    <div class="home-menu">
+      <button class="menu-btn" onclick="showSupport('grafemario')">Grafemario, sonidos y números<span>Material opcional de estudio y consulta.</span></button>
+      <button class="menu-btn" onclick="showSupport('diccionario')">Diccionario Mapuzugun<span>Consulta palabras cuando algo de una actividad no se entienda.</span></button>
+      <button class="menu-btn" onclick="showSupport('gramatica')">Apoyo de Gramática<span>Revisa estructuras de apoyo sin interrumpir el recorrido principal.</span></button>
+    </div>
+    <div class="history" id="historyHome"></div>
   </main>
 
   <main id="lessons" class="screen">
-    <h2 class="section-title">Etapa 1 · 10 lecciones</h2>
+    <button class="back-button" onclick="backToHome()">← Wüñotxekage · Volver atrás</button>
+    <h2 class="section-title">Etapa 1 · Camino de aprendizaje</h2>
+    <p class="map-caption">Avanza por el sendero entre araucarias, río y montaña. Cada círculo es una etapa.</p>
     <div class="stats">
       <div class="stat"><b id="statDone">0</b><span>listas</span></div>
       <div class="stat"><b id="statRight">0</b><span>aciertos</span></div>
       <div class="stat"><b id="statWrong">0</b><span>errores</span></div>
     </div>
-    <div id="lessonList" class="lesson-list"></div>
-    <div class="bottom-actions"><button class="secondary" onclick="showScreen('home')">Inicio</button></div>
+    <div id="lessonList" class="route-wrap" aria-label="Camino de actividades"></div>
   </main>
 
   <main id="exercise" class="screen">
+    <button class="back-button" onclick="backToHome()">← Wüñotxekage · Volver atrás</button>
     <div class="exercise-head">
       <small id="lessonMeta"></small>
       <h2 id="exerciseTitle"></h2>
@@ -129,22 +199,28 @@ button{font:inherit}
     </div>
     <div id="exerciseCard" class="card"></div>
   </main>
+
+  <main id="supportScreen" class="screen info-screen">
+    <button class="back-button" onclick="backToHome()">← Wüñotxekage · Volver atrás</button>
+    <h2 id="supportTitle">Apoyo</h2>
+    <div class="info-card" id="supportContent"></div>
+  </main>
 </div>
 
-<div id="lifeToast" class="life-toast">−1 Newen · te quedan 19</div>
+<div id="lifeToast" class="life-toast">−1 Nhewen · te quedan 19</div>
 
-<div id="newenModal" class="modal">
+<div id="nhewenModal" class="modal">
   <div class="modal-box">
-    <h2>Tu Newen llegó a 0</h2>
-    <p>¿Quieres recuperar tu Newen?</p>
+    <h2>Tu Nhewen llegó a 0</h2>
+    <p>¿Quieres recuperar tu Nhewen?</p>
     <p>Al ver la celebración de los Treiles recuperarás tus <b>20 vidas</b>.</p>
-    <button class="primary" onclick="recoverNewen()">Recuperar mi Newen</button>
+    <button class="primary" onclick="recoverNhewen()">Recuperar mi Nhewen</button>
   </div>
 </div>
 
 <div id="danceModal" class="modal">
   <div class="modal-box">
-    <h2 id="danceTitle">¡A recuperar el Newen!</h2>
+    <h2 id="danceTitle">¡A recuperar el Nhewen!</h2>
     <div id="danceStage" class="dance-stage dancing">
       <img class="female" src="treile_hembra-1.png" alt="">
       <img class="male" src="treile_macho-1.png" alt="">
@@ -156,13 +232,19 @@ button{font:inherit}
 <script>
 /* =========================================================
    KIMÜN MAPUZUGUN
-   - 20 Newen compartidos por TODA la etapa.
+   - 20 Nhewen compartidos por TODA la etapa.
    - No se reinician entre lecciones.
    - Recuperación solo al llegar a 0.
    - 10 lecciones; cada lección puede tener distinta cantidad de ejercicios.
-   - Error: -1 Newen y la pregunta fallada vuelve más adelante,
+   - Error: -1 Nhewen y la pregunta fallada vuelve más adelante,
      no inmediatamente.
    - Sonidos distintos según acción.
+   - Navegación 29/09/2026:
+     * paleta más sobria / menos saturada
+     * mapa de actividades tipo sendero visto desde arriba
+     * etapas circulares
+     * botón Volver siempre visible en actividades y recursos
+     * Volver lleva al menú principal (Comenzar / Grafemario / Diccionario / Gramática)
    ========================================================= */
 
 const IMG_MALE="treile_macho-1.png";
@@ -170,7 +252,7 @@ const IMG_FEMALE="treile_hembra-1.png";
 const MAX_NEWEN=20;
 
 let state={
-  newen:MAX_NEWEN,
+  nhewen:MAX_NEWEN,
   unlocked:1,
   completed:[],
   correct:0,
@@ -179,12 +261,16 @@ let state={
   queue:[],
   qPos:0,
   current:null,
-  locked:false
+  locked:false,
+  activeLesson:null,
+  savedQueue:[],
+  savedQPos:0,
+  history:[]
 };
 
 try{
   const saved=JSON.parse(localStorage.getItem("kimunState")||"null");
-  if(saved) state={...state,...saved,newen:Math.max(0,Math.min(MAX_NEWEN,saved.newen??MAX_NEWEN))};
+  if(saved) state={...state,...saved,nhewen:Math.max(0,Math.min(MAX_NEWEN,saved.nhewen??MAX_NEWEN))};
 }catch(e){}
 
 const LESSONS=[
@@ -363,8 +449,9 @@ function sentence(spanish,answer,bank){return{type:"sentence",spanish,answer,ban
 
 function save(){
  localStorage.setItem("kimunState",JSON.stringify({
-  newen:state.newen,unlocked:state.unlocked,completed:state.completed,
-  correct:state.correct,wrong:state.wrong
+  nhewen:state.nhewen,unlocked:state.unlocked,completed:state.completed,
+  correct:state.correct,wrong:state.wrong,
+  activeLesson:state.activeLesson,savedQueue:state.savedQueue,savedQPos:state.savedQPos,history:state.history
  }));
 }
 function showScreen(id){
@@ -372,9 +459,105 @@ function showScreen(id){
  document.getElementById(id).classList.add("active");
  window.scrollTo({top:0,behavior:"smooth"});
 }
+function backToHome(){
+ save();
+ document.getElementById("progressBar").style.width="0%";
+ showScreen("home");
+ sound("nav");
+}
+const supportResources={
+  diccionario:{
+    file:"diccionario_kimun_mapuzungun_txegul.pdf",
+    label:"Diccionario Mapuzugun · Kimün",
+    note:"PDF con los personajes Txegül integrado."
+  },
+  gramatica:[
+    {file:"guia_00_kimeltun.pdf",label:"WÜNEN MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
+    {file:"guia_02_mapuzugun_kimeltun.pdf",label:"EPULECHI MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
+    {file:"guia_03_mapuzugun_kimeltun.pdf",label:"KÜLALECHI MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
+    {file:"guia_06_2026.pdf",label:"Kimeltun 6",sub:"Guía original · sin modificaciones"},
+    {file:"guia_07_2026.pdf",label:"Kimeltun 7",sub:"Guía original · sin modificaciones"},
+    {file:"guia_09_2026.pdf",label:"Kimeltun 9",sub:"Guía original · sin modificaciones"},
+    {file:"guia_10_2026.pdf",label:"Kimeltun 10",sub:"Guía original · sin modificaciones"},
+    {file:"guia_11_2026.pdf",label:"Kimeltun 11",sub:"Guía original · sin modificaciones"},
+    {file:"guia_12_2026.pdf",label:"Kimeltun 12",sub:"Guía original · sin modificaciones"},
+    {file:"guia_13_2026.pdf",label:"Kimeltun 13",sub:"Guía original · sin modificaciones"}
+  ]
+};
+
+const grafemario={
+  conocidos:["a","n","ch","ñ","e","o","f","p","i","t","k","u","l","w","m","y"],
+  nuevos:["s","z","q","ll","tx","g","r","ü"],
+  interdentales:["lh","nh","t’"]
+};
+
+function openResource(file){
+  const w=window.open(file,"_blank");
+  if(!w) window.location.href=file;
+}
+function resourceButton(item){
+  return `<button class="resource-btn" onclick="openResource('${item.file}')"><span>${item.label}<small>${item.sub||item.note||''}</small></span><span class="arrow">›</span></button>`;
+}
+function graphemeButtons(items,category){
+  return items.map(g=>`<button class="graf-btn" onclick="selectGrapheme(this,'${g.replace("’","\’")}','${category}')">${g}</button>`).join("");
+}
+
+const studyNumbers=[
+ [1,"Kiñe"],[2,"Epu"],[3,"Küla"],[4,"Meli"],[5,"Kechu"],[6,"Kayu"],[7,"Reqle"],[8,"Pura"],[9,"Aylla"],[10,"Mari"],
+ [11,"Mari kiñe"],[12,"Mari epu"],[13,"Mari küla"],[14,"Mari meli"],[15,"Mari kechu"],[16,"Mari kayu"],[17,"Mari reqle"],[18,"Mari pura"],[19,"Mari aylla"],[20,"Epu mari"],
+ [21,"Epu mari kiñe"],[22,"Epu mari epu"],[23,"Epu mari küla"],[24,"Epu mari meli"],[25,"Epu mari kechu"],[26,"Epu mari kayu"],[27,"Epu mari reqle"],[28,"Epu mari pura"],[29,"Epu mari aylla"],[30,"Küla mari"],
+ [31,"Küla mari kiñe"],[32,"Küla mari epu"],[33,"Küla mari küla"],[34,"Küla mari meli"],[35,"Küla mari kechu"],[36,"Küla mari kayu"],[37,"Küla mari reqle"],[38,"Küla mari pura"],[39,"Küla mari aylla"],[40,"meli mari"]
+];
+function renderStudyNumbers(){
+ return `<div class="number-study"><h3>Números · 1 al 40</h3><p>Material informativo de estudio. Se conserva la escritura de la tabla entregada.</p><div class="number-grid">${studyNumbers.map(([n,w])=>`<div class="number-row"><b>${n}</b><span>${w}</span></div>`).join("")}</div></div>`;
+}
+function renderGrafemario(){
+  return `
+    <div class="grafemario-wrap">
+      <div class="grafemario-head">Chumgechi wirintukugekey mapuzugun / Grafemario</div>
+      <div class="grafemario-grid">
+        <div class="graf-col known"><h3>Kimfalke awkiñ<br>Sonidos conocidos</h3><div class="graf-buttons">${graphemeButtons(grafemario.conocidos,"Sonido conocido")}</div></div>
+        <div class="graf-col new"><h3>Weke awkiñ<br>Sonidos nuevos</h3><div class="graf-buttons">${graphemeButtons(grafemario.nuevos,"Sonido nuevo")}</div></div>
+        <div class="graf-col inter"><h3>Ragiñ wünh foro mew txipakechi awkiñ<br>Interdentales</h3><div class="graf-buttons">${graphemeButtons(grafemario.interdentales,"Interdental")}</div></div>
+      </div>
+      <div id="grafStatus" class="graf-status">Toca un grafema para seleccionarlo y escuchar una referencia.</div>
+      <div class="graf-audio-note">El audio del dispositivo es solo de referencia; después puede sustituirse por grabaciones del kimelfe.</div>
+      ${renderStudyNumbers()}
+    </div>`;
+}
+function selectGrapheme(btn,g,category){
+  document.querySelectorAll('.graf-btn').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  const status=document.getElementById('grafStatus');
+  if(status) status.innerHTML=`<b>${g}</b> · ${category}`;
+  if('speechSynthesis' in window){
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(g);
+    u.lang='es-CL';u.rate=.72;u.pitch=1;
+    speechSynthesis.speak(u);
+  }
+  sound("nav");
+}
+function showSupport(kind){
+  const title=document.getElementById("supportTitle");
+  const content=document.getElementById("supportContent");
+  content.classList.add("support-panel");
+  if(kind==="grafemario"){
+    title.textContent="Grafemario, sonidos y números";
+    content.innerHTML=renderGrafemario();
+  }else if(kind==="diccionario"){
+    title.textContent="Diccionario Mapuzugun";
+    content.innerHTML=`<p class="support-note">Diccionario disponible dentro de Kimün Mapuzugun.</p><div class="resource-list">${resourceButton(supportResources.diccionario)}</div>`;
+  }else{
+    title.textContent="Apoyo de Gramática";
+    content.innerHTML=`<p class="support-note">Las guías se mantienen en PDF exactamente como fueron entregadas, sin modificar su contenido.</p><div class="resource-list">${supportResources.gramatica.map(resourceButton).join("")}</div>`;
+  }
+  showScreen("supportScreen");
+  sound("nav");
+}
 function goLessons(){renderLessons();showScreen("lessons");sound("nav")}
 function updateHUD(){
- document.getElementById("newenLabel").textContent=`❤️ Newen ${state.newen}`;
+ document.getElementById("nhewenLabel").textContent=`❤️ Nhewen ${state.nhewen}`;
  document.getElementById("statDone").textContent=state.completed.length;
  document.getElementById("statRight").textContent=state.correct;
  document.getElementById("statWrong").textContent=state.wrong;
@@ -382,27 +565,65 @@ function updateHUD(){
 function renderLessons(){
  updateHUD();
  const list=document.getElementById("lessonList");list.innerHTML="";
+ const coords=[
+  [29,8],[67,18],[35,29],[70,40],[30,51],
+  [63,62],[33,72],[69,82],[39,91],[64,98]
+ ];
+ const path=document.createElementNS("http://www.w3.org/2000/svg","svg");
+ path.setAttribute("class","route-line");
+ path.setAttribute("viewBox","0 0 100 110");
+ path.innerHTML='<path d="M29 8 C50 11,55 14,67 18 S52 25,35 29 S53 35,70 40 S50 46,30 51 S47 57,63 62 S49 68,33 72 S51 78,69 82 S53 87,39 91 S50 96,64 102"/>';
+ list.appendChild(path);
+
+ const landmarks=[
+  ["tree",10,13],["tree small",84,14],["tree",12,32],["tree small",86,48],
+  ["tree",15,67],["tree small",84,72],["tree",12,90],["mountain",78,7],
+  ["mountain",16,54],["tree small",79,93]
+ ];
+ landmarks.forEach(([cl,x,y])=>{
+   const el=document.createElement("div");
+   el.className="landmark "+cl;
+   el.style.left=x+"%";el.style.top=y+"%";
+   list.appendChild(el);
+ });
+
  LESSONS.forEach((l,i)=>{
    const unlocked=(i+1)<=state.unlocked || state.completed.includes(i);
+   const done=state.completed.includes(i);
    const b=document.createElement("button");
-   b.className="lesson-card"+(unlocked?"":" locked");
-   b.innerHTML=`<span class="badge">${state.completed.includes(i)?"✓":i+1}</span><span><strong>${l.title}</strong><small>${l.subtitle} · ${l.items.length} ejercicios</small></span>`;
+   b.className="route-node"+(done?" done":"")+(unlocked?"":" locked");
+   const [x,y]=coords[i]||[50,10+i*9];
+   b.style.left=x+"%"; b.style.top=y+"%";
+   b.setAttribute("aria-label",`${i+1}. ${l.title}. ${unlocked?"Disponible":"Bloqueada"}`);
+   b.innerHTML=`<span><span class="n">${done?"✓":i+1}</span><span class="t">${l.title}</span></span>`;
    b.onclick=()=>{sound(unlocked?"nav":"error"); if(unlocked) startLesson(i)};
    list.appendChild(b);
  });
 }
 let lessonStartedAt=0, lessonCorrectStart=0, lessonWrongStart=0;
-function startLesson(i){
- lessonStartedAt=Date.now();
- lessonCorrectStart=state.correct;
- lessonWrongStart=state.wrong;
- state.lessonIndex=i;
- state.queue=LESSONS[i].items.map((_,idx)=>idx);
- state.qPos=0; state.current=null; state.locked=false;
+function startLesson(i,mode){
+ if(mode!=="restart" && state.activeLesson===i && state.savedQueue?.length && state.savedQPos<state.savedQueue.length){
+   const c=document.getElementById("exerciseCard");
+   showScreen("exercise");
+   document.getElementById("lessonMeta").textContent=`Lección ${i+1} de 10`;
+   document.getElementById("exerciseTitle").textContent=LESSONS[i].title;
+   document.getElementById("exerciseCounter").textContent="Tienes un avance guardado";
+   c.innerHTML=`<div class="resume-box"><h3>¿Quieres continuar?</h3><p>Puedes reanudar donde quedaste o comenzar esta lección nuevamente.</p><div class="resume-actions"><button class="primary" onclick="resumeLesson(${i})">Continuar donde quedé</button><button class="secondary" onclick="startLesson(${i},'restart')">Comenzar nuevamente</button></div></div>`;
+   return;
+ }
+ lessonStartedAt=Date.now(); lessonCorrectStart=state.correct; lessonWrongStart=state.wrong;
+ state.lessonIndex=i; state.queue=LESSONS[i].items.map((_,idx)=>idx); state.qPos=0; state.current=null; state.locked=false;
+ state.activeLesson=i; state.savedQueue=[...state.queue]; state.savedQPos=0; save();
+ showScreen("exercise"); nextExercise();
+}
+function resumeLesson(i){
+ lessonStartedAt=Date.now(); lessonCorrectStart=state.correct; lessonWrongStart=state.wrong;
+ state.lessonIndex=i; state.queue=[...state.savedQueue]; state.qPos=state.savedQPos||0; state.current=null; state.locked=false;
  showScreen("exercise"); nextExercise();
 }
 function nextExercise(){
  state.locked=false;
+ state.savedQueue=[...state.queue]; state.savedQPos=state.qPos; state.activeLesson=state.lessonIndex; save();
  if(state.qPos>=state.queue.length){finishLesson();return}
  const li=LESSONS[state.lessonIndex];
  const idx=state.queue[state.qPos];
@@ -428,6 +649,7 @@ function renderItem(it){
 }
 function choose(btn,value){
  if(state.locked)return;
+ speak(value);
  const it=state.current.item;
  document.querySelectorAll(".choice").forEach(x=>x.disabled=true);
  if(value===it.answer){
@@ -436,12 +658,12 @@ function choose(btn,value){
    state.locked=true; save();
    setTimeout(()=>{state.qPos++;nextExercise()},1200);
  }else{
-   btn.classList.add("wrong"); state.wrong++; sound("wrong"); loseNewen();
+   btn.classList.add("wrong"); state.wrong++; sound("wrong"); loseNhewen();
    feedback(false,`Correcto: ${it.answer}`,it.translation);
    state.locked=true;
    requeueCurrent();
    save();
-   if(state.newen>0)setTimeout(()=>{state.qPos++;nextExercise()},1450);
+   if(state.nhewen>0)setTimeout(()=>{state.qPos++;nextExercise()},1450);
  }
 }
 function feedback(ok,line,translation){
@@ -452,17 +674,14 @@ function feedback(ok,line,translation){
 function requeueCurrent(){
  const idx=state.current.idx;
  const future=state.queue.slice(state.qPos+1);
- if(!future.includes(idx)){
-   const insertAt=Math.min(state.queue.length, state.qPos+3+Math.floor(Math.random()*3));
-   state.queue.splice(insertAt,0,idx);
- }
+ if(!future.includes(idx)) state.queue.push(idx);
 }
-function loseNewen(){
- state.newen=Math.max(0,state.newen-1);updateHUD();
+function loseNhewen(){
+ state.nhewen=Math.max(0,state.nhewen-1);updateHUD();
  const t=document.getElementById("lifeToast");
- t.textContent=`−1 Newen · te quedan ${state.newen}`;
+ t.textContent=`−1 Nhewen · te quedan ${state.nhewen}`;
  t.classList.add("show");setTimeout(()=>t.classList.remove("show"),1100);
- if(state.newen===0)setTimeout(()=>document.getElementById("newenModal").classList.add("show"),700);
+ if(state.nhewen===0)setTimeout(()=>document.getElementById("nhewenModal").classList.add("show"),700);
 }
 function renderPairs(it,c){
  let left=shuffle(it.pairs.map((p,i)=>({text:p[0],id:i})));
@@ -479,8 +698,8 @@ function renderPairs(it,c){
     const old=sel; old.classList.remove("selected"); old.classList.add("matched"); b.classList.add("matched"); sel=null;matched++;sound("correct");
     if(matched===it.pairs.length){state.correct++;feedback(true,"¡Pares completos!","Reconociste correctamente los números.");save();setTimeout(()=>{state.qPos++;nextExercise()},1000)}
    }else{
-    const old=sel;old.classList.remove("selected");sel=null;state.wrong++;sound("wrong");loseNewen();requeueCurrent();save();
-    if(state.newen>0) setTimeout(()=>{state.qPos++;nextExercise()},900);
+    const old=sel;old.classList.remove("selected");sel=null;state.wrong++;sound("wrong");loseNhewen();requeueCurrent();save();
+    if(state.nhewen>0) setTimeout(()=>{state.qPos++;nextExercise()},900);
    }
   };return b;
  };
@@ -503,30 +722,45 @@ function renderSentence(it,c){
   if(state.locked)return;
   const ok=built.map(x=>x.w).join(" ")===it.answer.join(" ");
   if(ok){state.correct++;sound("correct");feedback(true,it.answer.join(" "),it.translation);state.locked=true;save();setTimeout(()=>{state.qPos++;nextExercise()},1300)}
-  else{state.wrong++;sound("wrong");loseNewen();feedback(false,"Orden incorrecto",`La respuesta correcta aparecerá cuando vuelva más adelante.`);state.locked=true;requeueCurrent();save();if(state.newen>0)setTimeout(()=>{state.qPos++;nextExercise()},1400)}
+  else{state.wrong++;sound("wrong");loseNhewen();feedback(false,"Orden incorrecto",`La respuesta correcta aparecerá cuando vuelva más adelante.`);state.locked=true;requeueCurrent();save();if(state.nhewen>0)setTimeout(()=>{state.qPos++;nextExercise()},1400)}
  };
 }
 function finishLesson(){
  const i=state.lessonIndex;
  if(!state.completed.includes(i))state.completed.push(i);
  state.unlocked=Math.max(state.unlocked,Math.min(10,i+2));
+ state.activeLesson=null; state.savedQueue=[]; state.savedQPos=0;
  document.getElementById("progressBar").style.width="100%";
  const elapsed=Math.max(0,Math.floor((Date.now()-lessonStartedAt)/1000));
  const min=Math.floor(elapsed/60), sec=elapsed%60;
  const lessonCorrect=Math.max(0,state.correct-lessonCorrectStart);
  const lessonWrong=Math.max(0,state.wrong-lessonWrongStart);
  const score=Math.max(0,lessonCorrect*100-lessonWrong*20);
- save(); sound("finish");
+ save(); lessonCelebrationSound();
  const c=document.getElementById("exerciseCard");
- c.innerHTML=`<div style="text-align:center"><div style="font-size:55px">👏</div><h2 style="color:var(--verde)">¡Küme zugun!</h2><p>Completaste la lección ${i+1}.</p><div class="stats" style="grid-template-columns:repeat(2,1fr);margin:16px 0"><div class="stat"><b>${lessonCorrect}</b><span>correctas</span></div><div class="stat"><b>${lessonWrong}</b><span>errores</span></div><div class="stat"><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo</span></div><div class="stat"><b>${score}</b><span>puntaje</span></div></div><p>Tu Newen continúa para las siguientes lecciones: <b>${state.newen}/20</b></p><button class="primary" onclick="goLessons()">Continuar</button></div>`;
- celebrate();
+ const finalCircuit=state.completed.length>=LESSONS.length;
+ c.innerHTML=`<div style="text-align:center"><div class="lesson-celebration"><img src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 style="color:var(--verde)">¡Küme zugun!</h2><p>Completaste la lección ${i+1}.</p><div class="stats" style="grid-template-columns:repeat(2,1fr);margin:16px 0"><div class="stat"><b>${lessonCorrect}</b><span>correctas</span></div><div class="stat"><b>${lessonWrong}</b><span>errores</span></div><div class="stat"><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo</span></div><div class="stat"><b>${score}</b><span>puntaje</span></div></div><p>Tu Nhewen continúa: <b>${state.nhewen}/20</b></p>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult(${score})">Guardar resultado con tu nombre</button>`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
 }
-function celebrate(){
- sound("cheer");
- setTimeout(()=>sound("clap"),250);
+function lessonCelebrationSound(){
+ sound("finish"); setTimeout(()=>sound("kidsCheer"),120); setTimeout(()=>sound("clap"),520);
 }
-function recoverNewen(){
- document.getElementById("newenModal").classList.remove("show");
+function saveCircuitResult(score){
+ const input=document.getElementById("resultName"); const name=(input?.value||"").trim();
+ if(!name){input?.focus(); sound("error"); return;}
+ state.history=Array.isArray(state.history)?state.history:[];
+ const totalScore=Math.max(0,state.correct*100-state.wrong*20);
+ state.history.unshift({name,score:totalScore,correct:state.correct,wrong:state.wrong,date:new Date().toLocaleString("es-CL")});
+ state.history=state.history.slice(0,20);
+ state.completed=[]; state.unlocked=1; state.correct=0; state.wrong=0; state.nhewen=MAX_NEWEN; state.activeLesson=null; state.savedQueue=[]; state.savedQPos=0;
+ save(); updateHUD(); renderHistory(); sound("cheer"); backToHome();
+}
+function renderHistory(){
+ const el=document.getElementById("historyHome"); if(!el)return; const h=Array.isArray(state.history)?state.history:[];
+ if(!h.length){el.innerHTML="";return;}
+ el.innerHTML=`<h3 style="color:var(--verde);margin:18px 0 6px">Historial de recorridos</h3>${h.slice(0,5).map(x=>`<div class="history-row"><span><b>${x.name}</b><br><small>${x.date}</small></span><b>${x.score} pts</b></div>`).join("")}`;
+}
+function recoverNhewen(){
+ document.getElementById("nhewenModal").classList.remove("show");
  document.getElementById("danceModal").classList.add("show");
  sound("dance");
  let left=12;const label=document.getElementById("danceCountdown");
@@ -534,12 +768,12 @@ function recoverNewen(){
  const timer=setInterval(()=>{
   left--;label.textContent=`Celebración · ${left} segundos`;
   if(left<=0){
-   clearInterval(timer);state.newen=MAX_NEWEN;save();updateHUD();sound("cheer");setTimeout(()=>sound("clap"),250);
+   clearInterval(timer);state.nhewen=MAX_NEWEN;save();updateHUD();sound("cheer");setTimeout(()=>sound("clap"),250);
    document.getElementById("danceTitle").textContent="¡Küme zugun!";
-   label.innerHTML="Recuperaste tu <b>Newen · 20 vidas</b>";
+   label.innerHTML="Recuperaste tu <b>Nhewen · 20 vidas</b>";
    setTimeout(()=>{
     document.getElementById("danceModal").classList.remove("show");
-    document.getElementById("danceTitle").textContent="¡A recuperar el Newen!";
+    document.getElementById("danceTitle").textContent="¡A recuperar el Nhewen!";
     nextExercise();
    },1800);
   }
@@ -566,6 +800,7 @@ function sound(kind){
  if(kind==="error"){tone(220,.09,"square",.025)}
  if(kind==="finish"){tone(392,.1,"triangle",.05);tone(523,.1,"triangle",.05,.1);tone(659,.12,"triangle",.05,.2);tone(784,.2,"triangle",.05,.3)}
  if(kind==="cheer"){tone(660,.12,"triangle",.035);tone(880,.16,"triangle",.04,.1);tone(990,.2,"triangle",.035,.22)}
+ if(kind==="kidsCheer"){for(let i=0;i<9;i++)tone(520+Math.random()*520,.12,"triangle",.018,i*.045)}
  if(kind==="clap"){for(let i=0;i<6;i++)tone(90+Math.random()*90,.045,"square",.025,i*.08)}
  if(kind==="dance"){for(let i=0;i<24;i++){tone(i%4===0?220:330,.08,"triangle",.025,i*.5)}}
 }
@@ -581,7 +816,7 @@ function speak(text){
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ")}
 
-updateHUD();renderLessons();
+updateHUD();renderLessons();renderHistory();
 </script>
 </body>
 </html>
