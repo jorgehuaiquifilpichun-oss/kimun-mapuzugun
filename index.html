@@ -349,6 +349,69 @@ button{font:inherit}
 .home-title-panel{margin:-3px auto 13px;border-radius:24px;background:linear-gradient(180deg,#fffdf7f7,#f4eadbf7);border:1px solid #d4c2a4;box-shadow:0 12px 30px #173e3024}
 @media(max-width:380px){.home-landscape{height:365px}.home-volcano{width:390px;top:22px}.home-volcano:before{width:330px;height:175px}.home-mascots{height:330px;padding-top:58px}.home-txegul{height:255px}}
 
+
+/* ===== AJUSTE GLOBAL RESPONSIVE · TODO EL PROYECTO · 30-09-2026 ===== */
+html{min-height:100%;-webkit-text-size-adjust:100%}
+body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
+.app{width:100%;max-width:480px;min-height:100dvh;min-height:100svh;overflow-x:hidden}
+.topbar{padding-top:max(8px,env(safe-area-inset-top))}
+.screen{width:100%;min-height:calc(100dvh - 64px);padding:12px 14px max(32px,calc(env(safe-area-inset-bottom) + 20px));overflow-x:hidden}
+.screen:not(#home):before{margin:-12px -14px 10px}
+#home.screen{min-height:100dvh;padding:0}
+.home-cover{min-height:100dvh;padding-bottom:max(18px,env(safe-area-inset-bottom))}
+.back-button{margin:0 0 8px;padding:8px 11px}
+.exercise-head{margin:0 0 9px;padding:10px 12px;border-radius:17px}
+.exercise-head:before{margin-bottom:3px}
+.exercise-head h2{margin:3px 0;font-size:19px}
+.exercise-head p{margin:3px 0 0;font-size:14px;line-height:1.2}
+.card{padding:14px;border-radius:21px}
+.prompt{font-size:21px;margin:5px 0 11px}
+.choices{gap:8px}
+.choice{min-height:52px;padding:11px 9px;font-size:16px}
+.audio-btn{width:68px;height:68px;min-width:0;min-height:0;margin:3px auto 9px;font-size:25px;border-width:4px}
+.feedback{margin-top:9px;padding:10px}
+.bottom-actions{margin-top:9px}
+.modal{padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
+.modal-box{max-height:calc(100dvh - 24px);padding:16px}
+.dance-stage{height:min(235px,31dvh)}
+.dance-stage img{max-height:100%}
+.info-card{padding:13px}
+.resource-list{gap:7px}
+.resource-btn{padding:10px 11px}
+.grafemario-wrap{padding:10px}
+.number-grid{gap:5px}
+.number-row{padding:7px}
+.completion-card{padding:14px}
+.lesson-celebration{min-height:0;height:min(180px,24dvh);margin:-4px 0 5px}
+.lesson-celebration img{height:100%;max-height:100%}
+.completion-title{font-size:29px}
+.completion-sub{margin-bottom:10px}
+.completion-stats{gap:7px;margin:10px 0}
+.completion-stat{min-height:74px;padding:9px}
+.completion-stat b{font-size:22px}
+.nhewen-line{margin:11px 0 7px}
+.nhewen-meter{margin-bottom:12px}
+@media(max-height:760px) and (max-width:600px){
+ .topbar{padding:7px 12px}.newen{padding:5px 8px}.progress{height:7px;margin-top:6px}
+ .screen{padding:9px 12px max(24px,calc(env(safe-area-inset-bottom) + 16px))}
+ .screen:not(#home):before{margin:-9px -12px 7px;height:7px}
+ .back-button{padding:7px 10px;margin-bottom:6px;font-size:14px}
+ .exercise-head{padding:8px 10px;margin-bottom:7px}.exercise-head h2{font-size:18px}.exercise-head p{font-size:13px}
+ .card{padding:11px}.prompt{font-size:19px;margin:4px 0 8px}
+ .choice{min-height:46px;padding:9px 8px}.choices{gap:7px}
+ .audio-btn{width:58px;height:58px;font-size:22px;margin-bottom:7px}
+ .big-number{font-size:55px}.pair-btn{min-height:58px}
+ .body-word-list{gap:5px}.body-word{padding:4px 5px 4px 8px}.body-word button{width:30px;height:30px}
+ .body-figure{min-height:205px}.body-person{font-size:105px}
+}
+@media(max-width:390px){
+ .screen{padding-left:11px;padding-right:11px}.screen:not(#home):before{margin-left:-11px;margin-right:-11px}
+ .card{padding:11px}.choice{font-size:15px}
+ .number-quiz .choices{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+ .number-quiz .choice{min-height:58px;font-size:25px;padding:7px 3px}
+ .body-learning{grid-template-columns:108px minmax(0,1fr);gap:8px}.body-word{font-size:13px}.body-figure{min-height:220px}
+}
+
 </style>
 </head>
 <body>
