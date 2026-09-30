@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Kimün Mapuzugun</title>
+<title>Kimün Mapuzugun · Rediseño aprobado</title>
 <meta name="kimun-build" content="visual-mapuche-2026-09-30-02">
 <style>
 :root{
@@ -135,6 +135,23 @@ button{font:inherit}
 .graf-status{margin-top:10px;border-radius:13px;background:#f2eadc;padding:10px 12px;font-size:13px;min-height:44px}
 .graf-status b{color:var(--verde)}
 .graf-audio-note{font-size:11px;color:#7b7368;margin-top:8px;text-align:center}
+
+/* Ajustes 30-09: cierre de actividad, mascotas y estadísticas */
+.completion-card{position:relative;overflow:hidden;border:1px solid #d8cbb8;border-radius:28px;padding:18px;background:linear-gradient(180deg,#fffdf7 0%,#f7efe1 100%);box-shadow:0 18px 45px #203b2c1c}
+.completion-card:before,.completion-card:after{content:"";position:absolute;width:120px;height:120px;border:18px double #55715e18;transform:rotate(45deg);border-radius:22px;pointer-events:none}
+.completion-card:before{left:-88px;top:42%}.completion-card:after{right:-88px;bottom:8%}
+.lesson-celebration{min-height:230px;display:flex;justify-content:center;align-items:flex-end;gap:0;margin:-6px 0 8px;position:relative}
+.lesson-celebration:after{content:"";position:absolute;left:50%;bottom:4px;transform:translateX(-50%);width:75%;height:28px;background:#234b3830;filter:blur(10px);border-radius:50%;z-index:0}
+.lesson-celebration img{height:225px;max-width:55%;object-fit:contain;position:relative;z-index:1;filter:drop-shadow(0 10px 7px #18342538)}
+.completion-title{font-size:34px;margin:4px 0 2px;color:var(--verde);letter-spacing:-.5px}
+.completion-sub{margin:0 0 16px;color:#5f5a52}
+.completion-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:16px 0}
+.completion-stat{min-height:92px;border:1px solid #dccfb9;border-radius:20px;background:#f2e8d7cc;display:flex;align-items:center;gap:10px;padding:13px;text-align:left}
+.completion-stat .ico{width:38px;height:38px;display:grid;place-items:center;border-radius:50%;background:#315f48;color:white;font-size:20px;flex:0 0 38px}
+.completion-stat b{display:block;font-size:27px;line-height:1;color:#2f6448}.completion-stat span{display:block;font-size:13px;margin-top:5px;color:#5c554b}
+.nhewen-line{margin:16px 0 10px;font-size:17px}.nhewen-meter{height:10px;background:#ded8ca;border-radius:999px;overflow:hidden;margin-bottom:18px}.nhewen-meter>i{display:block;height:100%;background:linear-gradient(90deg,#4d805f,#2e6548);border-radius:999px}
+.end-history{margin-top:22px;text-align:left;border-top:1px solid #d8cbb8;padding-top:16px}.end-history h3{color:var(--verde);margin:0 0 8px}.end-history .history-row{background:#fffaf1;border:1px solid #e0d4c3;border-radius:14px;padding:10px 12px;margin:8px 0}
+
 @media(max-width:360px){.grafemario-grid{gap:4px}.graf-col h3{font-size:10px}.graf-btn{font-size:17px;min-height:38px}.graf-buttons{gap:4px;padding:5px}}
 
 
@@ -259,6 +276,31 @@ button{font:inherit}
   .home-action .home-icon{width:41px;height:41px}
 }
 
+
+/* ===== REDISEÑO APROBADO · 30-09-2026 ===== */
+:root{--path:#caa978;--path2:#e8d7b8;--locked:#e7dece}
+.route-wrap{min-height:1040px;background:
+ radial-gradient(circle at 15% 12%,#426c4b 0 5%,transparent 5.5%),radial-gradient(circle at 82% 20%,#315e43 0 6%,transparent 6.5%),
+ linear-gradient(145deg,transparent 0 35%,#4e8290 36% 42%,#8fc1c5 43% 45%,transparent 46%),
+ linear-gradient(180deg,#dce7d9,#cbdcc9);border-radius:32px;overflow:hidden;position:relative}
+.route-wrap:after{content:"";position:absolute;inset:3%;border:28px solid var(--path2);border-radius:48% 52% 45% 55%/18% 22% 20% 24%;transform:rotate(-5deg);opacity:.9;pointer-events:none}
+.route-node{z-index:4;width:132px;height:132px;border:9px solid #ead9ba!important;background:#1f5a3f!important;box-shadow:0 9px 0 #173e30,0 14px 22px #173e3040!important;color:#fff!important}
+.route-node.done{background:#2d6a4d!important}.route-node.locked{background:#e8deca!important;color:#5f5548!important;box-shadow:0 7px 0 #c9b99f!important;filter:saturate(.55)}
+.route-node .n{background:#fff;color:#1e563d;border:3px solid #fff!important}.route-node.locked .n{background:#756957;color:#fff}.route-node .t{font-size:13px;line-height:1.05}
+.exercise-head{background:#fffaf2;border:1px solid #d9c8b0;border-radius:20px;padding:13px 15px;margin-bottom:12px;box-shadow:0 7px 20px #173e3012}
+.exercise-head small{color:#a45f3d;font-weight:800}.exercise-head p{margin:5px 0 0;color:#686157}
+.card{border-radius:26px;padding:20px}.prompt{font-size:24px;color:#173e30;font-weight:900}
+.choices{display:grid;grid-template-columns:repeat(2,1fr);gap:11px}.choice{min-height:68px;border-radius:18px;font-size:17px;font-weight:850;box-shadow:0 4px 0 #d8c9b5}
+.audio-btn{width:82px;height:82px;border-radius:50%;font-size:31px;background:#1e5b40;color:white;border:6px solid #e7d7bd;display:grid;place-items:center;margin:5px auto 12px}
+/* pares: tarjetas de memoria con identidad Mapuche */
+.pair-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.pair-btn{min-height:88px;border:2px solid #bda984;border-radius:18px;background:#1e523d;color:#fff;font-size:18px;font-weight:900;box-shadow:0 5px 0 #153c2d;position:relative;overflow:hidden}
+.pair-btn:before{content:"◆ ◇ ◆";display:block;font-size:13px;color:#d8bb82;margin-bottom:6px;letter-spacing:5px}.pair-btn.selected{background:#f3e4ca;color:#173e30;transform:translateY(2px)}.pair-btn.matched{background:#dfeadf;color:#245b42;border-color:#568065;box-shadow:none}.pair-btn.matched:before{content:"✓";color:#2d6a4d;font-size:20px}
+/* números: ocho alternativas grandes */
+.number-quiz .choices{grid-template-columns:repeat(4,1fr)}.number-quiz .choice{font-size:27px;min-height:78px}.number-hear{text-align:center;margin:6px 0 16px}.number-hear h3{margin:4px 0;color:#173e30}.number-hear p{margin:0;color:#70685e;font-size:13px}
+/* partes del cuerpo: aprender + practicar */
+.body-learning{display:grid;grid-template-columns:1fr 1.25fr;gap:12px;align-items:start}.body-word-list{display:grid;gap:7px}.body-word{display:grid;grid-template-columns:1fr 38px;align-items:center;border:1px solid #d7c6ac;border-radius:13px;background:#fffaf1;padding:7px 7px 7px 10px;font-weight:850;color:#173e30}.body-word button{width:34px;height:34px;border:0;border-radius:50%;background:#245b42;color:#fff}.body-figure{min-height:440px;border-radius:24px;background:linear-gradient(#a9d4df 0 42%,#6f9876 42% 67%,#e3c99f 67%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.body-person{font-size:245px;line-height:1;filter:drop-shadow(0 8px 8px #173e3040)}.body-mode{display:flex;gap:8px;margin-bottom:12px}.body-mode button{flex:1;border:1px solid #cdbda7;border-radius:14px;padding:10px;background:#efe4d2;font-weight:850}.body-mode button.active{background:#245b42;color:#fff}.body-practice{margin-top:12px;padding:13px;border-radius:16px;background:#efe4d2;text-align:center}.body-practice strong{color:#173e30;font-size:19px}
+@media(max-width:390px){.route-node{width:116px;height:116px}.number-quiz .choices{grid-template-columns:repeat(2,1fr)}.body-learning{grid-template-columns:1fr}.body-figure{min-height:330px}.body-person{font-size:190px}}
+
 </style>
 </head>
 <body>
@@ -282,8 +324,8 @@ button{font:inherit}
       </div>
 
       <div class="home-mascots" id="homeTreiles">
-        <img class="home-txegul female" src="treile_hembra-1.png?v=20260930-2" alt="Txegül hembra">
-        <img class="home-txegul male" src="treile_macho-1.png?v=20260930-2" alt="Txegül macho">
+        <img class="home-txegul female" src="txegul_hembra_transparente.png?v=20260930-3" alt="Txegül hembra">
+        <img class="home-txegul male" src="txegul_macho_transparente.png?v=20260930-3" alt="Txegül macho">
       </div>
 
       <div class="home-title-panel">
@@ -317,7 +359,6 @@ button{font:inherit}
         </button>
       </div>
 
-      <div class="history home-history" id="historyHome"></div>
       <div class="home-pattern bottom" aria-hidden="true"></div>
     </section>
   </main>
@@ -366,8 +407,8 @@ button{font:inherit}
   <div class="modal-box">
     <h2 id="danceTitle">¡A recuperar el Nhewen!</h2>
     <div id="danceStage" class="dance-stage dancing">
-      <img class="female" src="treile_hembra-1.png?v=20260930-2" alt="">
-      <img class="male" src="treile_macho-1.png?v=20260930-2" alt="">
+      <img class="female" src="txegul_hembra_transparente.png?v=20260930-3" alt="">
+      <img class="male" src="txegul_macho_transparente.png?v=20260930-3" alt="">
     </div>
     <p id="danceCountdown">Celebración · 12 segundos</p>
   </div>
@@ -391,8 +432,8 @@ button{font:inherit}
      * Volver lleva al menú principal (Comenzar / Grafemario / Diccionario / Gramática)
    ========================================================= */
 
-const IMG_MALE="treile_macho-1.png?v=20260930-2";
-const IMG_FEMALE="treile_hembra-1.png?v=20260930-2";
+const IMG_MALE="txegul_macho_transparente.png?v=20260930-3";
+const IMG_FEMALE="txegul_hembra_transparente.png?v=20260930-3";
 const MAX_NEWEN=20;
 
 let state={
@@ -409,7 +450,8 @@ let state={
   activeLesson:null,
   savedQueue:[],
   savedQPos:0,
-  history:[]
+  history:[],
+  circuitScore:0
 };
 
 try{
@@ -595,7 +637,7 @@ function save(){
  localStorage.setItem("kimunState",JSON.stringify({
   nhewen:state.nhewen,unlocked:state.unlocked,completed:state.completed,
   correct:state.correct,wrong:state.wrong,
-  activeLesson:state.activeLesson,savedQueue:state.savedQueue,savedQPos:state.savedQPos,history:state.history
+  activeLesson:state.activeLesson,savedQueue:state.savedQueue,savedQPos:state.savedQPos,history:state.history,circuitScore:state.circuitScore
  }));
 }
 function showScreen(id){
@@ -757,7 +799,7 @@ function renderLessons(){
    list.appendChild(b);
  });
 }
-let lessonStartedAt=0, lessonCorrectStart=0, lessonWrongStart=0;
+let lessonStartedAt=0, lessonSessionCorrect=0, lessonSessionWrong=0;
 function startLesson(i,mode){
  if(mode!=="restart" && state.activeLesson===i && state.savedQueue?.length && state.savedQPos<state.savedQueue.length){
    const c=document.getElementById("exerciseCard");
@@ -768,13 +810,13 @@ function startLesson(i,mode){
    c.innerHTML=`<div class="resume-box"><h3>¿Quieres continuar?</h3><p>Puedes reanudar donde quedaste o comenzar esta lección nuevamente.</p><div class="resume-actions"><button class="primary" onclick="resumeLesson(${i})">Continuar donde quedé</button><button class="secondary" onclick="startLesson(${i},'restart')">Comenzar nuevamente</button></div></div>`;
    return;
  }
- lessonStartedAt=Date.now(); lessonCorrectStart=state.correct; lessonWrongStart=state.wrong;
+ lessonStartedAt=Date.now(); lessonSessionCorrect=0; lessonSessionWrong=0;
  state.lessonIndex=i; state.queue=LESSONS[i].items.map((_,idx)=>idx); state.qPos=0; state.current=null; state.locked=false;
  state.activeLesson=i; state.savedQueue=[...state.queue]; state.savedQPos=0; save();
  showScreen("exercise"); nextExercise();
 }
 function resumeLesson(i){
- lessonStartedAt=Date.now(); lessonCorrectStart=state.correct; lessonWrongStart=state.wrong;
+ lessonStartedAt=Date.now(); lessonSessionCorrect=0; lessonSessionWrong=0;
  state.lessonIndex=i; state.queue=[...state.savedQueue]; state.qPos=state.savedQPos||0; state.current=null; state.locked=false;
  showScreen("exercise"); nextExercise();
 }
@@ -794,6 +836,8 @@ function nextExercise(){
 }
 function renderItem(it){
  const c=document.getElementById("exerciseCard");
+ if(state.lessonIndex===5){renderBodyActivity(it,c);return;}
+ if(state.lessonIndex===4 && (it.type==="mc"||it.type==="listen"||it.type==="age")){renderNumberActivity(it,c);return;}
  if(it.type==="mc"||it.type==="listen"||it.type==="age"){
    let head="";
    if(it.type==="listen") head=`<button class="audio-btn" onclick="speak('${esc(it.answer)}')">🔊 Escuchar</button><div class="prompt">${it.prompt}</div>`;
@@ -804,18 +848,40 @@ function renderItem(it){
  if(it.type==="pairs") renderPairs(it,c);
  if(it.type==="sentence") renderSentence(it,c);
 }
+function renderNumberActivity(it,c){
+ const answer=it.answer;
+ const numberMap={"Kiñe":"1","Epu":"2","Küla":"3","Meli":"4","Kechu":"5","Kayu":"6","Reqle":"7","Pura":"8","Aylla":"9","Mari":"10","Mari kiñe":"11","Mari epu":"12","Mari küla":"13","Mari meli":"14","Mari kechu":"15","Mari kayu":"16","Mari reqle":"17","Mari pura":"18","Mari aylla":"19","Epu mari":"20"};
+ if(numberMap[answer]){
+   const correct=numberMap[answer], pool=shuffle(Array.from({length:20},(_,i)=>String(i+1)).filter(x=>x!==correct)).slice(0,7);pool.push(correct);
+   c.classList.add('number-quiz');
+   c.innerHTML=`<div class="number-hear"><button class="audio-btn" onclick="speak('${esc(answer)}')">🔊</button><h3>Escucha y elige el número</h3><p>Reconoce la palabra en Mapuzugun.</p></div><div class="choices">${shuffle(pool).map(n=>`<button class="choice" onclick="chooseNumber(this,'${n}','${correct}','${esc(answer)}')">${n}</button>`).join('')}</div><div id="feedback" class="feedback"></div>`;return;
+ }
+ c.classList.remove('number-quiz');
+ let head=it.type==='age'?`<div class="prompt">Completa la edad</div><div class="big-number">${it.number}</div><div class="prompt" style="font-size:19px">Iñche nien <u>_____</u> txipantu</div>`:`<div class="prompt">${it.prompt}</div>`;
+ c.innerHTML=head+`<div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join('')}</div><div id="feedback" class="feedback"></div>`;
+}
+function chooseNumber(btn,value,correct,spoken){
+ if(state.locked)return;document.querySelectorAll('.choice').forEach(x=>x.disabled=true);
+ if(value===correct){btn.classList.add('correct');state.correct++;lessonSessionCorrect++;sound('correct');feedback(true,spoken,`Número ${correct}`);state.locked=true;save();setTimeout(()=>{state.qPos++;nextExercise()},1100)}
+ else{btn.classList.add('wrong');state.wrong++;lessonSessionWrong++;sound('wrong');loseNhewen();feedback(false,'Inténtalo más adelante',`Escuchaste: ${spoken}`);state.locked=true;requeueCurrent();save();if(state.nhewen>0)setTimeout(()=>{state.qPos++;nextExercise()},1250)}
+}
+const BODY_WORDS=['Age','Kuwü','Logko','Ge','Pilun','Yu','Wünh','Nhamun','Luku','Ruku'];
+function renderBodyActivity(it,c){
+ c.innerHTML=`<div class="body-mode"><button class="active">Aprende</button><button onclick="speak('${esc(it.answer)}')">Practica 🔊</button></div><div class="body-learning"><div class="body-word-list">${BODY_WORDS.map(w=>`<div class="body-word"><span>${w}</span><button onclick="speak('${esc(w)}')" aria-label="Escuchar ${w}">🔊</button></div>`).join('')}</div><div><div class="body-figure"><div class="body-person" aria-label="Figura del cuerpo">🧍</div></div><div class="body-practice"><strong>${it.prompt}</strong><br><button class="audio-btn" style="width:58px;height:58px;font-size:22px;margin:9px auto" onclick="speak('${esc(it.answer)}')">🔊</button><div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join('')}</div></div></div></div><div id="feedback" class="feedback"></div>`;
+}
+
 function choose(btn,value){
  if(state.locked)return;
  speak(value);
  const it=state.current.item;
  document.querySelectorAll(".choice").forEach(x=>x.disabled=true);
  if(value===it.answer){
-   btn.classList.add("correct"); state.correct++; sound("correct");
+   btn.classList.add("correct"); state.correct++;lessonSessionCorrect++; sound("correct");
    feedback(true,it.answer,it.translation);
    state.locked=true; save();
    setTimeout(()=>{state.qPos++;nextExercise()},1200);
  }else{
-   btn.classList.add("wrong"); state.wrong++; sound("wrong"); loseNhewen();
+   btn.classList.add("wrong"); state.wrong++;lessonSessionWrong++; sound("wrong"); loseNhewen();
    feedback(false,`Correcto: ${it.answer}`,it.translation);
    state.locked=true;
    requeueCurrent();
@@ -853,9 +919,9 @@ function renderPairs(it,c){
    if(sel.dataset.side===side){sel.classList.remove("selected");sel=b;b.classList.add("selected");return}
    if(sel.dataset.id===b.dataset.id){
     const old=sel; old.classList.remove("selected"); old.classList.add("matched"); b.classList.add("matched"); sel=null;matched++;sound("correct");
-    if(matched===it.pairs.length){state.correct++;feedback(true,"¡Pares completos!","Reconociste correctamente los números.");save();setTimeout(()=>{state.qPos++;nextExercise()},1000)}
+    if(matched===it.pairs.length){state.correct++;lessonSessionCorrect++;feedback(true,"¡Pares completos!","Reconociste correctamente los números.");save();setTimeout(()=>{state.qPos++;nextExercise()},1000)}
    }else{
-    const old=sel;old.classList.remove("selected");sel=null;state.wrong++;sound("wrong");loseNhewen();requeueCurrent();save();
+    const old=sel;old.classList.remove("selected");sel=null;state.wrong++;lessonSessionWrong++;sound("wrong");loseNhewen();requeueCurrent();save();
     if(state.nhewen>0) setTimeout(()=>{state.qPos++;nextExercise()},900);
    }
   };return b;
@@ -878,44 +944,54 @@ function renderSentence(it,c){
  document.getElementById("checkSentence").onclick=()=>{
   if(state.locked)return;
   const ok=built.map(x=>x.w).join(" ")===it.answer.join(" ");
-  if(ok){state.correct++;sound("correct");feedback(true,it.answer.join(" "),it.translation);state.locked=true;save();setTimeout(()=>{state.qPos++;nextExercise()},1300)}
-  else{state.wrong++;sound("wrong");loseNhewen();feedback(false,"Orden incorrecto",`La respuesta correcta aparecerá cuando vuelva más adelante.`);state.locked=true;requeueCurrent();save();if(state.nhewen>0)setTimeout(()=>{state.qPos++;nextExercise()},1400)}
+  if(ok){state.correct++;lessonSessionCorrect++;sound("correct");feedback(true,it.answer.join(" "),it.translation);state.locked=true;save();setTimeout(()=>{state.qPos++;nextExercise()},1300)}
+  else{state.wrong++;lessonSessionWrong++;sound("wrong");loseNhewen();feedback(false,"Orden incorrecto",`La respuesta correcta aparecerá cuando vuelva más adelante.`);state.locked=true;requeueCurrent();save();if(state.nhewen>0)setTimeout(()=>{state.qPos++;nextExercise()},1400)}
  };
 }
 function finishLesson(){
  const i=state.lessonIndex;
- if(!state.completed.includes(i))state.completed.push(i);
+ const wasAlreadyCompleted=state.completed.includes(i);
+ if(!wasAlreadyCompleted)state.completed.push(i);
  state.unlocked=Math.max(state.unlocked,Math.min(10,i+2));
  state.activeLesson=null; state.savedQueue=[]; state.savedQPos=0;
  document.getElementById("progressBar").style.width="100%";
  const elapsed=Math.max(0,Math.floor((Date.now()-lessonStartedAt)/1000));
  const min=Math.floor(elapsed/60), sec=elapsed%60;
- const lessonCorrect=Math.max(0,state.correct-lessonCorrectStart);
- const lessonWrong=Math.max(0,state.wrong-lessonWrongStart);
+ const lessonCorrect=lessonSessionCorrect;
+ const lessonWrong=lessonSessionWrong;
  const score=Math.max(0,lessonCorrect*100-lessonWrong*20);
+ if(!wasAlreadyCompleted) state.circuitScore=(state.circuitScore||0)+score;
  save(); lessonCelebrationSound();
  const c=document.getElementById("exerciseCard");
  const finalCircuit=state.completed.length>=LESSONS.length;
- c.innerHTML=`<div style="text-align:center"><div class="lesson-celebration"><img src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 style="color:var(--verde)">¡Küme zugun!</h2><p>Completaste la lección ${i+1}.</p><div class="stats" style="grid-template-columns:repeat(2,1fr);margin:16px 0"><div class="stat"><b>${lessonCorrect}</b><span>correctas</span></div><div class="stat"><b>${lessonWrong}</b><span>errores</span></div><div class="stat"><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo</span></div><div class="stat"><b>${score}</b><span>puntaje</span></div></div><p>Tu Nhewen continúa: <b>${state.nhewen}/20</b></p>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult(${score})">Guardar resultado con tu nombre</button>`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
+ const historyBlock=finalCircuit?renderHistoryHTML():"";
+ c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img class="remove-black" src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img class="remove-black" src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
+ processMascotTransparency(c);
+ // La siguiente entrada a una actividad parte con tiempo y puntaje de sesión en cero.
+ lessonStartedAt=0; lessonSessionCorrect=0; lessonSessionWrong=0;
 }
 function lessonCelebrationSound(){
  sound("finish"); setTimeout(()=>sound("kidsCheer"),120); setTimeout(()=>sound("clap"),520);
 }
-function saveCircuitResult(score){
+function saveCircuitResult(){
  const input=document.getElementById("resultName"); const name=(input?.value||"").trim();
  if(!name){input?.focus(); sound("error"); return;}
  state.history=Array.isArray(state.history)?state.history:[];
- const totalScore=Math.max(0,state.correct*100-state.wrong*20);
+ const totalScore=Math.max(0,state.circuitScore||0);
  state.history.unshift({name,score:totalScore,correct:state.correct,wrong:state.wrong,date:new Date().toLocaleString("es-CL")});
  state.history=state.history.slice(0,20);
- state.completed=[]; state.unlocked=1; state.correct=0; state.wrong=0; state.nhewen=MAX_NEWEN; state.activeLesson=null; state.savedQueue=[]; state.savedQPos=0;
- save(); updateHUD(); renderHistory(); sound("cheer"); backToHome();
+ state.completed=[]; state.unlocked=1; state.correct=0; state.wrong=0; state.nhewen=MAX_NEWEN; state.activeLesson=null; state.savedQueue=[]; state.savedQPos=0; state.circuitScore=0;
+ save(); updateHUD(); sound("cheer");
+ const c=document.getElementById("exerciseCard");
+ c.innerHTML=`<div class="completion-card" style="text-align:center"><h2 class="completion-title">Resultado guardado</h2><p>El recorrido quedó registrado. El próximo recorrido comenzará desde cero.</p>${renderHistoryHTML()}<button class="primary" onclick="backToHome()">Volver al inicio</button></div>`;
 }
-function renderHistory(){
- const el=document.getElementById("historyHome"); if(!el)return; const h=Array.isArray(state.history)?state.history:[];
- if(!h.length){el.innerHTML="";return;}
- el.innerHTML=`<h3 style="color:var(--verde);margin:18px 0 6px">Historial de recorridos</h3>${h.slice(0,5).map(x=>`<div class="history-row"><span><b>${x.name}</b><br><small>${x.date}</small></span><b>${x.score} pts</b></div>`).join("")}`;
+function renderHistoryHTML(){
+ const h=Array.isArray(state.history)?state.history:[];
+ if(!h.length)return `<div class="end-history"><h3>Historial de recorridos</h3><p>Aún no hay recorridos anteriores guardados.</p></div>`;
+ return `<div class="end-history"><h3>Historial de recorridos</h3>${h.slice(0,8).map(x=>`<div class="history-row"><span><b>${x.name}</b><br><small>${x.date}</small></span><b>${x.score} pts</b></div>`).join("")}</div>`;
 }
+function renderHistory(){ /* El historial ya no se muestra en el inicio. */ }
+
 function recoverNhewen(){
  document.getElementById("nhewenModal").classList.remove("show");
  document.getElementById("danceModal").classList.add("show");
@@ -973,6 +1049,28 @@ function speak(text){
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ")}
 
+function processMascotTransparency(root=document){
+ root.querySelectorAll('img.home-txegul,img.remove-black,.lesson-celebration img,.dance-stage img').forEach(img=>{
+  if(img.dataset.cleaned==='1')return;
+  const clean=()=>{
+   try{
+    const cv=document.createElement('canvas'),ctx=cv.getContext('2d',{willReadFrequently:true});
+    const w=img.naturalWidth,h=img.naturalHeight; cv.width=w;cv.height=h;ctx.drawImage(img,0,0);
+    const d=ctx.getImageData(0,0,w,h),px=d.data,n=w*h;
+    const seen=new Uint8Array(n),q=new Int32Array(n); let head=0,tail=0;
+    const isBg=(idx)=>{const k=idx*4,r=px[k],g=px[k+1],b=px[k+2];return Math.max(r,g,b)<58 && Math.max(r,g,b)-Math.min(r,g,b)<18};
+    const add=(idx)=>{if(idx>=0&&idx<n&&!seen[idx]&&isBg(idx)){seen[idx]=1;q[tail++]=idx}};
+    for(let x=0;x<w;x++){add(x);add((h-1)*w+x)}
+    for(let y=0;y<h;y++){add(y*w);add(y*w+w-1)}
+    while(head<tail){const idx=q[head++],x=idx%w,y=(idx/w)|0,k=idx*4;px[k+3]=0;if(x>0)add(idx-1);if(x<w-1)add(idx+1);if(y>0)add(idx-w);if(y<h-1)add(idx+w)}
+    ctx.putImageData(d,0,0);img.src=cv.toDataURL('image/png');img.dataset.cleaned='1';
+   }catch(e){console.warn('No se pudo transparentar fondo de mascota',e)}
+  };
+  if(img.complete&&img.naturalWidth)clean();else img.addEventListener('load',clean,{once:true});
+ });
+}
+processMascotTransparency();
+
 document.querySelectorAll('img.home-txegul,.lesson-celebration img,.dance-stage img').forEach(img=>{
   img.addEventListener('error',()=>{
     console.warn('No se pudo cargar la mascota:',img.src);
@@ -980,7 +1078,7 @@ document.querySelectorAll('img.home-txegul,.lesson-celebration img,.dance-stage 
   });
 });
 
-updateHUD();renderLessons();renderHistory();
+updateHUD();renderLessons();
 </script>
 </body>
 </html>
