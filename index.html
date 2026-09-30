@@ -324,8 +324,8 @@ button{font:inherit}
       </div>
 
       <div class="home-mascots" id="homeTreiles">
-        <img class="home-txegul female" src="txegul_hembra_transparente.png?v=20260930-3" alt="Txegül hembra">
-        <img class="home-txegul male" src="txegul_macho_transparente.png?v=20260930-3" alt="Txegül macho">
+        <img class="home-txegul female" src="txegul_hembra_transparente.png?v=20260930-4" alt="Txegül hembra">
+        <img class="home-txegul male" src="txegul_macho_transparente.png?v=20260930-4" alt="Txegül macho">
       </div>
 
       <div class="home-title-panel">
@@ -407,8 +407,8 @@ button{font:inherit}
   <div class="modal-box">
     <h2 id="danceTitle">¡A recuperar el Nhewen!</h2>
     <div id="danceStage" class="dance-stage dancing">
-      <img class="female" src="txegul_hembra_transparente.png?v=20260930-3" alt="">
-      <img class="male" src="txegul_macho_transparente.png?v=20260930-3" alt="">
+      <img class="female" src="txegul_hembra_transparente.png?v=20260930-4" alt="">
+      <img class="male" src="txegul_macho_transparente.png?v=20260930-4" alt="">
     </div>
     <p id="danceCountdown">Celebración · 12 segundos</p>
   </div>
@@ -432,8 +432,8 @@ button{font:inherit}
      * Volver lleva al menú principal (Comenzar / Grafemario / Diccionario / Gramática)
    ========================================================= */
 
-const IMG_MALE="txegul_macho_transparente.png?v=20260930-3";
-const IMG_FEMALE="txegul_hembra_transparente.png?v=20260930-3";
+const IMG_MALE="txegul_macho_transparente.png?v=20260930-4";
+const IMG_FEMALE="txegul_hembra_transparente.png?v=20260930-4";
 const MAX_NEWEN=20;
 
 let state={
@@ -965,8 +965,7 @@ function finishLesson(){
  const c=document.getElementById("exerciseCard");
  const finalCircuit=state.completed.length>=LESSONS.length;
  const historyBlock=finalCircuit?renderHistoryHTML():"";
- c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img class="remove-black" src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img class="remove-black" src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
- processMascotTransparency(c);
+ c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
  // La siguiente entrada a una actividad parte con tiempo y puntaje de sesión en cero.
  lessonStartedAt=0; lessonSessionCorrect=0; lessonSessionWrong=0;
 }
@@ -1049,27 +1048,6 @@ function speak(text){
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ")}
 
-function processMascotTransparency(root=document){
- root.querySelectorAll('img.home-txegul,img.remove-black,.lesson-celebration img,.dance-stage img').forEach(img=>{
-  if(img.dataset.cleaned==='1')return;
-  const clean=()=>{
-   try{
-    const cv=document.createElement('canvas'),ctx=cv.getContext('2d',{willReadFrequently:true});
-    const w=img.naturalWidth,h=img.naturalHeight; cv.width=w;cv.height=h;ctx.drawImage(img,0,0);
-    const d=ctx.getImageData(0,0,w,h),px=d.data,n=w*h;
-    const seen=new Uint8Array(n),q=new Int32Array(n); let head=0,tail=0;
-    const isBg=(idx)=>{const k=idx*4,r=px[k],g=px[k+1],b=px[k+2];return Math.max(r,g,b)<58 && Math.max(r,g,b)-Math.min(r,g,b)<18};
-    const add=(idx)=>{if(idx>=0&&idx<n&&!seen[idx]&&isBg(idx)){seen[idx]=1;q[tail++]=idx}};
-    for(let x=0;x<w;x++){add(x);add((h-1)*w+x)}
-    for(let y=0;y<h;y++){add(y*w);add(y*w+w-1)}
-    while(head<tail){const idx=q[head++],x=idx%w,y=(idx/w)|0,k=idx*4;px[k+3]=0;if(x>0)add(idx-1);if(x<w-1)add(idx+1);if(y>0)add(idx-w);if(y<h-1)add(idx+w)}
-    ctx.putImageData(d,0,0);img.src=cv.toDataURL('image/png');img.dataset.cleaned='1';
-   }catch(e){console.warn('No se pudo transparentar fondo de mascota',e)}
-  };
-  if(img.complete&&img.naturalWidth)clean();else img.addEventListener('load',clean,{once:true});
- });
-}
-processMascotTransparency();
 
 document.querySelectorAll('img.home-txegul,.lesson-celebration img,.dance-stage img').forEach(img=>{
   img.addEventListener('error',()=>{
