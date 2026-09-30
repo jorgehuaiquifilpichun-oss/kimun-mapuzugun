@@ -616,6 +616,72 @@ body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
   .app.exercise-mode #exerciseCard.number-quiz .choice{min-height:34px!important}
 }
 
+
+/* ==========================================================
+   REPARACIÓN FINAL DE ACTIVIDADES · 30-09-2026
+   Prioridad: contenido visible, sin superposición y sin scroll.
+   ========================================================== */
+.app.exercise-mode #exerciseCard.body-card{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  overflow:hidden!important;padding:7px!important;
+}
+.app.exercise-mode #exerciseCard .body-compact{
+  width:100%;height:100%;min-height:0;display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto auto;
+  gap:5px;align-content:stretch;
+}
+.app.exercise-mode #exerciseCard .body-compact-title{
+  font-size:clamp(12px,3.1vw,15px);font-weight:900;color:#173e30;
+  text-align:center;line-height:1.05;margin:0;
+}
+.app.exercise-mode #exerciseCard .body-chip-grid{
+  min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(5,minmax(0,1fr));gap:3px;
+}
+.app.exercise-mode #exerciseCard .body-chip{
+  min-width:0;min-height:0;height:100%;border:1px solid #d7c6ac;border-radius:9px;
+  background:#fffaf1;color:#173e30;padding:2px 5px;font:inherit;font-weight:850;
+  font-size:clamp(9px,2.5vw,11px);line-height:1;display:flex;align-items:center;
+  justify-content:space-between;gap:3px;overflow:hidden;
+}
+.app.exercise-mode #exerciseCard .body-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app.exercise-mode #exerciseCard .body-chip b{font-size:10px;flex:0 0 auto}
+.app.exercise-mode #exerciseCard .body-question{
+  display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:6px;
+  background:#efe4d2;border-radius:10px;padding:4px 6px;min-height:38px;
+}
+.app.exercise-mode #exerciseCard .body-question strong{
+  min-width:0;font-size:clamp(10px,2.8vw,12px);line-height:1.05;color:#173e30;
+}
+.app.exercise-mode #exerciseCard .body-listen{
+  width:32px;height:32px;border:0;border-radius:50%;background:#245b42;color:#fff;
+  font-size:14px;padding:0;
+}
+.app.exercise-mode #exerciseCard .body-choices{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:4px!important;
+}
+.app.exercise-mode #exerciseCard .body-choices .choice{
+  min-height:31px!important;padding:3px 5px!important;font-size:clamp(9px,2.5vw,11px)!important;
+}
+/* Elimina cualquier rótulo generado que pueda montarse sobre botones de audio. */
+.app.exercise-mode #exercise .audio-btn::before,
+.app.exercise-mode #exercise .audio-btn::after{content:none!important;display:none!important}
+/* Ningún texto de actividad puede salir de su caja. */
+.app.exercise-mode #exerciseCard button,
+.app.exercise-mode #exerciseCard .prompt,
+.app.exercise-mode #exerciseCard h3,
+.app.exercise-mode #exerciseCard p,
+.app.exercise-mode #exerciseCard strong{
+  max-width:100%;overflow-wrap:anywhere;word-break:normal;
+}
+@media(max-height:700px){
+ .app.exercise-mode #exerciseCard .body-compact{gap:3px}
+ .app.exercise-mode #exerciseCard .body-question{min-height:31px;padding:2px 4px}
+ .app.exercise-mode #exerciseCard .body-listen{width:27px;height:27px;font-size:12px}
+ .app.exercise-mode #exerciseCard .body-question{grid-template-columns:29px minmax(0,1fr)}
+ .app.exercise-mode #exerciseCard .body-choices .choice{min-height:27px!important}
+}
+
 </style>
 </head>
 <body>
@@ -1170,7 +1236,8 @@ function nextExercise(){
 }
 function renderItem(it){
  const c=document.getElementById("exerciseCard");
- if(state.lessonIndex===5){renderBodyActivity(it,c);return;}
+ c.classList.remove("number-quiz","body-card","pairs-card","sentence-card");
+ if(state.lessonIndex===5){c.classList.add("body-card");renderBodyActivity(it,c);return;}
  if(state.lessonIndex===4 && (it.type==="mc"||it.type==="listen"||it.type==="age")){renderNumberActivity(it,c);return;}
  if(it.type==="mc"||it.type==="listen"||it.type==="age"||it.type==="guided"){
    let head="";
@@ -1180,8 +1247,8 @@ function renderItem(it){
    else head=`<div class="prompt">${it.prompt}</div>`;
    c.innerHTML=head+`<div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join("")}</div><div id="feedback" class="feedback"></div>`;
  }
- if(it.type==="pairs") renderPairs(it,c);
- if(it.type==="sentence") renderSentence(it,c);
+ if(it.type==="pairs"){c.classList.add("pairs-card");renderPairs(it,c);}
+ if(it.type==="sentence"){c.classList.add("sentence-card");renderSentence(it,c);}
 }
 function renderNumberActivity(it,c){
  const answer=it.answer;
@@ -1202,8 +1269,21 @@ function chooseNumber(btn,value,correct,spoken){
 }
 const BODY_WORDS=['Age','Kuwü','Logko','Ge','Pilun','Yu','Wünh','Nhamun','Luku','Ruku'];
 function renderBodyActivity(it,c){
- c.innerHTML=`<div class="body-mode"><button class="active">Aprende</button><button onclick="speak('${esc(it.answer)}')">Practica 🔊</button></div><div class="body-learning"><div class="body-word-list">${BODY_WORDS.map(w=>`<div class="body-word"><span>${w}</span><button onclick="speak('${esc(w)}')" aria-label="Escuchar ${w}">🔊</button></div>`).join('')}</div><div><div class="body-figure"><div class="body-person" aria-label="Figura del cuerpo">🧍</div></div><div class="body-practice"><strong>${it.prompt}</strong><br><button class="audio-btn" style="width:58px;height:58px;font-size:22px;margin:9px auto" onclick="speak('${esc(it.answer)}')">🔊</button><div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join('')}</div></div></div></div><div id="feedback" class="feedback"></div>`;
+ const words=BODY_WORDS.map(w=>`<button class="body-chip" onclick="speak('${esc(w)}')"><span>${w}</span><b>🔊</b></button>`).join('');
+ const opts=shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join('');
+ c.innerHTML=`
+   <div class="body-compact">
+     <div class="body-compact-title">Aprende las partes del cuerpo</div>
+     <div class="body-chip-grid">${words}</div>
+     <div class="body-question">
+       <button class="body-listen" onclick="speak('${esc(it.answer)}')">🔊</button>
+       <strong>${it.prompt}</strong>
+     </div>
+     <div class="choices body-choices">${opts}</div>
+   </div>
+   <div id="feedback" class="feedback"></div>`;
 }
+
 
 function choose(btn,value){
  if(state.locked)return;
