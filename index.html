@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Kimün Mapuzugun · Rediseño aprobado</title>
-<meta name="kimun-build" content="visual-mapuche-2026-09-30-02">
+<meta name="kimun-build" content="sin-explora-v1-2026-09-30">
 <style>
 :root{
   --verde:#4f6355;--verde2:#718275;--crema:#f3eee6;--crema2:#e8e0d4;
@@ -114,6 +114,10 @@ button{font:inherit}
 .map-caption{font-size:13px;color:#6f6a62;text-align:center;margin:-5px 0 12px}
 .info-screen h2{color:var(--verde);margin-top:4px}
 .info-card{background:var(--blanco);border:1px solid var(--borde);border-radius:18px;padding:16px;line-height:1.5}
+
+.correct-review{margin-top:9px;padding:10px;border:1px solid #77a184;border-radius:12px;background:#edf7ef;color:#24583b}
+.correct-review .review-words{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:7px}
+.correct-review button{border:1px solid #8cad95;background:white;color:#24583b;border-radius:10px;padding:7px 9px;font-weight:800}
 .hidden{display:none!important}
 
 /* ===== Base consolidada 30-09-2026: recursos de apoyo ===== */
@@ -301,6 +305,50 @@ button{font:inherit}
 .body-learning{display:grid;grid-template-columns:1fr 1.25fr;gap:12px;align-items:start}.body-word-list{display:grid;gap:7px}.body-word{display:grid;grid-template-columns:1fr 38px;align-items:center;border:1px solid #d7c6ac;border-radius:13px;background:#fffaf1;padding:7px 7px 7px 10px;font-weight:850;color:#173e30}.body-word button{width:34px;height:34px;border:0;border-radius:50%;background:#245b42;color:#fff}.body-figure{min-height:440px;border-radius:24px;background:linear-gradient(#a9d4df 0 42%,#6f9876 42% 67%,#e3c99f 67%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.body-person{font-size:245px;line-height:1;filter:drop-shadow(0 8px 8px #173e3040)}.body-mode{display:flex;gap:8px;margin-bottom:12px}.body-mode button{flex:1;border:1px solid #cdbda7;border-radius:14px;padding:10px;background:#efe4d2;font-weight:850}.body-mode button.active{background:#245b42;color:#fff}.body-practice{margin-top:12px;padding:13px;border-radius:16px;background:#efe4d2;text-align:center}.body-practice strong{color:#173e30;font-size:19px}
 @media(max-width:390px){.route-node{width:116px;height:116px}.number-quiz .choices{grid-template-columns:repeat(2,1fr)}.body-learning{grid-template-columns:1fr}.body-figure{min-height:330px}.body-person{font-size:190px}}
 
+
+/* ===== AJUSTES DE CALIDAD · revisión de video 30-09-2026 ===== */
+.home-txegul,.activity-bird,.lesson-celebration img,.dance-stage img{image-rendering:auto;backface-visibility:hidden}
+.activity-scene{height:190px;margin:0 0 12px;border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(#9fd2e5 0 45%,#6f9b72 45% 62%,#397a8b 62% 78%,#d5b88c 78%);border:1px solid #c9b99f;box-shadow:0 8px 22px #173e3020}
+.activity-mountain{position:absolute;left:50%;top:12px;width:210px;height:105px;transform:translateX(-50%);clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(150deg,transparent 0 40%,#f7f6ef 41% 53%,transparent 54%),linear-gradient(210deg,transparent 0 43%,#e8eee8 44% 57%,transparent 58%),linear-gradient(#dfe7e3,#637b6d)}
+.activity-lake{position:absolute;left:0;right:0;bottom:35px;height:46px;background:linear-gradient(#5e9bad,#397687)}
+.activity-bird{position:absolute;bottom:8px;height:160px;width:auto;object-fit:contain;filter:drop-shadow(0 7px 6px #173e3050)}
+.activity-bird.female{left:18px}.activity-bird.male{right:18px}
+.audio-btn{position:relative;color:transparent!important;font-size:0!important;overflow:visible}
+.audio-btn:before{content:"🔊";font-size:32px;color:#fff;line-height:1}
+.audio-btn:after{content:"Escuchar";position:absolute;top:88px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:850;color:#173e30;white-space:nowrap}
+.number-hear .audio-btn{margin-bottom:28px}
+.exercise-head{position:relative}.exercise-head h2{margin:4px 0 2px}.exercise-head p{line-height:1.3}
+.route-wrap:after{z-index:1}.route-node{position:absolute!important}
+@media(max-width:390px){.activity-scene{height:165px}.activity-bird{height:138px}.activity-bird.female{left:8px}.activity-bird.male{right:8px}}
+
+
+/* ===== ESCENARIO NATURAL V2 · sin repetir la estructura triangular ===== */
+.home-cover{
+  background:linear-gradient(180deg,#b8dce3 0 24%,#759b86 24% 46%,#234c3a 46% 55%,#f6efe2 55% 100%);
+}
+.home-landscape{top:28px;height:405px;background:linear-gradient(180deg,#a9d8e5 0%,#d9e7df 44%,#5e8774 45%,#244f3b 73%,#173e30 100%)}
+.home-volcano{clip-path:none;width:430px;height:245px;left:50%;top:30px;transform:translateX(-50%);background:none;filter:none;overflow:visible}
+.home-volcano:before{
+ content:"";position:absolute;left:50%;bottom:20px;width:360px;height:190px;transform:translateX(-50%);
+ background:linear-gradient(158deg,transparent 0 42%,#f6f4e9 42.5% 50%,transparent 50.5%),linear-gradient(202deg,transparent 0 44%,#e7ece3 44.5% 53%,transparent 53.5%),linear-gradient(180deg,#718879 0%,#4f6f5d 68%,#365a47 100%);
+ clip-path:polygon(4% 100%,13% 87%,22% 76%,31% 62%,40% 48%,48% 34%,53% 25%,58% 35%,66% 48%,76% 65%,88% 83%,98% 100%);
+ filter:drop-shadow(0 13px 15px #173e3030)
+}
+.home-volcano:after{content:"";position:absolute;left:-25px;right:-25px;bottom:-2px;height:104px;background:linear-gradient(180deg,#52775f,#244f3b);clip-path:polygon(0 66%,7% 42%,14% 59%,22% 29%,30% 57%,38% 37%,46% 61%,55% 28%,64% 54%,72% 32%,80% 61%,89% 35%,100% 58%,100% 100%,0 100%)}
+.home-forest{bottom:48px;width:56%;height:155px;background:none;z-index:2}
+.home-forest:before,.home-forest:after{content:"";position:absolute;bottom:0;width:100%;height:100%;background:linear-gradient(180deg,#315f45,#173e30);clip-path:polygon(0 100%,0 72%,6% 72%,9% 42%,12% 72%,18% 72%,22% 26%,26% 72%,34% 72%,38% 48%,42% 72%,49% 72%,54% 18%,59% 72%,67% 72%,72% 38%,77% 72%,84% 72%,90% 30%,94% 72%,100% 72%,100% 100%)}
+.home-forest:after{transform:translateY(14px) scale(1.08);opacity:.45;filter:blur(2px)}
+.forest-left{left:-7%}.forest-right{right:-7%;transform:scaleX(-1)}
+.home-lake{left:-3%;right:-3%;bottom:0;height:105px;z-index:3;border-top:1px solid #d6e7df;background:linear-gradient(180deg,#82bac4 0%,#57919d 38%,#3c7480 100%);box-shadow:inset 0 12px 24px #fff2}
+.home-lake:before{content:"";position:absolute;left:8%;right:8%;top:17px;height:2px;background:#dceae6aa;box-shadow:0 19px 0 #b7d7d488,0 42px 0 #87b6b777}
+.home-landscape:after{content:"";position:absolute;left:0;right:0;bottom:0;height:86px;background:linear-gradient(180deg,transparent,#173e3018);opacity:1}
+.home-mascots{height:370px;padding-top:56px}
+.home-mascots:before{content:"";position:absolute;z-index:-1;left:50%;bottom:-5px;transform:translateX(-50%);width:88%;height:52px;border-radius:50%;background:radial-gradient(ellipse,#183d2d55 0 28%,#183d2d18 55%,transparent 72%);filter:blur(3px)}
+.home-mascots:after{display:none}
+.home-txegul{height:292px;filter:drop-shadow(0 11px 9px #10291f55)}
+.home-title-panel{margin:-3px auto 13px;border-radius:24px;background:linear-gradient(180deg,#fffdf7f7,#f4eadbf7);border:1px solid #d4c2a4;box-shadow:0 12px 30px #173e3024}
+@media(max-width:380px){.home-landscape{height:365px}.home-volcano{width:390px;top:22px}.home-volcano:before{width:330px;height:175px}.home-mascots{height:330px;padding-top:58px}.home-txegul{height:255px}}
+
 </style>
 </head>
 <body>
@@ -377,6 +425,11 @@ button{font:inherit}
 
   <main id="exercise" class="screen">
     <button class="back-button" onclick="backToHome()">← Wüñotxekage · Volver atrás</button>
+    <div class="activity-scene" aria-hidden="true">
+      <div class="activity-mountain"></div><div class="activity-lake"></div>
+      <img src="txegul_hembra_transparente.png?v=20260930-4" alt="" class="activity-bird female">
+      <img src="txegul_macho_transparente.png?v=20260930-4" alt="" class="activity-bird male">
+    </div>
     <div class="exercise-head">
       <small id="lessonMeta"></small>
       <h2 id="exerciseTitle"></h2>
@@ -434,7 +487,7 @@ button{font:inherit}
 
 const IMG_MALE="txegul_macho_transparente.png?v=20260930-4";
 const IMG_FEMALE="txegul_hembra_transparente.png?v=20260930-4";
-const MAX_NEWEN=20;
+const MAX_NEWEN=20; // límite global de Nhewen
 
 let state={
   nhewen:MAX_NEWEN,
@@ -473,13 +526,24 @@ const LESSONS=[
   mc("¿Amaneciste bien?","Küme wünhmaymi am?",["Küme wünhmaymi am?","Kümelekaymi am?","Chew müleymi am?","Chem pigey?"]),
   mc("Sí, amanecí bien ¿y tú?","May, küme wünhman, eymi kay?",["May, küme wünhman, eymi kay?","Iñche ka küme wünhman","Kümelekan iñche","Fütxa kuyfi may"]),
   mc("¿Y tú?","Eymi kay?",["Eymi kay?","Iney pigeymi am?","Chumleymi am?","Feley"]),
-  mc("¿De dónde vienes?","Chew püle müley tami ruka?",["Chew püle müley tami ruka?","Chew müleymi am?","Iney pigeymi am?","Tunten txipantu nieymi?"]),
+  guided("¿Dónde estás?","Chew müleymi am?",["Chew müleymi am?","Tunten txipantu nieymi?","Chew püle müley tami ruka?","Iney pigeymi am?"]),
   mc("De Pucón","Pukon püle.",["Pukon püle.","Villarrika püle.","Iñche mülen mawiza mew","Eymi kay?"]),
   mc("De Villarrica","Villarrika püle.",["Villarrika püle.","Pukon püle.","Iñche mülen mawiza mew","Eymi kay?"]),
+  guided("¿Con quién vives?","Iney egu müleymi am?",["Iney egu müleymi am?","Iney pigey tami ñuke","Chumley tami pu che?","Chew müleymi am?"]),
+  guided("Yo vivo con mi mamá y mi hijo.","Iñche mülen tañi ñuke ka tañi fot'üm iñchiñ",["Iñche mülen tañi ñuke ka tañi fot'üm iñchiñ","Tañi ñuke Eliana pigey","Kom kümelkaleigün","Iñche mülen mawiza mew"]),
+  guided("¿Cómo se llama tu mamá?","Iney pigey tami ñuke",["Iney pigey tami ñuke","Iney egu müleymi am?","Chumley tami pu che?","Chem zuamimi am?"]),
+  guided("Mi mamá se llama Eliana.","Tañi ñuke Eliana pigey",["Tañi ñuke Eliana pigey","Kom kümelkaleigün","Iñche mülen tañi ñuke ka tañi fot'üm iñchiñ","Iney pigey tami ñuke"]),
+  guided("¿Cómo está tu gente?","Chumley tami pu che?",["Chumley tami pu che?","Iney egu müleymi am?","Chum txipay ti zugu?","Chem zuamimi am?"]),
+  guided("Todos están bien.","Kom kümelkaleigün",["Kom kümelkaleigün","Tañi ñuke Eliana pigey","Kümelekan iñche","Fürenemuchi"]),
+  guided("¿Me podrías ayudar?","Kelluafen?",["Kelluafen?","Kelluafeyu?","Fürene-en","Fürenemuchi"]),
+  guided("¿Te puedo ayudar?","Kelluafeyu?",["Kelluafeyu?","Kelluafen?","Chem zuamimi am?","Chum txipay ti zugu?"]),
+  guided("Hazme el favor / ayúdame.","Fürene-en",["Fürene-en","Fürenemuchi","Kelluafen?","Kelluafeyu?"]),
+  guided("Háganme el favor / ayúdenme.","Fürenemuchi",["Fürenemuchi","Fürene-en","Kelluafeyu?","Kom kümelkaleigün"]),
+  guided("¿Qué necesitas?","Chem zuamimi am?",["Chem zuamimi am?","Fürene-en","Kelluafeyu?","Chum txipay ti zugu?"],{"Chem":"Qué","zuamimi":"necesitas","am?":"partícula interrogativa"}),
+  guided("¿Cómo resultó?","Chum txipay ti zugu?",["Chum txipay ti zugu?","Chem zuamimi am?","Kelluafen?","Chumley tami pu che?"]),
   listen("Escucha y selecciona","Mari mari",["Mari mari","Fütxa kuyfi","Feley","Ramtuchi"]),
   listen("Escucha y selecciona","Kümelekan iñche",["Kümelekan iñche","Ürkülen","Illkülen","Weñagkülen"])
- ]
-},
+ ]},
 {
  title:"¿Cómo me siento?", subtitle:"Estados de ánimo",
  items:[
@@ -628,6 +692,7 @@ const LESSONS=[
 ];
 
 function mc(prompt,answer,options){return{type:"mc",prompt,answer,options,translation:prompt}}
+function guided(prompt,answer,options,wordHints={}){return{type:"guided",prompt,answer,options,translation:prompt,wordHints}}
 function listen(prompt,answer,options){return{type:"listen",prompt,answer,options,translation:answer}}
 function age(number,answer,options){return{type:"age",number,answer,options,translation:`Tengo ${number} años`}}
 function pairs(prompt,pairs){return{type:"pairs",prompt,pairs}}
@@ -838,10 +903,11 @@ function renderItem(it){
  const c=document.getElementById("exerciseCard");
  if(state.lessonIndex===5){renderBodyActivity(it,c);return;}
  if(state.lessonIndex===4 && (it.type==="mc"||it.type==="listen"||it.type==="age")){renderNumberActivity(it,c);return;}
- if(it.type==="mc"||it.type==="listen"||it.type==="age"){
+ if(it.type==="mc"||it.type==="listen"||it.type==="age"||it.type==="guided"){
    let head="";
    if(it.type==="listen") head=`<button class="audio-btn" onclick="speak('${esc(it.answer)}')">🔊 Escuchar</button><div class="prompt">${it.prompt}</div>`;
    else if(it.type==="age") head=`<div class="prompt">Completa la edad</div><div class="big-number">${it.number}</div><div class="prompt" style="font-size:19px">Iñche nien <u>_____</u> txipantu</div>`;
+   else if(it.type==="guided") head=`<div class="prompt">${it.prompt}</div>`;
    else head=`<div class="prompt">${it.prompt}</div>`;
    c.innerHTML=head+`<div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join("")}</div><div id="feedback" class="feedback"></div>`;
  }
@@ -965,7 +1031,8 @@ function finishLesson(){
  const c=document.getElementById("exerciseCard");
  const finalCircuit=state.completed.length>=LESSONS.length;
  const historyBlock=finalCircuit?renderHistoryHTML():"";
- c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
+ c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img class="remove-black" src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img class="remove-black" src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
+
  // La siguiente entrada a una actividad parte con tiempo y puntaje de sesión en cero.
  lessonStartedAt=0; lessonSessionCorrect=0; lessonSessionWrong=0;
 }
@@ -1047,7 +1114,6 @@ function speak(text){
 }
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ")}
-
 
 document.querySelectorAll('img.home-txegul,.lesson-celebration img,.dance-stage img').forEach(img=>{
   img.addEventListener('error',()=>{
