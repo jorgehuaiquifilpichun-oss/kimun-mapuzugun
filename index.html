@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Kimün Mapuzugun · Rediseño aprobado</title>
-<meta name="kimun-build" content="visual-mapuche-2026-09-30-03">
+<meta name="kimun-build" content="sin-explora-v1-2026-09-30">
 <style>
 :root{
   --verde:#4f6355;--verde2:#718275;--crema:#f3eee6;--crema2:#e8e0d4;
@@ -114,6 +114,10 @@ button{font:inherit}
 .map-caption{font-size:13px;color:#6f6a62;text-align:center;margin:-5px 0 12px}
 .info-screen h2{color:var(--verde);margin-top:4px}
 .info-card{background:var(--blanco);border:1px solid var(--borde);border-radius:18px;padding:16px;line-height:1.5}
+
+.correct-review{margin-top:9px;padding:10px;border:1px solid #77a184;border-radius:12px;background:#edf7ef;color:#24583b}
+.correct-review .review-words{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:7px}
+.correct-review button{border:1px solid #8cad95;background:white;color:#24583b;border-radius:10px;padding:7px 9px;font-weight:800}
 .hidden{display:none!important}
 
 /* ===== Base consolidada 30-09-2026: recursos de apoyo ===== */
@@ -301,30 +305,695 @@ button{font:inherit}
 .body-learning{display:grid;grid-template-columns:1fr 1.25fr;gap:12px;align-items:start}.body-word-list{display:grid;gap:7px}.body-word{display:grid;grid-template-columns:1fr 38px;align-items:center;border:1px solid #d7c6ac;border-radius:13px;background:#fffaf1;padding:7px 7px 7px 10px;font-weight:850;color:#173e30}.body-word button{width:34px;height:34px;border:0;border-radius:50%;background:#245b42;color:#fff}.body-figure{min-height:440px;border-radius:24px;background:linear-gradient(#a9d4df 0 42%,#6f9876 42% 67%,#e3c99f 67%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.body-person{font-size:245px;line-height:1;filter:drop-shadow(0 8px 8px #173e3040)}.body-mode{display:flex;gap:8px;margin-bottom:12px}.body-mode button{flex:1;border:1px solid #cdbda7;border-radius:14px;padding:10px;background:#efe4d2;font-weight:850}.body-mode button.active{background:#245b42;color:#fff}.body-practice{margin-top:12px;padding:13px;border-radius:16px;background:#efe4d2;text-align:center}.body-practice strong{color:#173e30;font-size:19px}
 @media(max-width:390px){.route-node{width:116px;height:116px}.number-quiz .choices{grid-template-columns:repeat(2,1fr)}.body-learning{grid-template-columns:1fr}.body-figure{min-height:330px}.body-person{font-size:190px}}
 
-\n/* ===== Capa visual aprobada · calidad móvil 30-09-2026 ===== */
-:root{--deep:#063d31;--deep2:#075442;--paper:#fbf3e5;--gold:#d7b16e;--earth2:#b45d2d}
-.topbar{background:linear-gradient(180deg,#063d31,#084a3b);color:#fff;border-bottom:2px solid #d8b06b;box-shadow:0 5px 18px #062b2240}
-.topbar .brand{color:#fff}.topbar .newen{background:#ffffff14;color:#fff;border:1px solid #ffffff8a}.topbar .progress{background:#ffffff35}.topbar .progress>div{background:linear-gradient(90deg,#58c778,#b8e49c)}
-.screen:not(#home){background:linear-gradient(180deg,#f9f2e6,#f1e5d3)}
-.exercise-head{background:linear-gradient(180deg,#073f32,#07503f);color:#fff;margin:-18px -16px 14px;padding:18px 16px 16px;border-bottom:3px solid #d2aa68;box-shadow:0 8px 22px #12362922}
-.exercise-head h2,.exercise-head p{color:#fff}.exercise-head p{opacity:.82}.exercise-head:before{content:"◆  ◇  ◆";display:block;color:#d7b16e;font-size:12px;letter-spacing:10px;margin-bottom:5px}
-.card{border-radius:26px;border:1px solid #ddceb6;background:linear-gradient(180deg,#fffaf0,#f8efdf);box-shadow:0 13px 30px #173d3020}
-.prompt{color:#073f32;font-size:25px}.choice{min-height:58px;border-color:#cdbfa9;border-radius:16px;background:#fffaf0;font-size:17px;box-shadow:0 3px 8px #123b2d0c}.choice:active{transform:scale(.985)}.choice.correct{background:#e1f2e5;border-color:#3e8a5e}.choice.wrong{background:#f7e3de;border-color:#ad5546}
-.audio-btn{min-width:62px;min-height:52px;background:#073f32;color:#fff;border:2px solid #d5b475;box-shadow:0 5px 12px #0b392d2b}
-.primary{background:linear-gradient(180deg,#08704f,#07533e);box-shadow:0 5px 0 #053c2e}.secondary{background:#fff8eb;border-color:#d5c3a7}
-/* Inicio: profundidad escénica sin imágenes raster de fondo; las mascotas quedan PNG nativas. */
-.home-cover{background:linear-gradient(180deg,#9ed0e2 0 22%,#6d9b8d 22% 40%,#285d48 40% 55%,#f4ead9 55% 100%)}
-.home-landscape{height:430px}.home-volcano{width:365px;height:205px;top:32px;filter:drop-shadow(0 13px 16px #123c3055)}.home-lake{height:120px;background:linear-gradient(180deg,#6ea8ba,#3f7c8d 62%,#2b6472)}
-.home-mascots{height:380px}.home-txegul{height:320px;image-rendering:auto;backface-visibility:hidden}.home-title-panel{box-shadow:0 15px 35px #15392c2b}.home-action{box-shadow:0 7px 18px #173e3020}.home-action.main{background:linear-gradient(180deg,#0a6a4c,#07513d);color:#fff;border-color:#0a6048}.home-action.main .home-icon{background:#fff;color:#07513d}
-/* Camino visto desde arriba: sendero sinuoso y nodos con mayor profundidad. */
-.route-wrap{background:radial-gradient(circle at 50% 20%,#eef3e9 0 8%,transparent 9%),linear-gradient(180deg,#dce8db,#d3e0d1 58%,#c8d8c7);box-shadow:inset 0 0 0 2px #fff9,0 12px 28px #193c2e18}.route-line path{stroke:#9b8767;stroke-width:4.5;stroke-dasharray:2 2}.route-node{width:94px;height:94px;border:5px solid #f9f1e4;background:linear-gradient(180deg,#64816e,#456652);box-shadow:0 7px 0 #294d3b,0 13px 20px #16382d2d}
-/* Selección de pares: tarjetas tipo juego, cuatro columnas cuando hay espacio. */
-.pair-grid{grid-template-columns:repeat(2,1fr);gap:10px}.pair-btn{min-height:68px;border-radius:17px;border:2px solid #0b5744;background:#fff9ed;color:#173e31;box-shadow:0 4px 10px #163c2d13}.pair-btn.selected{background:#f8e7bc;border-color:#c58d35}.pair-btn.matched{visibility:hidden}
-/* Números: 8 opciones en cuadrícula 4x2 en pantallas amplias. */
-.number-quiz .choices{grid-template-columns:repeat(4,1fr);gap:9px}.number-quiz .choice{min-height:78px;font-size:34px;color:#073f32}.number-hear{text-align:center}.number-hear h3{font-size:24px;color:#073f32;margin:8px 0 3px}.number-hear p{margin:0 0 12px;color:#665d51}
-/* Cuerpo: nombres al costado y botón de voz por palabra. */
-.body-learning{display:grid;grid-template-columns:minmax(126px,.85fr) 1.15fr;gap:12px;align-items:start}.body-word-list{display:grid;gap:7px}.body-word{display:grid;grid-template-columns:1fr 36px;align-items:center;gap:5px;background:#fff8ec;border:1px solid #d6c6ae;border-radius:13px;padding:6px 7px 6px 10px;font-weight:800;color:#173e31}.body-word button{width:34px;height:34px;border:0;border-radius:50%;background:#07513d;color:#fff}.body-figure{min-height:250px;border-radius:20px;background:radial-gradient(circle,#fffdf7 0 42%,#eee1cc 43% 100%);display:grid;place-items:center;border:1px solid #d6c6ae}.body-person{font-size:125px;filter:drop-shadow(0 8px 8px #0002)}
-@media(max-width:380px){.number-quiz .choices{grid-template-columns:repeat(4,1fr)}.number-quiz .choice{min-height:65px;font-size:28px}.body-learning{grid-template-columns:118px 1fr}.home-txegul{height:275px}.home-mascots{height:335px}}
+
+/* ===== AJUSTES DE CALIDAD · revisión de video 30-09-2026 ===== */
+.home-txegul,.activity-bird,.lesson-celebration img,.dance-stage img{image-rendering:auto;backface-visibility:hidden}
+.activity-scene{height:190px;margin:0 0 12px;border-radius:24px;position:relative;overflow:hidden;background:linear-gradient(#9fd2e5 0 45%,#6f9b72 45% 62%,#397a8b 62% 78%,#d5b88c 78%);border:1px solid #c9b99f;box-shadow:0 8px 22px #173e3020}
+.activity-mountain{position:absolute;left:50%;top:12px;width:210px;height:105px;transform:translateX(-50%);clip-path:polygon(50% 0,100% 100%,0 100%);background:linear-gradient(150deg,transparent 0 40%,#f7f6ef 41% 53%,transparent 54%),linear-gradient(210deg,transparent 0 43%,#e8eee8 44% 57%,transparent 58%),linear-gradient(#dfe7e3,#637b6d)}
+.activity-lake{position:absolute;left:0;right:0;bottom:35px;height:46px;background:linear-gradient(#5e9bad,#397687)}
+.activity-bird{position:absolute;bottom:8px;height:160px;width:auto;object-fit:contain;filter:drop-shadow(0 7px 6px #173e3050)}
+.activity-bird.female{left:18px}.activity-bird.male{right:18px}
+.audio-btn{position:relative;color:transparent!important;font-size:0!important;overflow:visible}
+.audio-btn:before{content:"🔊";font-size:32px;color:#fff;line-height:1}
+.audio-btn:after{content:"Escuchar";position:absolute;top:88px;left:50%;transform:translateX(-50%);font-size:13px;font-weight:850;color:#173e30;white-space:nowrap}
+.number-hear .audio-btn{margin-bottom:28px}
+.exercise-head{position:relative}.exercise-head h2{margin:4px 0 2px}.exercise-head p{line-height:1.3}
+.route-wrap:after{z-index:1}.route-node{position:absolute!important}
+@media(max-width:390px){.activity-scene{height:165px}.activity-bird{height:138px}.activity-bird.female{left:8px}.activity-bird.male{right:8px}}
+
+
+/* ===== ESCENARIO NATURAL V2 · sin repetir la estructura triangular ===== */
+.home-cover{
+  background:linear-gradient(180deg,#b8dce3 0 24%,#759b86 24% 46%,#234c3a 46% 55%,#f6efe2 55% 100%);
+}
+.home-landscape{top:28px;height:405px;background:linear-gradient(180deg,#a9d8e5 0%,#d9e7df 44%,#5e8774 45%,#244f3b 73%,#173e30 100%)}
+.home-volcano{clip-path:none;width:430px;height:245px;left:50%;top:30px;transform:translateX(-50%);background:none;filter:none;overflow:visible}
+.home-volcano:before{
+ content:"";position:absolute;left:50%;bottom:20px;width:360px;height:190px;transform:translateX(-50%);
+ background:linear-gradient(158deg,transparent 0 42%,#f6f4e9 42.5% 50%,transparent 50.5%),linear-gradient(202deg,transparent 0 44%,#e7ece3 44.5% 53%,transparent 53.5%),linear-gradient(180deg,#718879 0%,#4f6f5d 68%,#365a47 100%);
+ clip-path:polygon(4% 100%,13% 87%,22% 76%,31% 62%,40% 48%,48% 34%,53% 25%,58% 35%,66% 48%,76% 65%,88% 83%,98% 100%);
+ filter:drop-shadow(0 13px 15px #173e3030)
+}
+.home-volcano:after{content:"";position:absolute;left:-25px;right:-25px;bottom:-2px;height:104px;background:linear-gradient(180deg,#52775f,#244f3b);clip-path:polygon(0 66%,7% 42%,14% 59%,22% 29%,30% 57%,38% 37%,46% 61%,55% 28%,64% 54%,72% 32%,80% 61%,89% 35%,100% 58%,100% 100%,0 100%)}
+.home-forest{bottom:48px;width:56%;height:155px;background:none;z-index:2}
+.home-forest:before,.home-forest:after{content:"";position:absolute;bottom:0;width:100%;height:100%;background:linear-gradient(180deg,#315f45,#173e30);clip-path:polygon(0 100%,0 72%,6% 72%,9% 42%,12% 72%,18% 72%,22% 26%,26% 72%,34% 72%,38% 48%,42% 72%,49% 72%,54% 18%,59% 72%,67% 72%,72% 38%,77% 72%,84% 72%,90% 30%,94% 72%,100% 72%,100% 100%)}
+.home-forest:after{transform:translateY(14px) scale(1.08);opacity:.45;filter:blur(2px)}
+.forest-left{left:-7%}.forest-right{right:-7%;transform:scaleX(-1)}
+.home-lake{left:-3%;right:-3%;bottom:0;height:105px;z-index:3;border-top:1px solid #d6e7df;background:linear-gradient(180deg,#82bac4 0%,#57919d 38%,#3c7480 100%);box-shadow:inset 0 12px 24px #fff2}
+.home-lake:before{content:"";position:absolute;left:8%;right:8%;top:17px;height:2px;background:#dceae6aa;box-shadow:0 19px 0 #b7d7d488,0 42px 0 #87b6b777}
+.home-landscape:after{content:"";position:absolute;left:0;right:0;bottom:0;height:86px;background:linear-gradient(180deg,transparent,#173e3018);opacity:1}
+.home-mascots{height:370px;padding-top:56px}
+.home-mascots:before{content:"";position:absolute;z-index:-1;left:50%;bottom:-5px;transform:translateX(-50%);width:88%;height:52px;border-radius:50%;background:radial-gradient(ellipse,#183d2d55 0 28%,#183d2d18 55%,transparent 72%);filter:blur(3px)}
+.home-mascots:after{display:none}
+.home-txegul{height:292px;filter:drop-shadow(0 11px 9px #10291f55)}
+.home-title-panel{margin:-3px auto 13px;border-radius:24px;background:linear-gradient(180deg,#fffdf7f7,#f4eadbf7);border:1px solid #d4c2a4;box-shadow:0 12px 30px #173e3024}
+@media(max-width:380px){.home-landscape{height:365px}.home-volcano{width:390px;top:22px}.home-volcano:before{width:330px;height:175px}.home-mascots{height:330px;padding-top:58px}.home-txegul{height:255px}}
+
+
+/* ===== AJUSTE GLOBAL RESPONSIVE · TODO EL PROYECTO · 30-09-2026 ===== */
+html{min-height:100%;-webkit-text-size-adjust:100%}
+body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
+.app{width:100%;max-width:480px;min-height:100dvh;min-height:100svh;overflow-x:hidden}
+.topbar{padding-top:max(8px,env(safe-area-inset-top))}
+.screen{width:100%;min-height:calc(100dvh - 64px);padding:12px 14px max(32px,calc(env(safe-area-inset-bottom) + 20px));overflow-x:hidden}
+.screen:not(#home):before{margin:-12px -14px 10px}
+#home.screen{min-height:100dvh;padding:0}
+.home-cover{min-height:100dvh;padding-bottom:max(18px,env(safe-area-inset-bottom))}
+.back-button{margin:0 0 8px;padding:8px 11px}
+.exercise-head{margin:0 0 9px;padding:10px 12px;border-radius:17px}
+.exercise-head:before{margin-bottom:3px}
+.exercise-head h2{margin:3px 0;font-size:19px}
+.exercise-head p{margin:3px 0 0;font-size:14px;line-height:1.2}
+.card{padding:14px;border-radius:21px}
+.prompt{font-size:21px;margin:5px 0 11px}
+.choices{gap:8px}
+.choice{min-height:52px;padding:11px 9px;font-size:16px}
+.audio-btn{width:68px;height:68px;min-width:0;min-height:0;margin:3px auto 9px;font-size:25px;border-width:4px}
+.feedback{margin-top:9px;padding:10px}
+.bottom-actions{margin-top:9px}
+.modal{padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
+.modal-box{max-height:calc(100dvh - 24px);padding:16px}
+.dance-stage{height:min(235px,31dvh)}
+.dance-stage img{max-height:100%}
+.info-card{padding:13px}
+.resource-list{gap:7px}
+.resource-btn{padding:10px 11px}
+.grafemario-wrap{padding:10px}
+.number-grid{gap:5px}
+.number-row{padding:7px}
+.completion-card{padding:14px}
+.lesson-celebration{min-height:0;height:min(180px,24dvh);margin:-4px 0 5px}
+.lesson-celebration img{height:100%;max-height:100%}
+.completion-title{font-size:29px}
+.completion-sub{margin-bottom:10px}
+.completion-stats{gap:7px;margin:10px 0}
+.completion-stat{min-height:74px;padding:9px}
+.completion-stat b{font-size:22px}
+.nhewen-line{margin:11px 0 7px}
+.nhewen-meter{margin-bottom:12px}
+@media(max-height:760px) and (max-width:600px){
+ .topbar{padding:7px 12px}.newen{padding:5px 8px}.progress{height:7px;margin-top:6px}
+ .screen{padding:9px 12px max(24px,calc(env(safe-area-inset-bottom) + 16px))}
+ .screen:not(#home):before{margin:-9px -12px 7px;height:7px}
+ .back-button{padding:7px 10px;margin-bottom:6px;font-size:14px}
+ .exercise-head{padding:8px 10px;margin-bottom:7px}.exercise-head h2{font-size:18px}.exercise-head p{font-size:13px}
+ .card{padding:11px}.prompt{font-size:19px;margin:4px 0 8px}
+ .choice{min-height:46px;padding:9px 8px}.choices{gap:7px}
+ .audio-btn{width:58px;height:58px;font-size:22px;margin-bottom:7px}
+ .big-number{font-size:55px}.pair-btn{min-height:58px}
+ .body-word-list{gap:5px}.body-word{padding:4px 5px 4px 8px}.body-word button{width:30px;height:30px}
+ .body-figure{min-height:205px}.body-person{font-size:105px}
+}
+@media(max-width:390px){
+ .screen{padding-left:11px;padding-right:11px}.screen:not(#home):before{margin-left:-11px;margin-right:-11px}
+ .card{padding:11px}.choice{font-size:15px}
+ .number-quiz .choices{grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+ .number-quiz .choice{min-height:58px;font-size:25px;padding:7px 3px}
+ .body-learning{grid-template-columns:108px minmax(0,1fr);gap:8px}.body-word{font-size:13px}.body-figure{min-height:220px}
+}
+
+
+
+/* ===== CORRECCIÓN MARCO VISUAL · 30-09-2026 =====
+   Objetivo: cada actividad cabe completa en el viewport, sin scroll.
+   También corrige la etiqueta "Escuchar" que se montaba sobre títulos. */
+
+/* La etiqueta global antigua de audio provocaba texto superpuesto. */
+#exercise .audio-btn:after{display:none!important;content:none!important}
+
+/* Solo la pantalla de ejercicio queda bloqueada al tamaño visible. */
+.app.exercise-mode{
+  height:100vh;
+  height:100dvh;
+  min-height:0!important;
+  overflow:hidden!important;
+  display:flex;
+  flex-direction:column;
+}
+.app.exercise-mode .topbar{
+  position:relative!important;
+  top:auto!important;
+  flex:0 0 auto;
+  padding:6px 11px 6px!important;
+}
+.app.exercise-mode .toprow{min-height:26px}
+.app.exercise-mode .brand{font-size:clamp(11px,3.2vw,14px)}
+.app.exercise-mode .newen{font-size:clamp(10px,3vw,13px);padding:4px 8px}
+.app.exercise-mode .progress{height:5px;margin-top:4px}
+
+.app.exercise-mode #exercise.screen.active{
+  --ex-x:clamp(8px,2.6vw,12px);
+  flex:1 1 0;
+  min-height:0!important;
+  height:auto!important;
+  overflow:hidden!important;
+  display:grid!important;
+  grid-template-rows:auto auto minmax(0,1fr);
+  gap:clamp(4px,.65dvh,7px);
+  padding:clamp(5px,.75dvh,8px) var(--ex-x) max(5px,env(safe-area-inset-bottom))!important;
+}
+.app.exercise-mode #exercise.screen:before{display:none!important}
+.app.exercise-mode #exercise .back-button{
+  justify-self:start;
+  margin:0!important;
+  padding:5px 9px!important;
+  min-height:0!important;
+  font-size:clamp(10px,2.7vw,12px)!important;
+  line-height:1.05;
+}
+.app.exercise-mode #exercise .exercise-head{
+  margin:0!important;
+  padding:clamp(6px,.8dvh,9px) 10px!important;
+  border-radius:14px!important;
+}
+.app.exercise-mode #exercise .exercise-head:before{display:none!important}
+.app.exercise-mode #exercise .exercise-head small{font-size:clamp(9px,2.4vw,10px);line-height:1}
+.app.exercise-mode #exercise .exercise-head h2{font-size:clamp(15px,3.8vw,18px)!important;line-height:1.05;margin:2px 0!important}
+.app.exercise-mode #exercise .exercise-head p{font-size:clamp(9px,2.6vw,11px)!important;line-height:1.1;margin:2px 0 0!important}
+
+.app.exercise-mode #exerciseCard{
+  position:relative;
+  width:100%;
+  height:100%;
+  min-height:0!important;
+  max-height:100%!important;
+  overflow:hidden!important;
+  padding:clamp(7px,1dvh,11px)!important;
+  border-radius:18px!important;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:clamp(3px,.5dvh,6px);
+}
+.app.exercise-mode #exerciseCard .prompt{
+  flex:0 0 auto;
+  font-size:clamp(14px,3.8vw,19px)!important;
+  line-height:1.08!important;
+  margin:2px 0 clamp(4px,.6dvh,7px)!important;
+}
+.app.exercise-mode #exerciseCard .big-number{font-size:clamp(36px,7dvh,54px)!important;line-height:.95;margin:1px 0!important}
+.app.exercise-mode #exerciseCard .choices{
+  width:100%;
+  min-height:0;
+  gap:clamp(4px,.55dvh,6px)!important;
+}
+.app.exercise-mode #exerciseCard .choice{
+  min-width:0;
+  min-height:clamp(34px,5.2dvh,46px)!important;
+  padding:clamp(4px,.55dvh,7px) 5px!important;
+  font-size:clamp(11px,3vw,14px)!important;
+  line-height:1.05!important;
+  overflow-wrap:anywhere;
+  box-shadow:0 2px 0 #c7b89f!important;
+}
+.app.exercise-mode #exerciseCard .audio-btn{
+  width:clamp(42px,5.8dvh,52px)!important;
+  height:clamp(42px,5.8dvh,52px)!important;
+  min-width:0!important;min-height:0!important;
+  padding:0!important;
+  margin:0 auto clamp(3px,.5dvh,5px)!important;
+  font-size:clamp(17px,2.8dvh,22px)!important;
+  border-width:3px!important;
+}
+
+/* Números: compactos 4 x 2 y sin textos montados. */
+.app.exercise-mode #exerciseCard.number-quiz{justify-content:center}
+.app.exercise-mode #exerciseCard .number-hear{flex:0 0 auto;margin:0 0 clamp(3px,.5dvh,5px)!important;text-align:center}
+.app.exercise-mode #exerciseCard .number-hear .audio-btn{margin:0 auto 4px!important}
+.app.exercise-mode #exerciseCard .number-hear h3{font-size:clamp(14px,3.6vw,17px)!important;line-height:1.05!important;margin:2px 0!important;position:relative;z-index:1}
+.app.exercise-mode #exerciseCard .number-hear p{font-size:clamp(9px,2.5vw,11px)!important;line-height:1.05;margin:2px 0!important}
+.app.exercise-mode #exerciseCard.number-quiz .choices{
+  flex:0 1 auto;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(0,1fr));
+}
+.app.exercise-mode #exerciseCard.number-quiz .choice{
+  min-height:clamp(38px,5.7dvh,50px)!important;
+  font-size:clamp(19px,5vw,25px)!important;
+  padding:3px!important;
+}
+
+/* Unir pares: las diez tarjetas caben sin empujar la pantalla. */
+.app.exercise-mode #exerciseCard .pair-grid{
+  flex:1 1 0;
+  min-height:0;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;
+  grid-template-rows:repeat(5,minmax(0,1fr));
+  gap:clamp(3px,.45dvh,5px)!important;
+}
+.app.exercise-mode #exerciseCard .pair-btn{
+  height:100%;min-height:0!important;
+  padding:3px 4px!important;
+  font-size:clamp(10px,2.8vw,13px)!important;
+  line-height:1!important;
+  border-radius:11px!important;
+  box-shadow:0 2px 0 #153c2d!important;
+}
+.app.exercise-mode #exerciseCard .pair-btn:before{display:none!important}
+
+/* Oraciones */
+.app.exercise-mode #exerciseCard .sentence-built,
+.app.exercise-mode #exerciseCard .sentence-bank{
+  min-height:clamp(32px,4.5dvh,40px)!important;
+  padding:4px!important;
+  gap:4px!important;
+  margin-bottom:4px!important;
+}
+.app.exercise-mode #exerciseCard .word{padding:5px 7px!important;font-size:clamp(10px,2.7vw,12px)!important;line-height:1!important}
+.app.exercise-mode #exerciseCard #checkSentence{margin-top:4px!important;padding:7px!important;font-size:12px!important}
+
+/* Cuerpo: dos columnas siempre, lista y figura reducidas. */
+.app.exercise-mode #exerciseCard .body-mode{flex:0 0 auto;margin:0 0 4px!important;gap:4px}
+.app.exercise-mode #exerciseCard .body-mode button{padding:5px!important;font-size:10px!important}
+.app.exercise-mode #exerciseCard .body-learning{
+  flex:1 1 0;min-height:0;overflow:hidden;
+  display:grid!important;
+  grid-template-columns:minmax(92px,.8fr) minmax(0,1.2fr)!important;
+  gap:5px!important;
+}
+.app.exercise-mode #exerciseCard .body-word-list{min-height:0;display:grid;grid-template-rows:repeat(10,minmax(0,1fr));gap:2px!important}
+.app.exercise-mode #exerciseCard .body-word{min-height:0!important;padding:1px 2px 1px 5px!important;font-size:clamp(8px,2.3vw,10px)!important;grid-template-columns:1fr 22px!important}
+.app.exercise-mode #exerciseCard .body-word button{width:21px!important;height:21px!important;font-size:9px!important}
+.app.exercise-mode #exerciseCard .body-learning>div:last-child{min-height:0;display:flex;flex-direction:column;gap:3px}
+.app.exercise-mode #exerciseCard .body-figure{flex:1 1 0;min-height:70px!important;height:auto!important}
+.app.exercise-mode #exerciseCard .body-person{font-size:clamp(55px,10dvh,88px)!important}
+.app.exercise-mode #exerciseCard .body-practice{flex:0 0 auto;margin:0!important;padding:4px!important}
+.app.exercise-mode #exerciseCard .body-practice strong{font-size:clamp(9px,2.5vw,11px)!important}
+.app.exercise-mode #exerciseCard .body-practice .audio-btn{width:30px!important;height:30px!important;font-size:12px!important;margin:2px auto!important}
+.app.exercise-mode #exerciseCard .body-practice .choice{min-height:25px!important;font-size:9px!important;padding:2px!important}
+
+/* Feedback flotante: no cambia la altura del ejercicio. */
+.app.exercise-mode #exerciseCard .feedback.show{
+  position:absolute!important;
+  left:7px;right:7px;bottom:7px;
+  z-index:30;
+  margin:0!important;
+  padding:6px 8px!important;
+  font-size:10px!important;
+  line-height:1.1!important;
+  box-shadow:0 6px 18px #0003;
+}
+
+/* Cierre de lección compacto. */
+.app.exercise-mode #exerciseCard .completion-card{width:100%;height:100%;min-height:0;overflow:hidden;padding:7px!important}
+.app.exercise-mode #exerciseCard .lesson-celebration{height:clamp(70px,12dvh,105px)!important;min-height:0!important;margin:0 0 3px!important}
+.app.exercise-mode #exerciseCard .completion-title{font-size:clamp(20px,5vw,25px)!important;margin:1px 0!important}
+.app.exercise-mode #exerciseCard .completion-sub{font-size:10px!important;margin:1px 0 4px!important}
+.app.exercise-mode #exerciseCard .completion-stats{gap:4px!important;margin:4px 0!important}
+.app.exercise-mode #exerciseCard .completion-stat{min-height:0!important;padding:5px!important}
+.app.exercise-mode #exerciseCard .nhewen-line{margin:4px 0!important;font-size:11px!important}
+.app.exercise-mode #exerciseCard .nhewen-meter{height:6px!important;margin-bottom:5px!important}
+
+@media(max-height:700px){
+  .app.exercise-mode .topbar{padding-top:4px!important;padding-bottom:4px!important}
+  .app.exercise-mode #exercise.screen.active{padding-top:4px!important;gap:3px!important}
+  .app.exercise-mode #exercise .back-button{padding:4px 8px!important;font-size:10px!important}
+  .app.exercise-mode #exercise .exercise-head{padding:5px 8px!important}
+  .app.exercise-mode #exercise .exercise-head p{display:none}
+  .app.exercise-mode #exerciseCard{padding:6px!important}
+  .app.exercise-mode #exerciseCard .choice{min-height:30px!important}
+  .app.exercise-mode #exerciseCard.number-quiz .choice{min-height:34px!important}
+}
+
+
+/* ==========================================================
+   REPARACIÓN FINAL DE ACTIVIDADES · 30-09-2026
+   Prioridad: contenido visible, sin superposición y sin scroll.
+   ========================================================== */
+.app.exercise-mode #exerciseCard.body-card{
+  display:flex!important;flex-direction:column!important;justify-content:center!important;
+  overflow:hidden!important;padding:7px!important;
+}
+.app.exercise-mode #exerciseCard .body-compact{
+  width:100%;height:100%;min-height:0;display:grid;
+  grid-template-rows:auto minmax(0,1fr) auto auto;
+  gap:5px;align-content:stretch;
+}
+.app.exercise-mode #exerciseCard .body-compact-title{
+  font-size:clamp(12px,3.1vw,15px);font-weight:900;color:#173e30;
+  text-align:center;line-height:1.05;margin:0;
+}
+.app.exercise-mode #exerciseCard .body-chip-grid{
+  min-height:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  grid-template-rows:repeat(5,minmax(0,1fr));gap:3px;
+}
+.app.exercise-mode #exerciseCard .body-chip{
+  min-width:0;min-height:0;height:100%;border:1px solid #d7c6ac;border-radius:9px;
+  background:#fffaf1;color:#173e30;padding:2px 5px;font:inherit;font-weight:850;
+  font-size:clamp(9px,2.5vw,11px);line-height:1;display:flex;align-items:center;
+  justify-content:space-between;gap:3px;overflow:hidden;
+}
+.app.exercise-mode #exerciseCard .body-chip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.app.exercise-mode #exerciseCard .body-chip b{font-size:10px;flex:0 0 auto}
+.app.exercise-mode #exerciseCard .body-question{
+  display:grid;grid-template-columns:34px minmax(0,1fr);align-items:center;gap:6px;
+  background:#efe4d2;border-radius:10px;padding:4px 6px;min-height:38px;
+}
+.app.exercise-mode #exerciseCard .body-question strong{
+  min-width:0;font-size:clamp(10px,2.8vw,12px);line-height:1.05;color:#173e30;
+}
+.app.exercise-mode #exerciseCard .body-listen{
+  width:32px;height:32px;border:0;border-radius:50%;background:#245b42;color:#fff;
+  font-size:14px;padding:0;
+}
+.app.exercise-mode #exerciseCard .body-choices{
+  grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:4px!important;
+}
+.app.exercise-mode #exerciseCard .body-choices .choice{
+  min-height:31px!important;padding:3px 5px!important;font-size:clamp(9px,2.5vw,11px)!important;
+}
+/* Elimina cualquier rótulo generado que pueda montarse sobre botones de audio. */
+.app.exercise-mode #exercise .audio-btn::before,
+.app.exercise-mode #exercise .audio-btn::after{content:none!important;display:none!important}
+/* Ningún texto de actividad puede salir de su caja. */
+.app.exercise-mode #exerciseCard button,
+.app.exercise-mode #exerciseCard .prompt,
+.app.exercise-mode #exerciseCard h3,
+.app.exercise-mode #exerciseCard p,
+.app.exercise-mode #exerciseCard strong{
+  max-width:100%;overflow-wrap:anywhere;word-break:normal;
+}
+@media(max-height:700px){
+ .app.exercise-mode #exerciseCard .body-compact{gap:3px}
+ .app.exercise-mode #exerciseCard .body-question{min-height:31px;padding:2px 4px}
+ .app.exercise-mode #exerciseCard .body-listen{width:27px;height:27px;font-size:12px}
+ .app.exercise-mode #exerciseCard .body-question{grid-template-columns:29px minmax(0,1fr)}
+ .app.exercise-mode #exerciseCard .body-choices .choice{min-height:27px!important}
+}
+
+
+
+/* ==========================================================
+   REPARACIÓN ESTRUCTURAL DEL EJERCICIO · 30-09-2026
+   4 zonas reales: volver + escena + título + actividad.
+   Evita que la escena expulse el ejercicio fuera de pantalla.
+   ========================================================== */
+.app.exercise-mode #exercise.screen.active{
+  grid-template-rows:auto clamp(72px,12dvh,108px) auto minmax(0,1fr)!important;
+  align-content:stretch!important;
+  overflow:hidden!important;
+}
+.app.exercise-mode #exercise .activity-scene{
+  display:block!important;
+  position:relative!important;
+  width:100%!important;
+  height:100%!important;
+  min-height:0!important;
+  max-height:108px!important;
+  margin:0!important;
+  border-radius:16px!important;
+  overflow:hidden!important;
+}
+.app.exercise-mode #exercise .activity-bird{
+  bottom:2px!important;
+  height:clamp(64px,10.5dvh,94px)!important;
+  max-height:92%!important;
+}
+.app.exercise-mode #exercise .activity-bird.female{left:clamp(8px,4vw,20px)!important}
+.app.exercise-mode #exercise .activity-bird.male{right:clamp(8px,4vw,20px)!important}
+.app.exercise-mode #exercise .activity-mountain{
+  transform:translateX(-50%) scale(.68)!important;
+  transform-origin:center bottom!important;
+}
+.app.exercise-mode #exercise .exercise-head{
+  min-height:0!important;
+  max-height:70px!important;
+  overflow:hidden!important;
+}
+.app.exercise-mode #exerciseCard{
+  align-self:stretch!important;
+  min-height:0!important;
+  height:auto!important;
+  max-height:none!important;
+  overflow:hidden!important;
+}
+/* Partes del cuerpo: contenido real, compacto y siempre visible. */
+.app.exercise-mode #exerciseCard.body-card{
+  justify-content:stretch!important;
+  padding:6px!important;
+}
+.app.exercise-mode #exerciseCard.body-card .body-compact{
+  flex:1 1 0!important;
+  min-height:0!important;
+  height:auto!important;
+  grid-template-rows:auto minmax(90px,1fr) auto auto!important;
+}
+.app.exercise-mode #exerciseCard.body-card .body-chip-grid{
+  min-height:90px!important;
+}
+.app.exercise-mode #exerciseCard.body-card .body-chip{
+  font-size:clamp(9px,2.45vw,11px)!important;
+}
+.app.exercise-mode #exerciseCard.body-card .body-question{
+  min-height:32px!important;
+}
+.app.exercise-mode #exerciseCard.body-card .body-choices .choice{
+  min-height:28px!important;
+}
+/* Evita definitivamente rótulos superpuestos en audio. */
+.app.exercise-mode #exercise .audio-btn::before,
+.app.exercise-mode #exercise .audio-btn::after,
+.app.exercise-mode #exerciseCard .audio-btn::before,
+.app.exercise-mode #exerciseCard .audio-btn::after{
+  display:none!important;
+  content:none!important;
+}
+@media(max-height:760px){
+  .app.exercise-mode #exercise.screen.active{
+    grid-template-rows:auto clamp(60px,10dvh,82px) auto minmax(0,1fr)!important;
+    gap:3px!important;
+  }
+  .app.exercise-mode #exercise .activity-scene{max-height:82px!important;border-radius:13px!important}
+  .app.exercise-mode #exercise .activity-bird{height:clamp(52px,8.5dvh,72px)!important}
+  .app.exercise-mode #exercise .exercise-head{padding:4px 8px!important;max-height:54px!important}
+  .app.exercise-mode #exercise .exercise-head p{display:none!important}
+  .app.exercise-mode #exerciseCard{padding:5px!important}
+}
+@media(max-height:650px){
+  .app.exercise-mode #exercise.screen.active{
+    grid-template-rows:auto 54px auto minmax(0,1fr)!important;
+  }
+  .app.exercise-mode #exercise .activity-scene{max-height:54px!important}
+  .app.exercise-mode #exercise .activity-bird{height:48px!important}
+  .app.exercise-mode #exercise .exercise-head small{display:none!important}
+  .app.exercise-mode #exercise .exercise-head h2{font-size:14px!important}
+}
+
+
+/* ==========================================================
+   PARTES DEL CUERPO · BOTONES CIRCULARES BILINGÜES
+   Reparación concreta: 30-09-2026
+   ========================================================== */
+.app.exercise-mode #exercise.screen.active{
+  display:grid!important;
+  grid-template-rows:auto clamp(68px,10dvh,92px) auto minmax(0,1fr)!important;
+  gap:5px!important;
+  height:calc(100dvh - 48px)!important;
+  min-height:0!important;
+  overflow:hidden!important;
+}
+.app.exercise-mode #exercise .exercise-head{
+  height:auto!important;
+  min-height:0!important;
+  max-height:58px!important;
+  padding:5px 10px!important;
+  margin:0!important;
+  overflow:hidden!important;
+}
+.app.exercise-mode #exercise .exercise-head h2{font-size:16px!important;margin:1px 0!important;line-height:1!important}
+.app.exercise-mode #exercise .exercise-head small{font-size:9px!important;line-height:1!important}
+.app.exercise-mode #exercise .exercise-head p{display:none!important}
+.app.exercise-mode #exerciseCard.body-card{
+  height:100%!important;
+  min-height:0!important;
+  max-height:100%!important;
+  padding:7px!important;
+  overflow:hidden!important;
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:stretch!important;
+}
+.app.exercise-mode #exerciseCard .body-circle-activity{
+  flex:1 1 0!important;
+  min-height:0!important;
+  height:100%!important;
+  display:grid!important;
+  grid-template-rows:auto minmax(0,1fr) auto auto!important;
+  gap:6px!important;
+  align-items:stretch!important;
+}
+.app.exercise-mode #exerciseCard .body-circle-title{
+  text-align:center;
+  color:#173e30;
+  font-weight:900;
+  font-size:clamp(12px,3.2vw,15px);
+  line-height:1;
+}
+.app.exercise-mode #exerciseCard .body-circle-grid{
+  min-height:0!important;
+  display:grid!important;
+  grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  grid-template-rows:repeat(2,minmax(0,1fr))!important;
+  gap:clamp(4px,1.2vw,7px)!important;
+  place-items:center!important;
+}
+.app.exercise-mode #exerciseCard .body-circle{
+  width:min(100%,68px)!important;
+  aspect-ratio:1/1!important;
+  min-width:0!important;
+  min-height:0!important;
+  border:2px solid #d7b98e!important;
+  border-radius:50%!important;
+  background:linear-gradient(145deg,#fffdf7,#efe2cf)!important;
+  color:#173e30!important;
+  padding:5px 2px!important;
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  gap:1px!important;
+  box-shadow:0 3px 0 #c9aa7f,0 5px 10px #173e3014!important;
+  font-family:inherit!important;
+  overflow:hidden!important;
+}
+.app.exercise-mode #exerciseCard .body-circle span{
+  font-size:clamp(8px,2.15vw,10px)!important;
+  line-height:1!important;
+  font-weight:700!important;
+  color:#76523d!important;
+}
+.app.exercise-mode #exerciseCard .body-circle strong{
+  font-size:clamp(10px,2.7vw,13px)!important;
+  line-height:1!important;
+  font-weight:950!important;
+  color:#173e30!important;
+}
+.app.exercise-mode #exerciseCard .body-circle i{
+  font-size:clamp(8px,2vw,10px)!important;
+  line-height:1!important;
+  font-style:normal!important;
+}
+.app.exercise-mode #exerciseCard .body-circle:active{transform:translateY(2px);box-shadow:0 1px 0 #c9aa7f!important}
+.app.exercise-mode #exerciseCard .body-practice-row{
+  min-height:48px!important;
+  display:grid!important;
+  grid-template-columns:44px minmax(0,1fr)!important;
+  align-items:center!important;
+  gap:8px!important;
+  padding:5px 9px!important;
+  border-radius:15px!important;
+  background:#efe4d2!important;
+}
+.app.exercise-mode #exerciseCard .body-listen-big{
+  width:42px!important;height:42px!important;border:0!important;border-radius:50%!important;
+  background:#245b42!important;color:white!important;font-size:18px!important;padding:0!important;
+}
+.app.exercise-mode #exerciseCard .body-practice-row small{display:block;font-size:9px;line-height:1;color:#76523d;font-weight:800}
+.app.exercise-mode #exerciseCard .body-practice-row strong{display:block;font-size:clamp(14px,3.8vw,18px);line-height:1.05;color:#173e30;margin-top:2px}
+.app.exercise-mode #exerciseCard .body-answer-grid{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:5px!important;
+  min-height:58px!important;
+}
+.app.exercise-mode #exerciseCard .body-answer-circle{
+  width:100%!important;
+  aspect-ratio:1.25/1!important;
+  min-height:50px!important;
+  border-radius:50%!important;
+  padding:4px!important;
+  font-size:clamp(10px,2.7vw,13px)!important;
+  line-height:1!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+}
+.app.exercise-mode #exerciseCard.body-card .feedback.show{
+  position:absolute!important;
+  left:8px!important;right:8px!important;bottom:8px!important;
+  z-index:30!important;margin:0!important;
+}
+@media(max-width:380px){
+ .app.exercise-mode #exerciseCard .body-circle-grid{gap:3px!important}
+ .app.exercise-mode #exerciseCard .body-circle{width:min(100%,58px)!important}
+ .app.exercise-mode #exerciseCard .body-answer-grid{gap:3px!important}
+}
+@media(max-height:700px){
+ .app.exercise-mode #exercise.screen.active{grid-template-rows:auto 62px auto minmax(0,1fr)!important}
+ .app.exercise-mode #exerciseCard .body-circle-grid{gap:3px!important}
+ .app.exercise-mode #exerciseCard .body-practice-row{min-height:40px!important;padding:3px 7px!important}
+ .app.exercise-mode #exerciseCard .body-listen-big{width:35px!important;height:35px!important;font-size:15px!important}
+ .app.exercise-mode #exerciseCard .body-practice-row{grid-template-columns:37px minmax(0,1fr)!important}
+ .app.exercise-mode #exerciseCard .body-answer-grid{min-height:46px!important}
+ .app.exercise-mode #exerciseCard .body-answer-circle{min-height:42px!important}
+}
+
+
+
+/* ==========================================================
+   CHE KALÜL · LISTA TÁCTIL + IMAGEN INDIVIDUAL · 30-09-2026
+   ========================================================== */
+.app.exercise-mode #exerciseCard.body-card{padding:8px!important;justify-content:stretch!important}
+.app.exercise-mode #exerciseCard .body-circle-activity{
+  height:100%!important;min-height:0!important;display:grid!important;
+  grid-template-columns:minmax(126px,.82fr) minmax(0,1.18fr)!important;
+  grid-template-rows:minmax(0,1fr)!important;gap:8px!important;
+}
+.app.exercise-mode #exerciseCard .body-touch-list{
+  min-height:0!important;display:grid!important;grid-template-rows:repeat(10,minmax(0,1fr))!important;
+  gap:4px!important;
+}
+.app.exercise-mode #exerciseCard .body-touch-item{
+  width:100%!important;min-height:0!important;border:1px solid #d8c8af!important;border-radius:13px!important;
+  background:#fffaf1!important;color:#173e30!important;padding:3px 9px!important;
+  display:flex!important;flex-direction:column!important;align-items:flex-start!important;justify-content:center!important;
+  text-align:left!important;font-family:inherit!important;box-shadow:none!important;overflow:hidden!important;
+}
+.app.exercise-mode #exerciseCard .body-touch-item span{
+  font-size:clamp(10px,2.7vw,13px)!important;line-height:1!important;font-weight:700!important;color:#76523d!important;
+}
+.app.exercise-mode #exerciseCard .body-touch-item strong{
+  font-size:clamp(13px,3.7vw,18px)!important;line-height:1.05!important;font-weight:950!important;color:#173e30!important;margin-top:2px!important;
+}
+.app.exercise-mode #exerciseCard .body-touch-item:active{background:#e5f0e8!important;transform:scale(.98)}
+.app.exercise-mode #exerciseCard .body-visual-practice{
+  min-height:0!important;display:grid!important;grid-template-rows:minmax(0,1fr) auto auto!important;gap:6px!important;
+}
+.app.exercise-mode #exerciseCard .body-part-card{
+  min-height:0!important;border:1px solid #d8c8af!important;border-radius:20px!important;background:#efe4d2!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;padding:8px!important;
+}
+.app.exercise-mode #exerciseCard .body-part-card small{
+  font-size:clamp(9px,2.5vw,12px)!important;font-weight:800!important;color:#76523d!important;margin-bottom:3px!important;
+}
+.app.exercise-mode #exerciseCard .body-part-card strong{
+  font-size:clamp(18px,5vw,25px)!important;line-height:1!important;color:#173e30!important;margin-bottom:5px!important;
+}
+.app.exercise-mode #exerciseCard .body-part-image{
+  flex:1 1 auto!important;min-height:0!important;width:100%!important;display:flex!important;align-items:center!important;justify-content:center!important;
+  font-size:clamp(64px,14dvh,125px)!important;line-height:1!important;filter:drop-shadow(0 5px 5px #173e3020)!important;
+}
+.app.exercise-mode #exerciseCard .body-question{
+  border-radius:14px!important;background:#efe4d2!important;padding:6px 8px!important;text-align:center!important;
+}
+.app.exercise-mode #exerciseCard .body-question small{display:block!important;font-size:9px!important;color:#76523d!important;font-weight:800!important}
+.app.exercise-mode #exerciseCard .body-question strong{display:block!important;font-size:clamp(14px,4vw,19px)!important;line-height:1.05!important;color:#173e30!important;margin-top:2px!important}
+.app.exercise-mode #exerciseCard .body-answer-grid{
+  display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:5px!important;min-height:0!important;
+}
+.app.exercise-mode #exerciseCard .body-answer-circle{
+  aspect-ratio:auto!important;min-height:42px!important;border-radius:13px!important;padding:5px!important;
+  font-size:clamp(11px,3.1vw,15px)!important;line-height:1!important;
+}
+@media(max-height:700px){
+ .app.exercise-mode #exerciseCard .body-touch-list{gap:2px!important}
+ .app.exercise-mode #exerciseCard .body-touch-item{padding:2px 7px!important;border-radius:10px!important}
+ .app.exercise-mode #exerciseCard .body-touch-item span{font-size:9px!important}
+ .app.exercise-mode #exerciseCard .body-touch-item strong{font-size:12px!important}
+ .app.exercise-mode #exerciseCard .body-part-image{font-size:clamp(48px,11dvh,82px)!important}
+ .app.exercise-mode #exerciseCard .body-answer-circle{min-height:34px!important;font-size:11px!important}
+}
 
 </style>
 </head>
@@ -402,6 +1071,11 @@ button{font:inherit}
 
   <main id="exercise" class="screen">
     <button class="back-button" onclick="backToHome()">← Wüñotxekage · Volver atrás</button>
+    <div class="activity-scene" aria-hidden="true">
+      <div class="activity-mountain"></div><div class="activity-lake"></div>
+      <img src="txegul_hembra_transparente.png?v=20260930-4" alt="" class="activity-bird female">
+      <img src="txegul_macho_transparente.png?v=20260930-4" alt="" class="activity-bird male">
+    </div>
     <div class="exercise-head">
       <small id="lessonMeta"></small>
       <h2 id="exerciseTitle"></h2>
@@ -459,7 +1133,7 @@ button{font:inherit}
 
 const IMG_MALE="txegul_macho_transparente.png?v=20260930-4";
 const IMG_FEMALE="txegul_hembra_transparente.png?v=20260930-4";
-const MAX_NEWEN=20;
+const MAX_NEWEN=20; // límite global de Nhewen
 
 let state={
   nhewen:MAX_NEWEN,
@@ -498,13 +1172,23 @@ const LESSONS=[
   mc("¿Amaneciste bien?","Küme wünhmaymi am?",["Küme wünhmaymi am?","Kümelekaymi am?","Chew müleymi am?","Chem pigey?"]),
   mc("Sí, amanecí bien ¿y tú?","May, küme wünhman, eymi kay?",["May, küme wünhman, eymi kay?","Iñche ka küme wünhman","Kümelekan iñche","Fütxa kuyfi may"]),
   mc("¿Y tú?","Eymi kay?",["Eymi kay?","Iney pigeymi am?","Chumleymi am?","Feley"]),
-  mc("¿De dónde vienes?","Chew püle müley tami ruka?",["Chew püle müley tami ruka?","Chew müleymi am?","Iney pigeymi am?","Tunten txipantu nieymi?"]),
-  mc("De Pucón","Pukon püle.",["Pukon püle.","Villarrika püle.","Iñche mülen mawiza mew","Eymi kay?"]),
-  mc("De Villarrica","Villarrika püle.",["Villarrika püle.","Pukon püle.","Iñche mülen mawiza mew","Eymi kay?"]),
+  guided("¿Dónde estás?","Chew müleymi am?",["Chew müleymi am?","Tunten txipantu nieymi?","Chew püle müley tami ruka?","Iney pigeymi am?"]),
+  guided("¿Dónde provienes?","¿Chew Tuwimi am?",["¿Chew Tuwimi am?","Chew müleymi am?","Iney egu müleymi am?","Chumleymi am?"]),
+  guided("¿Con quién vives?","Iney egu müleymi am?",["Iney egu müleymi am?","Iney pigey tami ñuke","Chumley tami pu che?","Chew müleymi am?"]),
+  guided("Yo vivo con mi mamá y mi hijo.","Iñche mülen tañi ñuke ka tañi fot'üm iñchiñ",["Iñche mülen tañi ñuke ka tañi fot'üm iñchiñ","Tañi ñuke Eliana pigey","Kom kümelkaleigün","Iñche mülen mawiza mew"]),
+  guided("¿Cómo se llama tu mamá?","Iney pigey tami ñuke",["Iney pigey tami ñuke","Iney egu müleymi am?","Chumley tami pu che?","Chem zuamimi am?"]),
+  guided("Mi mamá se llama Eliana.","Tañi ñuke Eliana pigey",["Tañi ñuke Eliana pigey","Kom kümelkaleigün","Iñche mülen tañi ñuke ka tañi fot'üm iñchiñ","Iney pigey tami ñuke"]),
+  guided("¿Cómo está tu gente?","Chumley tami pu che?",["Chumley tami pu che?","Iney egu müleymi am?","Chum txipay ti zugu?","Chem zuamimi am?"]),
+  guided("Todos están bien.","Kom kümelkaleigün",["Kom kümelkaleigün","Tañi ñuke Eliana pigey","Kümelekan iñche","Fürenemuchi"]),
+  guided("¿Me podrías ayudar?","Kelluafen?",["Kelluafen?","Kelluafeyu?","Fürene-en","Fürenemuchi"]),
+  guided("¿Te puedo ayudar?","Kelluafeyu?",["Kelluafeyu?","Kelluafen?","Chem zuamimi am?","Chum txipay ti zugu?"]),
+  guided("Hazme el favor / ayúdame.","Fürene-en",["Fürene-en","Fürenemuchi","Kelluafen?","Kelluafeyu?"]),
+  guided("Háganme el favor / ayúdenme.","Fürenemuchi",["Fürenemuchi","Fürene-en","Kelluafeyu?","Kom kümelkaleigün"]),
+  guided("¿Qué necesitas?","Chem zuamimi am?",["Chem zuamimi am?","Fürene-en","Kelluafeyu?","Chum txipay ti zugu?"],{"Chem":"Qué","zuamimi":"necesitas","am?":"partícula interrogativa"}),
+  guided("¿Cómo resultó?","Chum txipay ti zugu?",["Chum txipay ti zugu?","Chem zuamimi am?","Kelluafen?","Chumley tami pu che?"]),
   listen("Escucha y selecciona","Mari mari",["Mari mari","Fütxa kuyfi","Feley","Ramtuchi"]),
   listen("Escucha y selecciona","Kümelekan iñche",["Kümelekan iñche","Ürkülen","Illkülen","Weñagkülen"])
- ]
-},
+ ]},
 {
  title:"¿Cómo me siento?", subtitle:"Estados de ánimo",
  items:[
@@ -578,9 +1262,9 @@ const LESSONS=[
 {
  title:"Partes del cuerpo", subtitle:"Che kalül",
  items:[
-  mc("Cara","Age",["Age","Logko","Ge","Yu"]),
+  mc("Cara","Age",["Age","Longko","Ge","Yu"]),
   mc("Mano","Kuwü",["Kuwü","Lipag","Luku","Nhamun"]),
-  mc("Cabeza","Logko",["Logko","Pelh","Ruku","Pilun"]),
+  mc("Cabeza","Longko",["Longko","Pelh","Ruku","Pilun"]),
   mc("Ojo","Ge",["Ge","Yu","Wünh","Pilun"]),
   mc("Oreja","Pilun",["Pilun","Ge","Yu","Pelh"]),
   mc("Nariz","Yu",["Yu","Wünh","Ge","Ketxe"]),
@@ -653,6 +1337,7 @@ const LESSONS=[
 ];
 
 function mc(prompt,answer,options){return{type:"mc",prompt,answer,options,translation:prompt}}
+function guided(prompt,answer,options,wordHints={}){return{type:"guided",prompt,answer,options,translation:prompt,wordHints}}
 function listen(prompt,answer,options){return{type:"listen",prompt,answer,options,translation:answer}}
 function age(number,answer,options){return{type:"age",number,answer,options,translation:`Tengo ${number} años`}}
 function pairs(prompt,pairs){return{type:"pairs",prompt,pairs}}
@@ -669,8 +1354,11 @@ function showScreen(id){
  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
  document.getElementById(id).classList.add("active");
  const app=document.querySelector(".app");
- if(app) app.classList.toggle("home-mode",id==="home");
- window.scrollTo({top:0,behavior:"smooth"});
+ if(app){
+   app.classList.toggle("home-mode",id==="home");
+   app.classList.toggle("exercise-mode",id==="exercise");
+ }
+ window.scrollTo(0,0);
 }
 function backToHome(){
  save();
@@ -861,17 +1549,19 @@ function nextExercise(){
 }
 function renderItem(it){
  const c=document.getElementById("exerciseCard");
- if(state.lessonIndex===5){renderBodyActivity(it,c);return;}
+ c.classList.remove("number-quiz","body-card","pairs-card","sentence-card");
+ if(state.lessonIndex===5){c.classList.add("body-card");renderBodyActivity(it,c);return;}
  if(state.lessonIndex===4 && (it.type==="mc"||it.type==="listen"||it.type==="age")){renderNumberActivity(it,c);return;}
- if(it.type==="mc"||it.type==="listen"||it.type==="age"){
+ if(it.type==="mc"||it.type==="listen"||it.type==="age"||it.type==="guided"){
    let head="";
    if(it.type==="listen") head=`<button class="audio-btn" onclick="speak('${esc(it.answer)}')">🔊 Escuchar</button><div class="prompt">${it.prompt}</div>`;
    else if(it.type==="age") head=`<div class="prompt">Completa la edad</div><div class="big-number">${it.number}</div><div class="prompt" style="font-size:19px">Iñche nien <u>_____</u> txipantu</div>`;
+   else if(it.type==="guided") head=`<div class="prompt">${it.prompt}</div>`;
    else head=`<div class="prompt">${it.prompt}</div>`;
    c.innerHTML=head+`<div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join("")}</div><div id="feedback" class="feedback"></div>`;
  }
- if(it.type==="pairs") renderPairs(it,c);
- if(it.type==="sentence") renderSentence(it,c);
+ if(it.type==="pairs"){c.classList.add("pairs-card");renderPairs(it,c);}
+ if(it.type==="sentence"){c.classList.add("sentence-card");renderSentence(it,c);}
 }
 function renderNumberActivity(it,c){
  const answer=it.answer;
@@ -890,10 +1580,34 @@ function chooseNumber(btn,value,correct,spoken){
  if(value===correct){btn.classList.add('correct');state.correct++;lessonSessionCorrect++;sound('correct');feedback(true,spoken,`Número ${correct}`);state.locked=true;save();setTimeout(()=>{state.qPos++;nextExercise()},1100)}
  else{btn.classList.add('wrong');state.wrong++;lessonSessionWrong++;sound('wrong');loseNhewen();feedback(false,'Inténtalo más adelante',`Escuchaste: ${spoken}`);state.locked=true;requeueCurrent();save();if(state.nhewen>0)setTimeout(()=>{state.qPos++;nextExercise()},1250)}
 }
-const BODY_WORDS=['Age','Kuwü','Logko','Ge','Pilun','Yu','Wünh','Nhamun','Luku','Ruku'];
+const BODY_WORDS=[
+ ['Cara','Age'],['Mano','Kuwü'],['Cabeza','Longko'],['Ojo','Ge'],['Oreja','Pilun'],
+ ['Nariz','Yu'],['Boca','Wünh'],['Pies','Nhamun'],['Rodilla','Luku'],['Pecho','Ruku']
+];
+const BODY_ICONS={
+ 'Cara':'🙂','Mano':'🖐️','Cabeza':'🧑','Ojo':'👁️','Oreja':'👂',
+ 'Nariz':'👃','Boca':'👄','Pies':'🦶','Rodilla':'🦵','Pecho':'🧍'
+};
 function renderBodyActivity(it,c){
- c.innerHTML=`<div class="body-mode"><button class="active">Aprende</button><button onclick="speak('${esc(it.answer)}')">Practica 🔊</button></div><div class="body-learning"><div class="body-word-list">${BODY_WORDS.map(w=>`<div class="body-word"><span>${w}</span><button onclick="speak('${esc(w)}')" aria-label="Escuchar ${w}">🔊</button></div>`).join('')}</div><div><div class="body-figure"><div class="body-person" aria-label="Figura del cuerpo">🧍</div></div><div class="body-practice"><strong>${it.prompt}</strong><br><button class="audio-btn" style="width:58px;height:58px;font-size:22px;margin:9px auto" onclick="speak('${esc(it.answer)}')">🔊</button><div class="choices">${shuffle([...it.options]).map(o=>`<button class="choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join('')}</div></div></div></div><div id="feedback" class="feedback"></div>`;
+ const words=BODY_WORDS.map(([es,mapu])=>`<button class="body-touch-item" onclick="speak('${esc(mapu)}')" aria-label="Escuchar ${mapu}"><span>${es}</span><strong>${mapu}</strong></button>`).join('');
+ const opts=shuffle([...it.options]).map(o=>`<button class="body-answer-circle choice" onclick="choose(this,'${esc(o)}')">${o}</button>`).join('');
+ const icon=BODY_ICONS[it.prompt]||'🧍';
+ c.innerHTML=`
+   <div class="body-circle-activity">
+     <div class="body-touch-list">${words}</div>
+     <div class="body-visual-practice">
+       <div class="body-part-card">
+         <small>Observa</small>
+         <strong>${it.prompt}</strong>
+         <div class="body-part-image" role="img" aria-label="${it.prompt}">${icon}</div>
+       </div>
+       <div class="body-question"><small>¿Cómo se dice en Mapuzugun?</small><strong>${it.prompt}</strong></div>
+       <div class="body-answer-grid">${opts}</div>
+     </div>
+   </div>
+   <div id="feedback" class="feedback"></div>`;
 }
+
 
 function choose(btn,value){
  if(state.locked)return;
@@ -990,8 +1704,8 @@ function finishLesson(){
  const c=document.getElementById("exerciseCard");
  const finalCircuit=state.completed.length>=LESSONS.length;
  const historyBlock=finalCircuit?renderHistoryHTML():"";
- c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
- processMascotTransparency(c);
+ c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img class="remove-black" src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img class="remove-black" src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
+
  // La siguiente entrada a una actividad parte con tiempo y puntaje de sesión en cero.
  lessonStartedAt=0; lessonSessionCorrect=0; lessonSessionWrong=0;
 }
