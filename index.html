@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Kimün Mapuzugun · Rediseño aprobado</title>
-<meta name="kimun-build" content="visual-mapuche-2026-09-30-02">
+<meta name="kimun-build" content="visual-mapuche-2026-09-30-03">
 <style>
 :root{
   --verde:#4f6355;--verde2:#718275;--crema:#f3eee6;--crema2:#e8e0d4;
@@ -300,6 +300,31 @@ button{font:inherit}
 /* partes del cuerpo: aprender + practicar */
 .body-learning{display:grid;grid-template-columns:1fr 1.25fr;gap:12px;align-items:start}.body-word-list{display:grid;gap:7px}.body-word{display:grid;grid-template-columns:1fr 38px;align-items:center;border:1px solid #d7c6ac;border-radius:13px;background:#fffaf1;padding:7px 7px 7px 10px;font-weight:850;color:#173e30}.body-word button{width:34px;height:34px;border:0;border-radius:50%;background:#245b42;color:#fff}.body-figure{min-height:440px;border-radius:24px;background:linear-gradient(#a9d4df 0 42%,#6f9876 42% 67%,#e3c99f 67%);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}.body-person{font-size:245px;line-height:1;filter:drop-shadow(0 8px 8px #173e3040)}.body-mode{display:flex;gap:8px;margin-bottom:12px}.body-mode button{flex:1;border:1px solid #cdbda7;border-radius:14px;padding:10px;background:#efe4d2;font-weight:850}.body-mode button.active{background:#245b42;color:#fff}.body-practice{margin-top:12px;padding:13px;border-radius:16px;background:#efe4d2;text-align:center}.body-practice strong{color:#173e30;font-size:19px}
 @media(max-width:390px){.route-node{width:116px;height:116px}.number-quiz .choices{grid-template-columns:repeat(2,1fr)}.body-learning{grid-template-columns:1fr}.body-figure{min-height:330px}.body-person{font-size:190px}}
+
+\n/* ===== Capa visual aprobada · calidad móvil 30-09-2026 ===== */
+:root{--deep:#063d31;--deep2:#075442;--paper:#fbf3e5;--gold:#d7b16e;--earth2:#b45d2d}
+.topbar{background:linear-gradient(180deg,#063d31,#084a3b);color:#fff;border-bottom:2px solid #d8b06b;box-shadow:0 5px 18px #062b2240}
+.topbar .brand{color:#fff}.topbar .newen{background:#ffffff14;color:#fff;border:1px solid #ffffff8a}.topbar .progress{background:#ffffff35}.topbar .progress>div{background:linear-gradient(90deg,#58c778,#b8e49c)}
+.screen:not(#home){background:linear-gradient(180deg,#f9f2e6,#f1e5d3)}
+.exercise-head{background:linear-gradient(180deg,#073f32,#07503f);color:#fff;margin:-18px -16px 14px;padding:18px 16px 16px;border-bottom:3px solid #d2aa68;box-shadow:0 8px 22px #12362922}
+.exercise-head h2,.exercise-head p{color:#fff}.exercise-head p{opacity:.82}.exercise-head:before{content:"◆  ◇  ◆";display:block;color:#d7b16e;font-size:12px;letter-spacing:10px;margin-bottom:5px}
+.card{border-radius:26px;border:1px solid #ddceb6;background:linear-gradient(180deg,#fffaf0,#f8efdf);box-shadow:0 13px 30px #173d3020}
+.prompt{color:#073f32;font-size:25px}.choice{min-height:58px;border-color:#cdbfa9;border-radius:16px;background:#fffaf0;font-size:17px;box-shadow:0 3px 8px #123b2d0c}.choice:active{transform:scale(.985)}.choice.correct{background:#e1f2e5;border-color:#3e8a5e}.choice.wrong{background:#f7e3de;border-color:#ad5546}
+.audio-btn{min-width:62px;min-height:52px;background:#073f32;color:#fff;border:2px solid #d5b475;box-shadow:0 5px 12px #0b392d2b}
+.primary{background:linear-gradient(180deg,#08704f,#07533e);box-shadow:0 5px 0 #053c2e}.secondary{background:#fff8eb;border-color:#d5c3a7}
+/* Inicio: profundidad escénica sin imágenes raster de fondo; las mascotas quedan PNG nativas. */
+.home-cover{background:linear-gradient(180deg,#9ed0e2 0 22%,#6d9b8d 22% 40%,#285d48 40% 55%,#f4ead9 55% 100%)}
+.home-landscape{height:430px}.home-volcano{width:365px;height:205px;top:32px;filter:drop-shadow(0 13px 16px #123c3055)}.home-lake{height:120px;background:linear-gradient(180deg,#6ea8ba,#3f7c8d 62%,#2b6472)}
+.home-mascots{height:380px}.home-txegul{height:320px;image-rendering:auto;backface-visibility:hidden}.home-title-panel{box-shadow:0 15px 35px #15392c2b}.home-action{box-shadow:0 7px 18px #173e3020}.home-action.main{background:linear-gradient(180deg,#0a6a4c,#07513d);color:#fff;border-color:#0a6048}.home-action.main .home-icon{background:#fff;color:#07513d}
+/* Camino visto desde arriba: sendero sinuoso y nodos con mayor profundidad. */
+.route-wrap{background:radial-gradient(circle at 50% 20%,#eef3e9 0 8%,transparent 9%),linear-gradient(180deg,#dce8db,#d3e0d1 58%,#c8d8c7);box-shadow:inset 0 0 0 2px #fff9,0 12px 28px #193c2e18}.route-line path{stroke:#9b8767;stroke-width:4.5;stroke-dasharray:2 2}.route-node{width:94px;height:94px;border:5px solid #f9f1e4;background:linear-gradient(180deg,#64816e,#456652);box-shadow:0 7px 0 #294d3b,0 13px 20px #16382d2d}
+/* Selección de pares: tarjetas tipo juego, cuatro columnas cuando hay espacio. */
+.pair-grid{grid-template-columns:repeat(2,1fr);gap:10px}.pair-btn{min-height:68px;border-radius:17px;border:2px solid #0b5744;background:#fff9ed;color:#173e31;box-shadow:0 4px 10px #163c2d13}.pair-btn.selected{background:#f8e7bc;border-color:#c58d35}.pair-btn.matched{visibility:hidden}
+/* Números: 8 opciones en cuadrícula 4x2 en pantallas amplias. */
+.number-quiz .choices{grid-template-columns:repeat(4,1fr);gap:9px}.number-quiz .choice{min-height:78px;font-size:34px;color:#073f32}.number-hear{text-align:center}.number-hear h3{font-size:24px;color:#073f32;margin:8px 0 3px}.number-hear p{margin:0 0 12px;color:#665d51}
+/* Cuerpo: nombres al costado y botón de voz por palabra. */
+.body-learning{display:grid;grid-template-columns:minmax(126px,.85fr) 1.15fr;gap:12px;align-items:start}.body-word-list{display:grid;gap:7px}.body-word{display:grid;grid-template-columns:1fr 36px;align-items:center;gap:5px;background:#fff8ec;border:1px solid #d6c6ae;border-radius:13px;padding:6px 7px 6px 10px;font-weight:800;color:#173e31}.body-word button{width:34px;height:34px;border:0;border-radius:50%;background:#07513d;color:#fff}.body-figure{min-height:250px;border-radius:20px;background:radial-gradient(circle,#fffdf7 0 42%,#eee1cc 43% 100%);display:grid;place-items:center;border:1px solid #d6c6ae}.body-person{font-size:125px;filter:drop-shadow(0 8px 8px #0002)}
+@media(max-width:380px){.number-quiz .choices{grid-template-columns:repeat(4,1fr)}.number-quiz .choice{min-height:65px;font-size:28px}.body-learning{grid-template-columns:118px 1fr}.home-txegul{height:275px}.home-mascots{height:335px}}
 
 </style>
 </head>
@@ -966,6 +991,7 @@ function finishLesson(){
  const finalCircuit=state.completed.length>=LESSONS.length;
  const historyBlock=finalCircuit?renderHistoryHTML():"";
  c.innerHTML=`<div class="completion-card" style="text-align:center"><div class="lesson-celebration"><img src="${IMG_FEMALE}" alt="Txegül hembra celebrando"><img src="${IMG_MALE}" alt="Txegül macho celebrando"></div><h2 class="completion-title">¡Küme zugun!</h2><p class="completion-sub">Completaste la lección ${i+1}.</p><div class="completion-stats"><div class="completion-stat"><span class="ico">✓</span><div><b>${lessonCorrect}</b><span>correctas</span></div></div><div class="completion-stat"><span class="ico">×</span><div><b>${lessonWrong}</b><span>errores</span></div></div><div class="completion-stat"><span class="ico">◷</span><div><b>${min}:${String(sec).padStart(2,"0")}</b><span>tiempo de esta actividad</span></div></div><div class="completion-stat"><span class="ico">★</span><div><b>${score}</b><span>puntaje de esta actividad</span></div></div></div><p class="nhewen-line">Tu Nhewen continúa: <b>${state.nhewen}/20</b></p><div class="nhewen-meter"><i style="width:${state.nhewen/20*100}%"></i></div>${finalCircuit?`<input id="resultName" class="name-input" maxlength="40" placeholder="Escribe tu nombre"><button class="primary" onclick="saveCircuitResult()">Guardar resultado</button>${historyBlock}`:`<button class="primary" onclick="goLessons()">Continuar</button>`}</div>`;
+ processMascotTransparency(c);
  // La siguiente entrada a una actividad parte con tiempo y puntaje de sesión en cero.
  lessonStartedAt=0; lessonSessionCorrect=0; lessonSessionWrong=0;
 }
@@ -1047,7 +1073,6 @@ function speak(text){
 }
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ")}
-
 
 document.querySelectorAll('img.home-txegul,.lesson-celebration img,.dance-stage img').forEach(img=>{
   img.addEventListener('error',()=>{
