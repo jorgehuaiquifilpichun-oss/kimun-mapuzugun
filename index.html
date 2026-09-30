@@ -183,13 +183,15 @@ button{font:inherit}
   linear-gradient(205deg,transparent 0 44%,#e7eee9 45% 58%,transparent 59%),
   linear-gradient(180deg,#e9eee9,#6e8174 72%,#4d6657);filter:drop-shadow(0 10px 12px #173e3050)}
 .home-volcano:after{content:"";position:absolute;inset:68% -80px -50px;background:#365c47;clip-path:polygon(0 70%,12% 34%,25% 60%,40% 20%,53% 64%,68% 30%,82% 58%,100% 22%,100% 100%,0 100%)}
+.home-landscape:after{content:"";position:absolute;left:7%;right:7%;bottom:72px;height:42px;background:repeating-linear-gradient(100deg,transparent 0 22px,#d55f4a 23px 27px,transparent 28px 52px);opacity:.72}
 .home-lake{position:absolute;left:-8%;right:-8%;bottom:0;height:105px;background:linear-gradient(180deg,#5c8d9a,#3d6f7b 60%,#315e68);border-top:2px solid #b9d6d6}
 .home-forest{position:absolute;bottom:78px;width:48%;height:190px;background:linear-gradient(135deg,transparent 0 22%,#234d38 23% 34%,transparent 35% 45%,#315c42 46% 58%,transparent 59%)}
 .forest-left{left:-10%}.forest-right{right:-10%;transform:scaleX(-1)}
-.home-mascots{height:355px;display:flex;align-items:flex-end;justify-content:center;position:relative;z-index:3;padding-top:78px}
-.home-txegul{max-height:285px;max-width:56%;object-fit:contain;filter:drop-shadow(0 10px 9px #10291f66);transform-origin:50% 90%}
-.home-txegul.female{margin-right:-18px;animation:idleF 3.1s ease-in-out infinite}
-.home-txegul.male{margin-left:-18px;animation:idleM 3.4s ease-in-out infinite}
+.home-mascots{height:365px;display:flex;align-items:flex-end;justify-content:center;position:relative;z-index:3;padding-top:62px;isolation:isolate}
+.home-mascots:after{content:"";position:absolute;left:50%;bottom:3px;width:310px;height:42px;transform:translateX(-50%);border-radius:50%;background:#173e3030;filter:blur(8px);z-index:-1}
+.home-txegul{height:300px;width:auto;max-width:59%;object-fit:contain;filter:drop-shadow(0 12px 10px #10291f70);transform-origin:50% 92%;will-change:transform}
+.home-txegul.female{margin-right:-31px;z-index:2;animation:idleF 3.1s ease-in-out infinite}
+.home-txegul.male{margin-left:-31px;z-index:1;animation:idleM 3.4s ease-in-out infinite}
 .home-title-panel{position:relative;z-index:4;margin:-4px auto 12px;max-width:430px;text-align:center;padding:15px 12px 13px;background:linear-gradient(180deg,#fffaf0f2,#f4e9d7f2);border:1px solid #d5c4a9;border-radius:20px;box-shadow:0 8px 25px #173e3025}
 .home-title-panel:before{content:"◆";display:block;color:#a95f3c;font-size:14px;margin-bottom:2px}
 .home-title-panel h1{margin:0;color:#173e30;font-size:30px;line-height:1;font-weight:950;letter-spacing:-1px}
@@ -280,8 +282,8 @@ button{font:inherit}
       </div>
 
       <div class="home-mascots" id="homeTreiles">
-        <img class="home-txegul female" src="treile_hembra-1.png" alt="Txegül hembra">
-        <img class="home-txegul male" src="treile_macho-1.png" alt="Txegül macho">
+        <img class="home-txegul female" src="treile_hembra-1.png?v=20260930-2" alt="Txegül hembra">
+        <img class="home-txegul male" src="treile_macho-1.png?v=20260930-2" alt="Txegül macho">
       </div>
 
       <div class="home-title-panel">
@@ -364,8 +366,8 @@ button{font:inherit}
   <div class="modal-box">
     <h2 id="danceTitle">¡A recuperar el Nhewen!</h2>
     <div id="danceStage" class="dance-stage dancing">
-      <img class="female" src="treile_hembra-1.png" alt="">
-      <img class="male" src="treile_macho-1.png" alt="">
+      <img class="female" src="treile_hembra-1.png?v=20260930-2" alt="">
+      <img class="male" src="treile_macho-1.png?v=20260930-2" alt="">
     </div>
     <p id="danceCountdown">Celebración · 12 segundos</p>
   </div>
@@ -389,8 +391,8 @@ button{font:inherit}
      * Volver lleva al menú principal (Comenzar / Grafemario / Diccionario / Gramática)
    ========================================================= */
 
-const IMG_MALE="treile_macho-1.png";
-const IMG_FEMALE="treile_hembra-1.png";
+const IMG_MALE="treile_macho-1.png?v=20260930-2";
+const IMG_FEMALE="treile_hembra-1.png?v=20260930-2";
 const MAX_NEWEN=20;
 
 let state={
@@ -636,8 +638,9 @@ const grafemario={
 };
 
 function openResource(file){
-  const w=window.open(file,"_blank");
-  if(!w) window.location.href=file;
+  // En móvil abrimos el PDF directamente en la misma pestaña.
+  // El botón Atrás del navegador regresa a Kimün sin crear una ventana gris superpuesta.
+  window.location.href=file;
 }
 function resourceButton(item){
   return `<button class="resource-btn" onclick="openResource('${item.file}')"><span>${item.label}<small>${item.sub||item.note||''}</small></span><span class="arrow">›</span></button>`;
@@ -701,7 +704,7 @@ function showSupport(kind){
     content.innerHTML=renderGrafemario();
   }else if(kind==="diccionario"){
     title.textContent="Diccionario Mapuzugun";
-    content.innerHTML=`<p class="support-note">Diccionario disponible dentro de Kimün Mapuzugun.</p><div class="resource-list">${resourceButton(supportResources.diccionario)}</div>`;
+    content.innerHTML=`<p class="support-note">Diccionario disponible dentro de Kimün Mapuzugun. Al ser un PDF grande, puede tardar unos segundos en abrir.</p><div class="resource-list">${resourceButton(supportResources.diccionario)}</div>`;
   }else{
     title.textContent="Apoyo de Gramática";
     content.innerHTML=`<p class="support-note">Las guías se mantienen en PDF exactamente como fueron entregadas, sin modificar su contenido.</p><div class="resource-list">${supportResources.gramatica.map(resourceButton).join("")}</div>`;
@@ -969,6 +972,13 @@ function speak(text){
 }
 function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 function esc(s){return String(s).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\n/g," ")}
+
+document.querySelectorAll('img.home-txegul,.lesson-celebration img,.dance-stage img').forEach(img=>{
+  img.addEventListener('error',()=>{
+    console.warn('No se pudo cargar la mascota:',img.src);
+    img.style.visibility='hidden';
+  });
+});
 
 updateHUD();renderLessons();renderHistory();
 </script>
