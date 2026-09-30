@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Kimün Mapuzugun · Base 30-09-2026</title>
-<meta name="kimun-build" content="base-2026-09-30-01">
+<title>Kimün Mapuzugun</title>
+<meta name="kimun-build" content="visual-mapuche-2026-09-30-02">
 <style>
 :root{
   --verde:#4f6355;--verde2:#718275;--crema:#f3eee6;--crema2:#e8e0d4;
@@ -148,10 +148,119 @@ button{font:inherit}
 .lesson-celebration{display:flex;justify-content:center;align-items:flex-end;height:210px;margin:4px 0 8px}.lesson-celebration img{max-height:200px;max-width:50%;object-fit:contain;transform-origin:50% 90%;animation:lessonDance .55s ease-in-out infinite alternate}.lesson-celebration img:nth-child(2){animation-delay:.18s}
 @keyframes lessonDance{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-12px) rotate(4deg)}}
 @media(max-width:360px){.number-grid{grid-template-columns:1fr}}
+
+/* =========================================================
+   KIMÜN · IDENTIDAD VISUAL MAPUCHE 30-09-2026
+   Decoración contenida: identidad sin competir con el aprendizaje.
+   ========================================================= */
+:root{
+  --kimun-deep:#183f31;
+  --kimun-green:#2f654b;
+  --kimun-leaf:#708b65;
+  --kimun-cream:#f6efe2;
+  --kimun-sand:#e8d8bf;
+  --kimun-earth:#a95f3c;
+  --kimun-blue:#416c82;
+  --kimun-purple:#68436f;
+  --kimun-ink:#263129;
+}
+.app{background:
+  linear-gradient(90deg,rgba(24,63,49,.025) 1px,transparent 1px) 0 0/22px 22px,
+  linear-gradient(180deg,#f8f3e9,#eee5d7)}
+.app.home-mode .topbar{display:none}
+#home.screen{padding:0;min-height:100vh;background:#173e30}
+.home-cover{position:relative;min-height:100vh;overflow:hidden;padding:0 14px 34px;background:
+  radial-gradient(circle at 50% 31%,rgba(255,255,255,.52),transparent 30%),
+  linear-gradient(180deg,#a9d0dc 0 28%,#739a82 28% 48%,#315d4a 48% 57%,#f5eddf 57% 100%)}
+.home-pattern{height:28px;margin:0 -14px;position:relative;z-index:9;background-color:#173e30;background-image:
+  linear-gradient(45deg,transparent 35%,#f4ead8 35% 45%,transparent 45% 55%,#f4ead8 55% 65%,transparent 65%),
+  linear-gradient(-45deg,transparent 35%,#f4ead8 35% 45%,transparent 45% 55%,#f4ead8 55% 65%,transparent 65%);
+  background-size:38px 28px;border-bottom:3px solid #c8a86c}
+.home-pattern.bottom{margin-top:22px;margin-bottom:-34px;border-bottom:0;border-top:3px solid #c8a86c}
+.home-landscape{position:absolute;left:0;right:0;top:28px;height:410px;overflow:hidden}
+.home-volcano{position:absolute;width:330px;height:180px;left:50%;top:42px;transform:translateX(-50%);clip-path:polygon(50% 0,100% 100%,0 100%);background:
+  linear-gradient(155deg,transparent 0 42%,#f4f4ed 43% 54%,transparent 55%),
+  linear-gradient(205deg,transparent 0 44%,#e7eee9 45% 58%,transparent 59%),
+  linear-gradient(180deg,#e9eee9,#6e8174 72%,#4d6657);filter:drop-shadow(0 10px 12px #173e3050)}
+.home-volcano:after{content:"";position:absolute;inset:68% -80px -50px;background:#365c47;clip-path:polygon(0 70%,12% 34%,25% 60%,40% 20%,53% 64%,68% 30%,82% 58%,100% 22%,100% 100%,0 100%)}
+.home-lake{position:absolute;left:-8%;right:-8%;bottom:0;height:105px;background:linear-gradient(180deg,#5c8d9a,#3d6f7b 60%,#315e68);border-top:2px solid #b9d6d6}
+.home-forest{position:absolute;bottom:78px;width:48%;height:190px;background:linear-gradient(135deg,transparent 0 22%,#234d38 23% 34%,transparent 35% 45%,#315c42 46% 58%,transparent 59%)}
+.forest-left{left:-10%}.forest-right{right:-10%;transform:scaleX(-1)}
+.home-mascots{height:355px;display:flex;align-items:flex-end;justify-content:center;position:relative;z-index:3;padding-top:78px}
+.home-txegul{max-height:285px;max-width:56%;object-fit:contain;filter:drop-shadow(0 10px 9px #10291f66);transform-origin:50% 90%}
+.home-txegul.female{margin-right:-18px;animation:idleF 3.1s ease-in-out infinite}
+.home-txegul.male{margin-left:-18px;animation:idleM 3.4s ease-in-out infinite}
+.home-title-panel{position:relative;z-index:4;margin:-4px auto 12px;max-width:430px;text-align:center;padding:15px 12px 13px;background:linear-gradient(180deg,#fffaf0f2,#f4e9d7f2);border:1px solid #d5c4a9;border-radius:20px;box-shadow:0 8px 25px #173e3025}
+.home-title-panel:before{content:"◆";display:block;color:#a95f3c;font-size:14px;margin-bottom:2px}
+.home-title-panel h1{margin:0;color:#173e30;font-size:30px;line-height:1;font-weight:950;letter-spacing:-1px}
+.home-title-panel p{margin:7px 0 0;color:#536158;font-size:14px}
+.home-actions{position:relative;z-index:5;display:grid;gap:9px}
+.home-action{width:100%;min-height:72px;border-radius:18px;padding:10px 12px;border:1px solid #cdbda7;background:#fffaf2;color:#2c342e;display:grid;grid-template-columns:48px 1fr 20px;gap:10px;align-items:center;text-align:left;box-shadow:0 5px 14px #173e3015;cursor:pointer}
+.home-action:active{transform:translateY(2px)}
+.home-action .home-icon{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-size:21px;font-weight:900;background:#efe4d2;color:#173e30;border:1px solid #d6c5aa}
+.home-action strong{display:block;font-size:16px;line-height:1.05}
+.home-action small{display:block;margin-top:4px;color:#6d6b63;font-size:11.5px;line-height:1.2}
+.home-arrow{font-size:30px;font-weight:300}
+.home-action.start{background:linear-gradient(135deg,#245b42,#173e30);color:white;border-color:#173e30;min-height:82px}
+.home-action.start .home-icon{background:#f6efe2;color:#173e30;border:3px solid #fff}
+.home-action.start small{color:#e6eee7}.home-action.start .home-arrow{color:white}
+.home-action.grammar{border-color:#b86d49}.home-action.grammar .home-icon{background:#a95f3c;color:white}.home-action.grammar strong{color:#8e472b}
+.home-action.dictionary{border-color:#537b8e}.home-action.dictionary .home-icon{background:#416c82;color:white}.home-action.dictionary strong{color:#31586c}
+.home-action.sounds{border-color:#79517f}.home-action.sounds .home-icon{background:#68436f;color:white}.home-action.sounds strong{color:#58345f}
+.home-history{position:relative;z-index:5;background:#fff9efde;border-radius:16px;padding:0 12px;margin-top:12px}
+.home-history:empty{display:none}
+
+/* Learning screens: Mapuche identity stays peripheral and quiet. */
+.topbar{background:#fffaf3f2;border-bottom:3px solid #173e30}
+.brand{color:#173e30;letter-spacing:.3px}
+.progress{background:#e4d7c3}.progress>div{background:linear-gradient(90deg,#708b65,#2f654b)}
+.screen:not(#home){background:
+  linear-gradient(90deg,rgba(24,63,49,.035) 1px,transparent 1px) 0 0/24px 24px,
+  linear-gradient(180deg,#faf6ee,#f2eadf)}
+.screen:not(#home):before{content:"";display:block;height:9px;margin:-18px -16px 15px;background:repeating-linear-gradient(90deg,#173e30 0 12px,#f4ead8 12px 20px,#a95f3c 20px 27px,#f4ead8 27px 35px)}
+.section-title,.exercise-head h2,#supportTitle{color:#173e30}
+.card,.info-card,.resource-btn,.resume-box{border-color:#d4c3aa;background:#fffdf8}
+.card{position:relative;overflow:hidden;box-shadow:0 7px 20px #173e3010}
+.card:before{content:"";position:absolute;left:0;right:0;top:0;height:5px;background:repeating-linear-gradient(90deg,#173e30 0 14px,#d8b979 14px 22px,#a95f3c 22px 30px,#d8b979 30px 38px)}
+.choice{border-color:#d6c8b5;background:#fffaf3}
+.choice:hover,.choice:focus{border-color:#708b65}
+.choice.correct{background:#e4eee5;border-color:#4f745e}
+.choice.wrong{background:#f5e4df;border-color:#9b5d55}
+.back-button{background:#f7efe3;border-color:#cdbda7;color:#173e30}
+.back-button:before{content:"◆";font-size:8px;color:#a95f3c}
+.primary{background:#245b42;box-shadow:0 5px 0 #173e30}
+.secondary{background:#efe4d2;border-color:#d0bfa7}
+.stats .stat{background:#efe5d6;border:1px solid #ddcdb6}
+.stat b{color:#245b42}
+.route-wrap{border-color:#aebcae;box-shadow:inset 0 0 0 2px #fff9}
+.route-node .n{border-color:#f6efe2}
+.resource-btn{border-left:5px solid #2f654b}
+.grafemario-wrap{background:#fffaf4;border-radius:18px;padding:12px;border:1px solid #d9c8b0}
+.number-study{border-top:0;padding-top:0;margin-top:0}
+.number-study-first{margin-bottom:18px}
+.number-row{font:inherit;text-align:left;cursor:pointer;color:var(--texto);box-shadow:none}
+.number-row em{margin-left:auto;font-style:normal;font-size:13px;opacity:.65}
+.number-row:active{background:#e8efe8;transform:scale(.99)}
+.graf-divider{height:10px;margin:14px -12px;background:repeating-linear-gradient(90deg,#173e30 0 12px,#f5eddf 12px 20px,#a95f3c 20px 27px,#f5eddf 27px 35px)}
+.graf-col h3{background:#eee1ce;color:#173e30}
+.graf-btn{color:#173e30}
+.graf-btn:active,.graf-btn.active{background:#e3ece5;border-color:#2f654b}
+.life-toast{background:#173e30}
+.modal-box{border:3px solid #173e30;background:#fffaf1}
+.lesson-celebration{background:radial-gradient(circle at 50% 100%,#e7d7bd 0 35%,transparent 36%)}
+
+@media(max-width:380px){
+  .home-mascots{height:315px;padding-top:70px}
+  .home-txegul{max-height:250px}
+  .home-title-panel h1{font-size:27px}
+  .home-action{grid-template-columns:43px 1fr 18px;min-height:66px}
+  .home-action .home-icon{width:41px;height:41px}
+}
+
 </style>
 </head>
 <body>
-<div class="app">
+<div class="app home-mode">
   <header class="topbar">
     <div class="toprow">
       <div class="brand">KIMÜN MAPUZUGUN</div>
@@ -161,21 +270,54 @@ button{font:inherit}
   </header>
 
   <main id="home" class="screen active">
-    <div class="hero">
-      <div class="treiles" id="homeTreiles">
-        <img class="treil female" src="treile_hembra-1.png" alt="Treile hembra">
-        <img class="treil male" src="treile_macho-1.png" alt="Treile macho">
+    <section class="home-cover">
+      <div class="home-pattern top" aria-hidden="true"></div>
+      <div class="home-landscape" aria-hidden="true">
+        <div class="home-volcano"></div>
+        <div class="home-lake"></div>
+        <div class="home-forest forest-left"></div>
+        <div class="home-forest forest-right"></div>
       </div>
-      <h1>Kimün Mapuzugun</h1>
-      <p>Aprender escuchando, mirando y haciendo.</p>
-    </div>
-    <button class="primary" onclick="goLessons()">Comenzar</button>
-    <div class="home-menu">
-      <button class="menu-btn" onclick="showSupport('grafemario')">Grafemario, sonidos y números<span>Material opcional de estudio y consulta.</span></button>
-      <button class="menu-btn" onclick="showSupport('diccionario')">Diccionario Mapuzugun<span>Consulta palabras cuando algo de una actividad no se entienda.</span></button>
-      <button class="menu-btn" onclick="showSupport('gramatica')">Apoyo de Gramática<span>Revisa estructuras de apoyo sin interrumpir el recorrido principal.</span></button>
-    </div>
-    <div class="history" id="historyHome"></div>
+
+      <div class="home-mascots" id="homeTreiles">
+        <img class="home-txegul female" src="treile_hembra-1.png" alt="Txegül hembra">
+        <img class="home-txegul male" src="treile_macho-1.png" alt="Txegül macho">
+      </div>
+
+      <div class="home-title-panel">
+        <h1>Kimün Mapuzugun</h1>
+        <p>Aprender escuchando, mirando y haciendo.</p>
+      </div>
+
+      <div class="home-actions">
+        <button class="home-action start" onclick="goLessons()">
+          <span class="home-icon">▶</span>
+          <span><strong>Comenzar</strong><small>Lecciones interactivas paso a paso.</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button class="home-action grammar" onclick="showSupport('gramatica')">
+          <span class="home-icon">▤</span>
+          <span><strong>Apoyo de Gramática</strong><small>Guías originales de apoyo, sin modificar.</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button class="home-action dictionary" onclick="showSupport('diccionario')">
+          <span class="home-icon">⌕</span>
+          <span><strong>Diccionario Mapuzugun</strong><small>Consulta de palabras y vocabulario.</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+
+        <button class="home-action sounds" onclick="showSupport('grafemario')">
+          <span class="home-icon">♪</span>
+          <span><strong>Grafemario y sonidos</strong><small>Números, grafemas y pronunciación de referencia.</small></span>
+          <span class="home-arrow">›</span>
+        </button>
+      </div>
+
+      <div class="history home-history" id="historyHome"></div>
+      <div class="home-pattern bottom" aria-hidden="true"></div>
+    </section>
   </main>
 
   <main id="lessons" class="screen">
@@ -457,6 +599,8 @@ function save(){
 function showScreen(id){
  document.querySelectorAll(".screen").forEach(x=>x.classList.remove("active"));
  document.getElementById(id).classList.add("active");
+ const app=document.querySelector(".app");
+ if(app) app.classList.toggle("home-mode",id==="home");
  window.scrollTo({top:0,behavior:"smooth"});
 }
 function backToHome(){
@@ -467,21 +611,21 @@ function backToHome(){
 }
 const supportResources={
   diccionario:{
-    file:"diccionario_kimun_mapuzungun_txegul.pdf",
+    file:"diccionario_kimun_mapuzungun.pdf",
     label:"Diccionario Mapuzugun · Kimün",
     note:"PDF con los personajes Txegül integrado."
   },
   gramatica:[
-    {file:"guia_00_kimeltun.pdf",label:"WÜNEN MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
-    {file:"guia_02_mapuzugun_kimeltun.pdf",label:"EPULECHI MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
-    {file:"guia_03_mapuzugun_kimeltun.pdf",label:"KÜLALECHI MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
-    {file:"guia_06_2026.pdf",label:"Kimeltun 6",sub:"Guía original · sin modificaciones"},
-    {file:"guia_07_2026.pdf",label:"Kimeltun 7",sub:"Guía original · sin modificaciones"},
-    {file:"guia_09_2026.pdf",label:"Kimeltun 9",sub:"Guía original · sin modificaciones"},
-    {file:"guia_10_2026.pdf",label:"Kimeltun 10",sub:"Guía original · sin modificaciones"},
-    {file:"guia_11_2026.pdf",label:"Kimeltun 11",sub:"Guía original · sin modificaciones"},
-    {file:"guia_12_2026.pdf",label:"Kimeltun 12",sub:"Guía original · sin modificaciones"},
-    {file:"guia_13_2026.pdf",label:"Kimeltun 13",sub:"Guía original · sin modificaciones"}
+    {file:"01_A1.1_Kimeltun_0.pdf",label:"WÜNEN MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
+    {file:"02_A1.1_Mapuzugun_kimeltun_2.pdf",label:"EPULECHI MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
+    {file:"03_Mapuzugun_kimeltun_3.pdf",label:"KÜLALECHI MAPUZUGUN KIMELTUN",sub:"Guía original · sin modificaciones"},
+    {file:"04_A1.1_2026_Kimeltun_6.pdf",label:"Kimeltun 6",sub:"Guía original · sin modificaciones"},
+    {file:"05_A1.1_2026_Kimeltun_7.pdf",label:"Kimeltun 7",sub:"Guía original · sin modificaciones"},
+    {file:"06_A1.1_2026_Kimeltun_9.pdf",label:"Kimeltun 9",sub:"Guía original · sin modificaciones"},
+    {file:"07_A1.1_2026_Kimeltun_10.pdf",label:"Kimeltun 10",sub:"Guía original · sin modificaciones"},
+    {file:"08_A1.1_2026_Kimeltun_11.pdf",label:"Kimeltun 11",sub:"Guía original · sin modificaciones"},
+    {file:"09_A1.1_2026_Kimeltun_12.pdf",label:"Kimeltun 12",sub:"Guía original · sin modificaciones"},
+    {file:"10_A1.1_2026_Kimeltun_13.pdf",label:"Kimeltun 13",sub:"Guía original · sin modificaciones"}
   ]
 };
 
@@ -509,11 +653,22 @@ const studyNumbers=[
  [31,"Küla mari kiñe"],[32,"Küla mari epu"],[33,"Küla mari küla"],[34,"Küla mari meli"],[35,"Küla mari kechu"],[36,"Küla mari kayu"],[37,"Küla mari reqle"],[38,"Küla mari pura"],[39,"Küla mari aylla"],[40,"meli mari"]
 ];
 function renderStudyNumbers(){
- return `<div class="number-study"><h3>Números · 1 al 40</h3><p>Material informativo de estudio. Se conserva la escritura de la tabla entregada.</p><div class="number-grid">${studyNumbers.map(([n,w])=>`<div class="number-row"><b>${n}</b><span>${w}</span></div>`).join("")}</div></div>`;
+ return `<div class="number-study number-study-first"><h3>Rakiñayin · Números 1 al 40</h3><p>Toca un número para escuchar su pronunciación de referencia. Se conserva la escritura de la tabla entregada.</p><div class="number-grid">${studyNumbers.map(([n,w])=>`<button class="number-row" onclick="speakStudyNumber('${w.replace(/'/g,"\\'")}')"><b>${n}</b><span>${w}</span><em>🔊</em></button>`).join("")}</div></div>`;
+}
+function speakStudyNumber(word){
+  sound("nav");
+  if("speechSynthesis" in window){
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(word);
+    u.lang="es-CL"; u.rate=.72; u.pitch=1;
+    speechSynthesis.speak(u);
+  }
 }
 function renderGrafemario(){
   return `
     <div class="grafemario-wrap">
+      ${renderStudyNumbers()}
+      <div class="graf-divider"></div>
       <div class="grafemario-head">Chumgechi wirintukugekey mapuzugun / Grafemario</div>
       <div class="grafemario-grid">
         <div class="graf-col known"><h3>Kimfalke awkiñ<br>Sonidos conocidos</h3><div class="graf-buttons">${graphemeButtons(grafemario.conocidos,"Sonido conocido")}</div></div>
@@ -522,7 +677,6 @@ function renderGrafemario(){
       </div>
       <div id="grafStatus" class="graf-status">Toca un grafema para seleccionarlo y escuchar una referencia.</div>
       <div class="graf-audio-note">El audio del dispositivo es solo de referencia; después puede sustituirse por grabaciones del kimelfe.</div>
-      ${renderStudyNumbers()}
     </div>`;
 }
 function selectGrapheme(btn,g,category){
