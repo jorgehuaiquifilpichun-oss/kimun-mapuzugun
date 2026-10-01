@@ -2,6 +2,10 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<meta name="kimun-build" content="body-parts-verified-2026-09-30-2012">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Kimün Mapuzugun · Rediseño aprobado</title>
 <meta name="kimun-build" content="sin-explora-v1-2026-09-30">
@@ -995,6 +999,20 @@ body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
  .app.exercise-mode #exerciseCard .body-answer-circle{min-height:34px!important;font-size:11px!important}
 }
 
+
+/* PORTADA FOTOGRAFICA + TRANSICIONES 01/10/2026 */
+.photo-home{position:relative;width:100%;max-width:480px;margin:0 auto;min-height:calc(100dvh - 62px);overflow:hidden;background:#182b21}
+.photo-home-image{display:block;width:100%;height:auto;min-height:calc(100dvh - 62px);object-fit:cover;object-position:center top}
+.photo-home-buttons{position:absolute;left:8%;right:8%;top:54%;display:grid;gap:10px;z-index:3}
+.photo-home-buttons button{min-height:62px;border:2px solid rgba(255,255,255,.78);border-radius:18px;background:rgba(250,246,235,.94);box-shadow:0 5px 16px #0005;padding:8px 15px;color:#203d2c;text-align:left;font:inherit;display:flex;flex-direction:column;justify-content:center}
+.photo-home-buttons b{font-size:17px;line-height:1.05}.photo-home-buttons small{font-size:11px;margin-top:4px;opacity:.8}
+.transition-screen{padding:0!important;background:#13251c;min-height:100dvh}
+.transition-wrap{position:relative;min-height:100dvh;max-width:480px;margin:auto;display:flex;align-items:center;justify-content:center;background:#13251c;overflow:hidden}
+.transition-wrap img{width:100%;height:100dvh;object-fit:contain;display:block}
+.transition-controls{position:absolute;left:18px;right:18px;bottom:max(22px,env(safe-area-inset-bottom));display:flex;gap:10px;z-index:4}
+.transition-controls button{flex:1;min-height:54px;border:0;border-radius:18px;background:rgba(248,241,222,.95);font-weight:800;font-size:16px;color:#254332;box-shadow:0 5px 18px #0007}
+@media(max-height:700px){.photo-home-buttons{top:50%;gap:7px}.photo-home-buttons button{min-height:54px}.photo-home-buttons b{font-size:15px}.photo-home-buttons small{font-size:10px}}
+
 </style>
 </head>
 <body>
@@ -1008,54 +1026,16 @@ body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
   </header>
 
   <main id="home" class="screen active">
-    <section class="home-cover">
-      <div class="home-pattern top" aria-hidden="true"></div>
-      <div class="home-landscape" aria-hidden="true">
-        <div class="home-volcano"></div>
-        <div class="home-lake"></div>
-        <div class="home-forest forest-left"></div>
-        <div class="home-forest forest-right"></div>
-      </div>
-
-      <div class="home-mascots" id="homeTreiles">
-        <img class="home-txegul female" src="txegul_hembra_transparente.png?v=20260930-4" alt="Txegül hembra">
-        <img class="home-txegul male" src="txegul_macho_transparente.png?v=20260930-4" alt="Txegül macho">
-      </div>
-
-      <div class="home-title-panel">
-        <h1>Kimün Mapuzugun</h1>
-        <p>Aprender escuchando, mirando y haciendo.</p>
-      </div>
-
-      <div class="home-actions">
-        <button class="home-action start" onclick="goLessons()">
-          <span class="home-icon">▶</span>
-          <span><strong>Comenzar</strong><small>Lecciones interactivas paso a paso.</small></span>
-          <span class="home-arrow">›</span>
-        </button>
-
-        <button class="home-action grammar" onclick="showSupport('gramatica')">
-          <span class="home-icon">▤</span>
-          <span><strong>Apoyo de Gramática</strong><small>Guías originales de apoyo, sin modificar.</small></span>
-          <span class="home-arrow">›</span>
-        </button>
-
-        <button class="home-action dictionary" onclick="showSupport('diccionario')">
-          <span class="home-icon">⌕</span>
-          <span><strong>Diccionario Mapuzugun</strong><small>Consulta de palabras y vocabulario.</small></span>
-          <span class="home-arrow">›</span>
-        </button>
-
-        <button class="home-action sounds" onclick="showSupport('grafemario')">
-          <span class="home-icon">♪</span>
-          <span><strong>Grafemario y sonidos</strong><small>Números, grafemas y pronunciación de referencia.</small></span>
-          <span class="home-arrow">›</span>
-        </button>
-      </div>
-
-      <div class="home-pattern bottom" aria-hidden="true"></div>
-    </section>
-  </main>
+  <section class="photo-home">
+    <img src="1000219029.png" alt="Kimün Mapuzungun" class="photo-home-image">
+    <div class="photo-home-buttons">
+      <button onclick="goLessons()"><b>Comenzar</b><small>Actividades de aprendizaje</small></button>
+      <button onclick="showSupport('gramatica')"><b>Apoyo de Gramática</b><small>Guías explicativas</small></button>
+      <button onclick="showSupport('diccionario')"><b>Diccionario Mapuzugun</b><small>Palabras y significados</small></button>
+      <button onclick="showSupport('grafemario')"><b>Grafemario y Sonidos</b><small>Letras y pronunciación</small></button>
+    </div>
+  </section>
+</main>
 
   <main id="lessons" class="screen">
     <button class="back-button" onclick="backToHome()">← Wüñotxekage · Volver atrás</button>
@@ -1083,6 +1063,13 @@ body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
     </div>
     <div id="exerciseCard" class="card"></div>
   </main>
+
+  <main id="transitionScreen" class="screen transition-screen">
+  <div class="transition-wrap">
+    <img id="transitionImage" src="1000218820.png" alt="Paisaje Kimün Mapuzungun">
+    <div class="transition-controls"><button onclick="continueAfterTransition()">Continuar →</button></div>
+  </div>
+</main>
 
   <main id="supportScreen" class="screen info-screen">
     <button class="back-button" onclick="backToHome()">← Wüñotxekage · Volver atrás</button>
@@ -1133,7 +1120,22 @@ body{min-height:100dvh;min-height:100svh;overflow-x:hidden}
 
 const IMG_MALE="txegul_macho_transparente.png?v=20260930-4";
 const IMG_FEMALE="txegul_hembra_transparente.png?v=20260930-4";
-const MAX_NEWEN=20; // límite global de Nhewen
+const MAX_NEWEN=20;
+const TRANSITION_IMAGES=[
+ "1000218820.png","1000218821.png","1000218822.png","1000218823.png","1000218824.png",
+ "1000218825.png","1000218826.png","1000218827.png","1000218828.png","1000218846.png"
+];
+let transitionLessonIndex=0;
+function showLessonTransition(i){
+ transitionLessonIndex=i;
+ const img=document.getElementById("transitionImage");
+ if(img) img.src=TRANSITION_IMAGES[i % TRANSITION_IMAGES.length];
+ showScreen("transitionScreen"); sound("nav");
+}
+function continueAfterTransition(){
+ renderLessons(); showScreen("lessons"); sound("nav");
+}
+ // límite global de Nhewen
 
 let state={
   nhewen:MAX_NEWEN,
@@ -1797,5 +1799,6 @@ document.querySelectorAll('img.home-txegul,.lesson-celebration img,.dance-stage 
 
 updateHUD();renderLessons();
 </script>
+<div id="kimunBuild" data-build="body-parts-verified-2026-09-30-2012" hidden></div>
 </body>
 </html>
