@@ -1831,3 +1831,74 @@ updateHUD();renderLessons();
 <div id="kimunBuild" data-build="lista-definitiva-10-actividades-2026-09-30" hidden></div>
 </body>
 </html>
+
+<!-- FIX FINAL 30-09-2026: eliminar tarjeta estirada / espacio vacío -->
+<style id="fix-tarjeta-estirada-final">
+.app.exercise-mode #exercise.screen.active{
+  display:flex!important;
+  flex-direction:column!important;
+  height:auto!important;
+  min-height:calc(100dvh - 48px)!important;
+  overflow-y:auto!important;
+  overflow-x:hidden!important;
+  gap:8px!important;
+  justify-content:flex-start!important;
+}
+.app.exercise-mode #exercise .back-button,
+.app.exercise-mode #exercise .activity-scene,
+.app.exercise-mode #exercise .exercise-head{
+  flex:0 0 auto!important;
+}
+.app.exercise-mode #exercise .activity-scene{
+  height:112px!important;
+  min-height:112px!important;
+  max-height:112px!important;
+}
+.app.exercise-mode #exercise .activity-bird{
+  height:104px!important;
+}
+.app.exercise-mode #exercise .exercise-head{
+  height:auto!important;
+  max-height:none!important;
+  overflow:visible!important;
+  padding:10px 12px!important;
+}
+.app.exercise-mode #exercise .exercise-head small{font-size:11px!important}
+.app.exercise-mode #exercise .exercise-head h2{font-size:20px!important;line-height:1.08!important;margin:4px 0!important}
+.app.exercise-mode #exerciseCard{
+  flex:0 0 auto!important;
+  align-self:auto!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  max-height:none!important;
+  overflow:visible!important;
+  justify-content:flex-start!important;
+  padding:18px 12px!important;
+  gap:10px!important;
+}
+.app.exercise-mode #exerciseCard .prompt{
+  margin:4px 0 10px!important;
+  font-size:22px!important;
+}
+.app.exercise-mode #exerciseCard .choices{
+  flex:0 0 auto!important;
+  height:auto!important;
+  min-height:0!important;
+  gap:9px!important;
+}
+.app.exercise-mode #exerciseCard .choice{
+  min-height:56px!important;
+  padding:11px 8px!important;
+  font-size:16px!important;
+}
+.app.exercise-mode #exerciseCard .feedback.show{
+  flex:0 0 auto!important;
+}
+@media(max-height:700px){
+ .app.exercise-mode #exercise .activity-scene{height:86px!important;min-height:86px!important;max-height:86px!important}
+ .app.exercise-mode #exercise .activity-bird{height:80px!important}
+ .app.exercise-mode #exerciseCard{padding:12px 10px!important;gap:7px!important}
+ .app.exercise-mode #exerciseCard .choice{min-height:48px!important}
+}
+</style>
